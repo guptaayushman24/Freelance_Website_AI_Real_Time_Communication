@@ -19,7 +19,8 @@ export default function () {
             }
             Setloading(false);
             alert("User profile created");
-            router.push('/homepage')
+            // router.push('/homepage')
+            router.push('/wallet');
             
         }
         catch (err) {

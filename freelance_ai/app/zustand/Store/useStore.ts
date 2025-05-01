@@ -4,6 +4,8 @@ interface AppState{
     setuserid:(id:number)=>void
     client_name:string,
     setclient_name:(client_name:string)=>void,
+    name:string,
+    setname:(name:string)=>void,
     client_email:string,
     setclient_email:(client_email:string)=>void,
     projecttitle:string,
@@ -18,6 +20,10 @@ interface AppState{
     setuseremail:(useremail:string)=>void
     whichuser:string,
     setwhichuser:(whichuser:string)=>void
+    role:string,
+    setrole:(role:string)=>void
+    email:string,
+    setemail:(email:string)=>void
 }
 
 
@@ -26,6 +32,8 @@ export const useStore = create<AppState>((set)=>({
     setuserid:(userid=>set({userid:userid})),
     client_name:'',
     setclient_name:(client_name=>set({client_name:client_name})),
+    name:'',
+    setname:(name=>set({name:name})),
     client_email:'',
     setclient_email:(client_email=>set({client_email:client_email})),
     projecttitle:'',
@@ -39,5 +47,9 @@ export const useStore = create<AppState>((set)=>({
     useremail:'',
     setuseremail:(useremail=>set({useremail:useremail})),
     whichuser:'',
-    setwhichuser:(whichuser=>set({whichuser:whichuser}))
+    setwhichuser:(whichuser=>set({whichuser:whichuser})),
+    role:'',
+    setrole:(role=>set({role:role})),
+    email:'',
+    setemail:(email=>set({email:email}))
 }))

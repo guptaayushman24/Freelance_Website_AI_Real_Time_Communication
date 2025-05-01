@@ -170,6 +170,23 @@ exports.Prisma.AcceptedProjectScalarFieldEnum = {
   timeline: 'timeline'
 };
 
+exports.Prisma.BankSchemaScalarFieldEnum = {
+  accountid: 'accountid',
+  email: 'email',
+  accountnumber: 'accountnumber',
+  amount: 'amount'
+};
+
+exports.Prisma.WalletSchemaScalarFieldEnum = {
+  walletid: 'walletid',
+  name: 'name',
+  email: 'email',
+  role: 'role',
+  accountnumber: 'accountnumber',
+  amount: 'amount',
+  uniqueid: 'uniqueid'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -192,7 +209,9 @@ exports.Prisma.ModelName = {
   ProfileSchema: 'ProfileSchema',
   JobSchema: 'JobSchema',
   ApplyJob: 'ApplyJob',
-  AcceptedProject: 'AcceptedProject'
+  AcceptedProject: 'AcceptedProject',
+  BankSchema: 'BankSchema',
+  WalletSchema: 'WalletSchema'
 };
 
 /**

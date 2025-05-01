@@ -87,3 +87,22 @@ model AcceptedProject {
 
   @@unique([client_id, userid, project_title])
 }
+
+model BankSchema {
+  accountid     Int    @id @default(autoincrement())
+  email         String
+  accountnumber String @unique
+  amount        String @default("0")
+}
+
+model WalletSchema {
+  walletid      Int    @id @default(autoincrement())
+  name          String
+  email         String
+  role          String
+  accountnumber String @unique
+  amount        String @default("0")
+  uniqueid      String @unique
+
+  @@unique([email, role])
+}

@@ -33,3 +33,12 @@ export const jobschema = zod.object({
     budget:zod.string(),
     timeline:zod.string()
 })
+
+export const walletvalidation = zod.object({
+    email:zod.string().email({message:'Invalid email address'}),
+    role:zod.string(),
+    amount:zod.string().regex(/^[0-9]+$/),
+    accountnumber:zod.string().regex(/^[0-9]+$/),
+    uniqueid:zod.string()
+
+})

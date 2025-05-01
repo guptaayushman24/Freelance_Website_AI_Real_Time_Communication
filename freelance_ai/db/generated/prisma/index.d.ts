@@ -43,6 +43,16 @@ export type ApplyJob = $Result.DefaultSelection<Prisma.$ApplyJobPayload>
  * 
  */
 export type AcceptedProject = $Result.DefaultSelection<Prisma.$AcceptedProjectPayload>
+/**
+ * Model BankSchema
+ * 
+ */
+export type BankSchema = $Result.DefaultSelection<Prisma.$BankSchemaPayload>
+/**
+ * Model WalletSchema
+ * 
+ */
+export type WalletSchema = $Result.DefaultSelection<Prisma.$WalletSchemaPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -228,6 +238,26 @@ export class PrismaClient<
     * ```
     */
   get acceptedProject(): Prisma.AcceptedProjectDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.bankSchema`: Exposes CRUD operations for the **BankSchema** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BankSchemas
+    * const bankSchemas = await prisma.bankSchema.findMany()
+    * ```
+    */
+  get bankSchema(): Prisma.BankSchemaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.walletSchema`: Exposes CRUD operations for the **WalletSchema** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WalletSchemas
+    * const walletSchemas = await prisma.walletSchema.findMany()
+    * ```
+    */
+  get walletSchema(): Prisma.WalletSchemaDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -673,7 +703,9 @@ export namespace Prisma {
     ProfileSchema: 'ProfileSchema',
     JobSchema: 'JobSchema',
     ApplyJob: 'ApplyJob',
-    AcceptedProject: 'AcceptedProject'
+    AcceptedProject: 'AcceptedProject',
+    BankSchema: 'BankSchema',
+    WalletSchema: 'WalletSchema'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -692,7 +724,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "userSchema" | "clientSchema" | "profileSchema" | "jobSchema" | "applyJob" | "acceptedProject"
+      modelProps: "userSchema" | "clientSchema" | "profileSchema" | "jobSchema" | "applyJob" | "acceptedProject" | "bankSchema" | "walletSchema"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1140,6 +1172,154 @@ export namespace Prisma {
           }
         }
       }
+      BankSchema: {
+        payload: Prisma.$BankSchemaPayload<ExtArgs>
+        fields: Prisma.BankSchemaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BankSchemaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankSchemaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BankSchemaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankSchemaPayload>
+          }
+          findFirst: {
+            args: Prisma.BankSchemaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankSchemaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BankSchemaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankSchemaPayload>
+          }
+          findMany: {
+            args: Prisma.BankSchemaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankSchemaPayload>[]
+          }
+          create: {
+            args: Prisma.BankSchemaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankSchemaPayload>
+          }
+          createMany: {
+            args: Prisma.BankSchemaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BankSchemaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankSchemaPayload>[]
+          }
+          delete: {
+            args: Prisma.BankSchemaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankSchemaPayload>
+          }
+          update: {
+            args: Prisma.BankSchemaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankSchemaPayload>
+          }
+          deleteMany: {
+            args: Prisma.BankSchemaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BankSchemaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BankSchemaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankSchemaPayload>[]
+          }
+          upsert: {
+            args: Prisma.BankSchemaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankSchemaPayload>
+          }
+          aggregate: {
+            args: Prisma.BankSchemaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBankSchema>
+          }
+          groupBy: {
+            args: Prisma.BankSchemaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BankSchemaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BankSchemaCountArgs<ExtArgs>
+            result: $Utils.Optional<BankSchemaCountAggregateOutputType> | number
+          }
+        }
+      }
+      WalletSchema: {
+        payload: Prisma.$WalletSchemaPayload<ExtArgs>
+        fields: Prisma.WalletSchemaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WalletSchemaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WalletSchemaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WalletSchemaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WalletSchemaPayload>
+          }
+          findFirst: {
+            args: Prisma.WalletSchemaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WalletSchemaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WalletSchemaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WalletSchemaPayload>
+          }
+          findMany: {
+            args: Prisma.WalletSchemaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WalletSchemaPayload>[]
+          }
+          create: {
+            args: Prisma.WalletSchemaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WalletSchemaPayload>
+          }
+          createMany: {
+            args: Prisma.WalletSchemaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WalletSchemaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WalletSchemaPayload>[]
+          }
+          delete: {
+            args: Prisma.WalletSchemaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WalletSchemaPayload>
+          }
+          update: {
+            args: Prisma.WalletSchemaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WalletSchemaPayload>
+          }
+          deleteMany: {
+            args: Prisma.WalletSchemaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WalletSchemaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.WalletSchemaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WalletSchemaPayload>[]
+          }
+          upsert: {
+            args: Prisma.WalletSchemaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WalletSchemaPayload>
+          }
+          aggregate: {
+            args: Prisma.WalletSchemaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWalletSchema>
+          }
+          groupBy: {
+            args: Prisma.WalletSchemaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WalletSchemaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WalletSchemaCountArgs<ExtArgs>
+            result: $Utils.Optional<WalletSchemaCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1230,6 +1410,8 @@ export namespace Prisma {
     jobSchema?: JobSchemaOmit
     applyJob?: ApplyJobOmit
     acceptedProject?: AcceptedProjectOmit
+    bankSchema?: BankSchemaOmit
+    walletSchema?: WalletSchemaOmit
   }
 
   /* Types for Logging */
@@ -8343,6 +8525,2077 @@ export namespace Prisma {
 
 
   /**
+   * Model BankSchema
+   */
+
+  export type AggregateBankSchema = {
+    _count: BankSchemaCountAggregateOutputType | null
+    _avg: BankSchemaAvgAggregateOutputType | null
+    _sum: BankSchemaSumAggregateOutputType | null
+    _min: BankSchemaMinAggregateOutputType | null
+    _max: BankSchemaMaxAggregateOutputType | null
+  }
+
+  export type BankSchemaAvgAggregateOutputType = {
+    accountid: number | null
+  }
+
+  export type BankSchemaSumAggregateOutputType = {
+    accountid: number | null
+  }
+
+  export type BankSchemaMinAggregateOutputType = {
+    accountid: number | null
+    email: string | null
+    accountnumber: string | null
+    amount: string | null
+  }
+
+  export type BankSchemaMaxAggregateOutputType = {
+    accountid: number | null
+    email: string | null
+    accountnumber: string | null
+    amount: string | null
+  }
+
+  export type BankSchemaCountAggregateOutputType = {
+    accountid: number
+    email: number
+    accountnumber: number
+    amount: number
+    _all: number
+  }
+
+
+  export type BankSchemaAvgAggregateInputType = {
+    accountid?: true
+  }
+
+  export type BankSchemaSumAggregateInputType = {
+    accountid?: true
+  }
+
+  export type BankSchemaMinAggregateInputType = {
+    accountid?: true
+    email?: true
+    accountnumber?: true
+    amount?: true
+  }
+
+  export type BankSchemaMaxAggregateInputType = {
+    accountid?: true
+    email?: true
+    accountnumber?: true
+    amount?: true
+  }
+
+  export type BankSchemaCountAggregateInputType = {
+    accountid?: true
+    email?: true
+    accountnumber?: true
+    amount?: true
+    _all?: true
+  }
+
+  export type BankSchemaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BankSchema to aggregate.
+     */
+    where?: BankSchemaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BankSchemas to fetch.
+     */
+    orderBy?: BankSchemaOrderByWithRelationInput | BankSchemaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BankSchemaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BankSchemas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BankSchemas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BankSchemas
+    **/
+    _count?: true | BankSchemaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BankSchemaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BankSchemaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BankSchemaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BankSchemaMaxAggregateInputType
+  }
+
+  export type GetBankSchemaAggregateType<T extends BankSchemaAggregateArgs> = {
+        [P in keyof T & keyof AggregateBankSchema]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBankSchema[P]>
+      : GetScalarType<T[P], AggregateBankSchema[P]>
+  }
+
+
+
+
+  export type BankSchemaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BankSchemaWhereInput
+    orderBy?: BankSchemaOrderByWithAggregationInput | BankSchemaOrderByWithAggregationInput[]
+    by: BankSchemaScalarFieldEnum[] | BankSchemaScalarFieldEnum
+    having?: BankSchemaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BankSchemaCountAggregateInputType | true
+    _avg?: BankSchemaAvgAggregateInputType
+    _sum?: BankSchemaSumAggregateInputType
+    _min?: BankSchemaMinAggregateInputType
+    _max?: BankSchemaMaxAggregateInputType
+  }
+
+  export type BankSchemaGroupByOutputType = {
+    accountid: number
+    email: string
+    accountnumber: string
+    amount: string
+    _count: BankSchemaCountAggregateOutputType | null
+    _avg: BankSchemaAvgAggregateOutputType | null
+    _sum: BankSchemaSumAggregateOutputType | null
+    _min: BankSchemaMinAggregateOutputType | null
+    _max: BankSchemaMaxAggregateOutputType | null
+  }
+
+  type GetBankSchemaGroupByPayload<T extends BankSchemaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BankSchemaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BankSchemaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BankSchemaGroupByOutputType[P]>
+            : GetScalarType<T[P], BankSchemaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BankSchemaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    accountid?: boolean
+    email?: boolean
+    accountnumber?: boolean
+    amount?: boolean
+  }, ExtArgs["result"]["bankSchema"]>
+
+  export type BankSchemaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    accountid?: boolean
+    email?: boolean
+    accountnumber?: boolean
+    amount?: boolean
+  }, ExtArgs["result"]["bankSchema"]>
+
+  export type BankSchemaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    accountid?: boolean
+    email?: boolean
+    accountnumber?: boolean
+    amount?: boolean
+  }, ExtArgs["result"]["bankSchema"]>
+
+  export type BankSchemaSelectScalar = {
+    accountid?: boolean
+    email?: boolean
+    accountnumber?: boolean
+    amount?: boolean
+  }
+
+  export type BankSchemaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"accountid" | "email" | "accountnumber" | "amount", ExtArgs["result"]["bankSchema"]>
+
+  export type $BankSchemaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BankSchema"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      accountid: number
+      email: string
+      accountnumber: string
+      amount: string
+    }, ExtArgs["result"]["bankSchema"]>
+    composites: {}
+  }
+
+  type BankSchemaGetPayload<S extends boolean | null | undefined | BankSchemaDefaultArgs> = $Result.GetResult<Prisma.$BankSchemaPayload, S>
+
+  type BankSchemaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BankSchemaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BankSchemaCountAggregateInputType | true
+    }
+
+  export interface BankSchemaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BankSchema'], meta: { name: 'BankSchema' } }
+    /**
+     * Find zero or one BankSchema that matches the filter.
+     * @param {BankSchemaFindUniqueArgs} args - Arguments to find a BankSchema
+     * @example
+     * // Get one BankSchema
+     * const bankSchema = await prisma.bankSchema.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BankSchemaFindUniqueArgs>(args: SelectSubset<T, BankSchemaFindUniqueArgs<ExtArgs>>): Prisma__BankSchemaClient<$Result.GetResult<Prisma.$BankSchemaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BankSchema that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BankSchemaFindUniqueOrThrowArgs} args - Arguments to find a BankSchema
+     * @example
+     * // Get one BankSchema
+     * const bankSchema = await prisma.bankSchema.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BankSchemaFindUniqueOrThrowArgs>(args: SelectSubset<T, BankSchemaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BankSchemaClient<$Result.GetResult<Prisma.$BankSchemaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BankSchema that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankSchemaFindFirstArgs} args - Arguments to find a BankSchema
+     * @example
+     * // Get one BankSchema
+     * const bankSchema = await prisma.bankSchema.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BankSchemaFindFirstArgs>(args?: SelectSubset<T, BankSchemaFindFirstArgs<ExtArgs>>): Prisma__BankSchemaClient<$Result.GetResult<Prisma.$BankSchemaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BankSchema that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankSchemaFindFirstOrThrowArgs} args - Arguments to find a BankSchema
+     * @example
+     * // Get one BankSchema
+     * const bankSchema = await prisma.bankSchema.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BankSchemaFindFirstOrThrowArgs>(args?: SelectSubset<T, BankSchemaFindFirstOrThrowArgs<ExtArgs>>): Prisma__BankSchemaClient<$Result.GetResult<Prisma.$BankSchemaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BankSchemas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankSchemaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BankSchemas
+     * const bankSchemas = await prisma.bankSchema.findMany()
+     * 
+     * // Get first 10 BankSchemas
+     * const bankSchemas = await prisma.bankSchema.findMany({ take: 10 })
+     * 
+     * // Only select the `accountid`
+     * const bankSchemaWithAccountidOnly = await prisma.bankSchema.findMany({ select: { accountid: true } })
+     * 
+     */
+    findMany<T extends BankSchemaFindManyArgs>(args?: SelectSubset<T, BankSchemaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankSchemaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BankSchema.
+     * @param {BankSchemaCreateArgs} args - Arguments to create a BankSchema.
+     * @example
+     * // Create one BankSchema
+     * const BankSchema = await prisma.bankSchema.create({
+     *   data: {
+     *     // ... data to create a BankSchema
+     *   }
+     * })
+     * 
+     */
+    create<T extends BankSchemaCreateArgs>(args: SelectSubset<T, BankSchemaCreateArgs<ExtArgs>>): Prisma__BankSchemaClient<$Result.GetResult<Prisma.$BankSchemaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BankSchemas.
+     * @param {BankSchemaCreateManyArgs} args - Arguments to create many BankSchemas.
+     * @example
+     * // Create many BankSchemas
+     * const bankSchema = await prisma.bankSchema.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BankSchemaCreateManyArgs>(args?: SelectSubset<T, BankSchemaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BankSchemas and returns the data saved in the database.
+     * @param {BankSchemaCreateManyAndReturnArgs} args - Arguments to create many BankSchemas.
+     * @example
+     * // Create many BankSchemas
+     * const bankSchema = await prisma.bankSchema.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BankSchemas and only return the `accountid`
+     * const bankSchemaWithAccountidOnly = await prisma.bankSchema.createManyAndReturn({
+     *   select: { accountid: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BankSchemaCreateManyAndReturnArgs>(args?: SelectSubset<T, BankSchemaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankSchemaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BankSchema.
+     * @param {BankSchemaDeleteArgs} args - Arguments to delete one BankSchema.
+     * @example
+     * // Delete one BankSchema
+     * const BankSchema = await prisma.bankSchema.delete({
+     *   where: {
+     *     // ... filter to delete one BankSchema
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BankSchemaDeleteArgs>(args: SelectSubset<T, BankSchemaDeleteArgs<ExtArgs>>): Prisma__BankSchemaClient<$Result.GetResult<Prisma.$BankSchemaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BankSchema.
+     * @param {BankSchemaUpdateArgs} args - Arguments to update one BankSchema.
+     * @example
+     * // Update one BankSchema
+     * const bankSchema = await prisma.bankSchema.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BankSchemaUpdateArgs>(args: SelectSubset<T, BankSchemaUpdateArgs<ExtArgs>>): Prisma__BankSchemaClient<$Result.GetResult<Prisma.$BankSchemaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BankSchemas.
+     * @param {BankSchemaDeleteManyArgs} args - Arguments to filter BankSchemas to delete.
+     * @example
+     * // Delete a few BankSchemas
+     * const { count } = await prisma.bankSchema.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BankSchemaDeleteManyArgs>(args?: SelectSubset<T, BankSchemaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BankSchemas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankSchemaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BankSchemas
+     * const bankSchema = await prisma.bankSchema.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BankSchemaUpdateManyArgs>(args: SelectSubset<T, BankSchemaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BankSchemas and returns the data updated in the database.
+     * @param {BankSchemaUpdateManyAndReturnArgs} args - Arguments to update many BankSchemas.
+     * @example
+     * // Update many BankSchemas
+     * const bankSchema = await prisma.bankSchema.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BankSchemas and only return the `accountid`
+     * const bankSchemaWithAccountidOnly = await prisma.bankSchema.updateManyAndReturn({
+     *   select: { accountid: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BankSchemaUpdateManyAndReturnArgs>(args: SelectSubset<T, BankSchemaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankSchemaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BankSchema.
+     * @param {BankSchemaUpsertArgs} args - Arguments to update or create a BankSchema.
+     * @example
+     * // Update or create a BankSchema
+     * const bankSchema = await prisma.bankSchema.upsert({
+     *   create: {
+     *     // ... data to create a BankSchema
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BankSchema we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BankSchemaUpsertArgs>(args: SelectSubset<T, BankSchemaUpsertArgs<ExtArgs>>): Prisma__BankSchemaClient<$Result.GetResult<Prisma.$BankSchemaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BankSchemas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankSchemaCountArgs} args - Arguments to filter BankSchemas to count.
+     * @example
+     * // Count the number of BankSchemas
+     * const count = await prisma.bankSchema.count({
+     *   where: {
+     *     // ... the filter for the BankSchemas we want to count
+     *   }
+     * })
+    **/
+    count<T extends BankSchemaCountArgs>(
+      args?: Subset<T, BankSchemaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BankSchemaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BankSchema.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankSchemaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BankSchemaAggregateArgs>(args: Subset<T, BankSchemaAggregateArgs>): Prisma.PrismaPromise<GetBankSchemaAggregateType<T>>
+
+    /**
+     * Group by BankSchema.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankSchemaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BankSchemaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BankSchemaGroupByArgs['orderBy'] }
+        : { orderBy?: BankSchemaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BankSchemaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBankSchemaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BankSchema model
+   */
+  readonly fields: BankSchemaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BankSchema.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BankSchemaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BankSchema model
+   */ 
+  interface BankSchemaFieldRefs {
+    readonly accountid: FieldRef<"BankSchema", 'Int'>
+    readonly email: FieldRef<"BankSchema", 'String'>
+    readonly accountnumber: FieldRef<"BankSchema", 'String'>
+    readonly amount: FieldRef<"BankSchema", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BankSchema findUnique
+   */
+  export type BankSchemaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankSchema
+     */
+    select?: BankSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankSchema
+     */
+    omit?: BankSchemaOmit<ExtArgs> | null
+    /**
+     * Filter, which BankSchema to fetch.
+     */
+    where: BankSchemaWhereUniqueInput
+  }
+
+  /**
+   * BankSchema findUniqueOrThrow
+   */
+  export type BankSchemaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankSchema
+     */
+    select?: BankSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankSchema
+     */
+    omit?: BankSchemaOmit<ExtArgs> | null
+    /**
+     * Filter, which BankSchema to fetch.
+     */
+    where: BankSchemaWhereUniqueInput
+  }
+
+  /**
+   * BankSchema findFirst
+   */
+  export type BankSchemaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankSchema
+     */
+    select?: BankSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankSchema
+     */
+    omit?: BankSchemaOmit<ExtArgs> | null
+    /**
+     * Filter, which BankSchema to fetch.
+     */
+    where?: BankSchemaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BankSchemas to fetch.
+     */
+    orderBy?: BankSchemaOrderByWithRelationInput | BankSchemaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BankSchemas.
+     */
+    cursor?: BankSchemaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BankSchemas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BankSchemas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BankSchemas.
+     */
+    distinct?: BankSchemaScalarFieldEnum | BankSchemaScalarFieldEnum[]
+  }
+
+  /**
+   * BankSchema findFirstOrThrow
+   */
+  export type BankSchemaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankSchema
+     */
+    select?: BankSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankSchema
+     */
+    omit?: BankSchemaOmit<ExtArgs> | null
+    /**
+     * Filter, which BankSchema to fetch.
+     */
+    where?: BankSchemaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BankSchemas to fetch.
+     */
+    orderBy?: BankSchemaOrderByWithRelationInput | BankSchemaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BankSchemas.
+     */
+    cursor?: BankSchemaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BankSchemas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BankSchemas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BankSchemas.
+     */
+    distinct?: BankSchemaScalarFieldEnum | BankSchemaScalarFieldEnum[]
+  }
+
+  /**
+   * BankSchema findMany
+   */
+  export type BankSchemaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankSchema
+     */
+    select?: BankSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankSchema
+     */
+    omit?: BankSchemaOmit<ExtArgs> | null
+    /**
+     * Filter, which BankSchemas to fetch.
+     */
+    where?: BankSchemaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BankSchemas to fetch.
+     */
+    orderBy?: BankSchemaOrderByWithRelationInput | BankSchemaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BankSchemas.
+     */
+    cursor?: BankSchemaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BankSchemas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BankSchemas.
+     */
+    skip?: number
+    distinct?: BankSchemaScalarFieldEnum | BankSchemaScalarFieldEnum[]
+  }
+
+  /**
+   * BankSchema create
+   */
+  export type BankSchemaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankSchema
+     */
+    select?: BankSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankSchema
+     */
+    omit?: BankSchemaOmit<ExtArgs> | null
+    /**
+     * The data needed to create a BankSchema.
+     */
+    data: XOR<BankSchemaCreateInput, BankSchemaUncheckedCreateInput>
+  }
+
+  /**
+   * BankSchema createMany
+   */
+  export type BankSchemaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BankSchemas.
+     */
+    data: BankSchemaCreateManyInput | BankSchemaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BankSchema createManyAndReturn
+   */
+  export type BankSchemaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankSchema
+     */
+    select?: BankSchemaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankSchema
+     */
+    omit?: BankSchemaOmit<ExtArgs> | null
+    /**
+     * The data used to create many BankSchemas.
+     */
+    data: BankSchemaCreateManyInput | BankSchemaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BankSchema update
+   */
+  export type BankSchemaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankSchema
+     */
+    select?: BankSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankSchema
+     */
+    omit?: BankSchemaOmit<ExtArgs> | null
+    /**
+     * The data needed to update a BankSchema.
+     */
+    data: XOR<BankSchemaUpdateInput, BankSchemaUncheckedUpdateInput>
+    /**
+     * Choose, which BankSchema to update.
+     */
+    where: BankSchemaWhereUniqueInput
+  }
+
+  /**
+   * BankSchema updateMany
+   */
+  export type BankSchemaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BankSchemas.
+     */
+    data: XOR<BankSchemaUpdateManyMutationInput, BankSchemaUncheckedUpdateManyInput>
+    /**
+     * Filter which BankSchemas to update
+     */
+    where?: BankSchemaWhereInput
+    /**
+     * Limit how many BankSchemas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BankSchema updateManyAndReturn
+   */
+  export type BankSchemaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankSchema
+     */
+    select?: BankSchemaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankSchema
+     */
+    omit?: BankSchemaOmit<ExtArgs> | null
+    /**
+     * The data used to update BankSchemas.
+     */
+    data: XOR<BankSchemaUpdateManyMutationInput, BankSchemaUncheckedUpdateManyInput>
+    /**
+     * Filter which BankSchemas to update
+     */
+    where?: BankSchemaWhereInput
+    /**
+     * Limit how many BankSchemas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BankSchema upsert
+   */
+  export type BankSchemaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankSchema
+     */
+    select?: BankSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankSchema
+     */
+    omit?: BankSchemaOmit<ExtArgs> | null
+    /**
+     * The filter to search for the BankSchema to update in case it exists.
+     */
+    where: BankSchemaWhereUniqueInput
+    /**
+     * In case the BankSchema found by the `where` argument doesn't exist, create a new BankSchema with this data.
+     */
+    create: XOR<BankSchemaCreateInput, BankSchemaUncheckedCreateInput>
+    /**
+     * In case the BankSchema was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BankSchemaUpdateInput, BankSchemaUncheckedUpdateInput>
+  }
+
+  /**
+   * BankSchema delete
+   */
+  export type BankSchemaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankSchema
+     */
+    select?: BankSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankSchema
+     */
+    omit?: BankSchemaOmit<ExtArgs> | null
+    /**
+     * Filter which BankSchema to delete.
+     */
+    where: BankSchemaWhereUniqueInput
+  }
+
+  /**
+   * BankSchema deleteMany
+   */
+  export type BankSchemaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BankSchemas to delete
+     */
+    where?: BankSchemaWhereInput
+    /**
+     * Limit how many BankSchemas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BankSchema without action
+   */
+  export type BankSchemaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankSchema
+     */
+    select?: BankSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankSchema
+     */
+    omit?: BankSchemaOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WalletSchema
+   */
+
+  export type AggregateWalletSchema = {
+    _count: WalletSchemaCountAggregateOutputType | null
+    _avg: WalletSchemaAvgAggregateOutputType | null
+    _sum: WalletSchemaSumAggregateOutputType | null
+    _min: WalletSchemaMinAggregateOutputType | null
+    _max: WalletSchemaMaxAggregateOutputType | null
+  }
+
+  export type WalletSchemaAvgAggregateOutputType = {
+    walletid: number | null
+  }
+
+  export type WalletSchemaSumAggregateOutputType = {
+    walletid: number | null
+  }
+
+  export type WalletSchemaMinAggregateOutputType = {
+    walletid: number | null
+    name: string | null
+    email: string | null
+    role: string | null
+    accountnumber: string | null
+    amount: string | null
+    uniqueid: string | null
+  }
+
+  export type WalletSchemaMaxAggregateOutputType = {
+    walletid: number | null
+    name: string | null
+    email: string | null
+    role: string | null
+    accountnumber: string | null
+    amount: string | null
+    uniqueid: string | null
+  }
+
+  export type WalletSchemaCountAggregateOutputType = {
+    walletid: number
+    name: number
+    email: number
+    role: number
+    accountnumber: number
+    amount: number
+    uniqueid: number
+    _all: number
+  }
+
+
+  export type WalletSchemaAvgAggregateInputType = {
+    walletid?: true
+  }
+
+  export type WalletSchemaSumAggregateInputType = {
+    walletid?: true
+  }
+
+  export type WalletSchemaMinAggregateInputType = {
+    walletid?: true
+    name?: true
+    email?: true
+    role?: true
+    accountnumber?: true
+    amount?: true
+    uniqueid?: true
+  }
+
+  export type WalletSchemaMaxAggregateInputType = {
+    walletid?: true
+    name?: true
+    email?: true
+    role?: true
+    accountnumber?: true
+    amount?: true
+    uniqueid?: true
+  }
+
+  export type WalletSchemaCountAggregateInputType = {
+    walletid?: true
+    name?: true
+    email?: true
+    role?: true
+    accountnumber?: true
+    amount?: true
+    uniqueid?: true
+    _all?: true
+  }
+
+  export type WalletSchemaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WalletSchema to aggregate.
+     */
+    where?: WalletSchemaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WalletSchemas to fetch.
+     */
+    orderBy?: WalletSchemaOrderByWithRelationInput | WalletSchemaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WalletSchemaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WalletSchemas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WalletSchemas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WalletSchemas
+    **/
+    _count?: true | WalletSchemaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WalletSchemaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WalletSchemaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WalletSchemaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WalletSchemaMaxAggregateInputType
+  }
+
+  export type GetWalletSchemaAggregateType<T extends WalletSchemaAggregateArgs> = {
+        [P in keyof T & keyof AggregateWalletSchema]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWalletSchema[P]>
+      : GetScalarType<T[P], AggregateWalletSchema[P]>
+  }
+
+
+
+
+  export type WalletSchemaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WalletSchemaWhereInput
+    orderBy?: WalletSchemaOrderByWithAggregationInput | WalletSchemaOrderByWithAggregationInput[]
+    by: WalletSchemaScalarFieldEnum[] | WalletSchemaScalarFieldEnum
+    having?: WalletSchemaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WalletSchemaCountAggregateInputType | true
+    _avg?: WalletSchemaAvgAggregateInputType
+    _sum?: WalletSchemaSumAggregateInputType
+    _min?: WalletSchemaMinAggregateInputType
+    _max?: WalletSchemaMaxAggregateInputType
+  }
+
+  export type WalletSchemaGroupByOutputType = {
+    walletid: number
+    name: string
+    email: string
+    role: string
+    accountnumber: string
+    amount: string
+    uniqueid: string
+    _count: WalletSchemaCountAggregateOutputType | null
+    _avg: WalletSchemaAvgAggregateOutputType | null
+    _sum: WalletSchemaSumAggregateOutputType | null
+    _min: WalletSchemaMinAggregateOutputType | null
+    _max: WalletSchemaMaxAggregateOutputType | null
+  }
+
+  type GetWalletSchemaGroupByPayload<T extends WalletSchemaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WalletSchemaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WalletSchemaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WalletSchemaGroupByOutputType[P]>
+            : GetScalarType<T[P], WalletSchemaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WalletSchemaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    walletid?: boolean
+    name?: boolean
+    email?: boolean
+    role?: boolean
+    accountnumber?: boolean
+    amount?: boolean
+    uniqueid?: boolean
+  }, ExtArgs["result"]["walletSchema"]>
+
+  export type WalletSchemaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    walletid?: boolean
+    name?: boolean
+    email?: boolean
+    role?: boolean
+    accountnumber?: boolean
+    amount?: boolean
+    uniqueid?: boolean
+  }, ExtArgs["result"]["walletSchema"]>
+
+  export type WalletSchemaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    walletid?: boolean
+    name?: boolean
+    email?: boolean
+    role?: boolean
+    accountnumber?: boolean
+    amount?: boolean
+    uniqueid?: boolean
+  }, ExtArgs["result"]["walletSchema"]>
+
+  export type WalletSchemaSelectScalar = {
+    walletid?: boolean
+    name?: boolean
+    email?: boolean
+    role?: boolean
+    accountnumber?: boolean
+    amount?: boolean
+    uniqueid?: boolean
+  }
+
+  export type WalletSchemaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"walletid" | "name" | "email" | "role" | "accountnumber" | "amount" | "uniqueid", ExtArgs["result"]["walletSchema"]>
+
+  export type $WalletSchemaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WalletSchema"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      walletid: number
+      name: string
+      email: string
+      role: string
+      accountnumber: string
+      amount: string
+      uniqueid: string
+    }, ExtArgs["result"]["walletSchema"]>
+    composites: {}
+  }
+
+  type WalletSchemaGetPayload<S extends boolean | null | undefined | WalletSchemaDefaultArgs> = $Result.GetResult<Prisma.$WalletSchemaPayload, S>
+
+  type WalletSchemaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<WalletSchemaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WalletSchemaCountAggregateInputType | true
+    }
+
+  export interface WalletSchemaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WalletSchema'], meta: { name: 'WalletSchema' } }
+    /**
+     * Find zero or one WalletSchema that matches the filter.
+     * @param {WalletSchemaFindUniqueArgs} args - Arguments to find a WalletSchema
+     * @example
+     * // Get one WalletSchema
+     * const walletSchema = await prisma.walletSchema.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WalletSchemaFindUniqueArgs>(args: SelectSubset<T, WalletSchemaFindUniqueArgs<ExtArgs>>): Prisma__WalletSchemaClient<$Result.GetResult<Prisma.$WalletSchemaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one WalletSchema that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WalletSchemaFindUniqueOrThrowArgs} args - Arguments to find a WalletSchema
+     * @example
+     * // Get one WalletSchema
+     * const walletSchema = await prisma.walletSchema.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WalletSchemaFindUniqueOrThrowArgs>(args: SelectSubset<T, WalletSchemaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WalletSchemaClient<$Result.GetResult<Prisma.$WalletSchemaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WalletSchema that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WalletSchemaFindFirstArgs} args - Arguments to find a WalletSchema
+     * @example
+     * // Get one WalletSchema
+     * const walletSchema = await prisma.walletSchema.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WalletSchemaFindFirstArgs>(args?: SelectSubset<T, WalletSchemaFindFirstArgs<ExtArgs>>): Prisma__WalletSchemaClient<$Result.GetResult<Prisma.$WalletSchemaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WalletSchema that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WalletSchemaFindFirstOrThrowArgs} args - Arguments to find a WalletSchema
+     * @example
+     * // Get one WalletSchema
+     * const walletSchema = await prisma.walletSchema.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WalletSchemaFindFirstOrThrowArgs>(args?: SelectSubset<T, WalletSchemaFindFirstOrThrowArgs<ExtArgs>>): Prisma__WalletSchemaClient<$Result.GetResult<Prisma.$WalletSchemaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more WalletSchemas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WalletSchemaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WalletSchemas
+     * const walletSchemas = await prisma.walletSchema.findMany()
+     * 
+     * // Get first 10 WalletSchemas
+     * const walletSchemas = await prisma.walletSchema.findMany({ take: 10 })
+     * 
+     * // Only select the `walletid`
+     * const walletSchemaWithWalletidOnly = await prisma.walletSchema.findMany({ select: { walletid: true } })
+     * 
+     */
+    findMany<T extends WalletSchemaFindManyArgs>(args?: SelectSubset<T, WalletSchemaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WalletSchemaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a WalletSchema.
+     * @param {WalletSchemaCreateArgs} args - Arguments to create a WalletSchema.
+     * @example
+     * // Create one WalletSchema
+     * const WalletSchema = await prisma.walletSchema.create({
+     *   data: {
+     *     // ... data to create a WalletSchema
+     *   }
+     * })
+     * 
+     */
+    create<T extends WalletSchemaCreateArgs>(args: SelectSubset<T, WalletSchemaCreateArgs<ExtArgs>>): Prisma__WalletSchemaClient<$Result.GetResult<Prisma.$WalletSchemaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many WalletSchemas.
+     * @param {WalletSchemaCreateManyArgs} args - Arguments to create many WalletSchemas.
+     * @example
+     * // Create many WalletSchemas
+     * const walletSchema = await prisma.walletSchema.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WalletSchemaCreateManyArgs>(args?: SelectSubset<T, WalletSchemaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WalletSchemas and returns the data saved in the database.
+     * @param {WalletSchemaCreateManyAndReturnArgs} args - Arguments to create many WalletSchemas.
+     * @example
+     * // Create many WalletSchemas
+     * const walletSchema = await prisma.walletSchema.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WalletSchemas and only return the `walletid`
+     * const walletSchemaWithWalletidOnly = await prisma.walletSchema.createManyAndReturn({
+     *   select: { walletid: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WalletSchemaCreateManyAndReturnArgs>(args?: SelectSubset<T, WalletSchemaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WalletSchemaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a WalletSchema.
+     * @param {WalletSchemaDeleteArgs} args - Arguments to delete one WalletSchema.
+     * @example
+     * // Delete one WalletSchema
+     * const WalletSchema = await prisma.walletSchema.delete({
+     *   where: {
+     *     // ... filter to delete one WalletSchema
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WalletSchemaDeleteArgs>(args: SelectSubset<T, WalletSchemaDeleteArgs<ExtArgs>>): Prisma__WalletSchemaClient<$Result.GetResult<Prisma.$WalletSchemaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one WalletSchema.
+     * @param {WalletSchemaUpdateArgs} args - Arguments to update one WalletSchema.
+     * @example
+     * // Update one WalletSchema
+     * const walletSchema = await prisma.walletSchema.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WalletSchemaUpdateArgs>(args: SelectSubset<T, WalletSchemaUpdateArgs<ExtArgs>>): Prisma__WalletSchemaClient<$Result.GetResult<Prisma.$WalletSchemaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more WalletSchemas.
+     * @param {WalletSchemaDeleteManyArgs} args - Arguments to filter WalletSchemas to delete.
+     * @example
+     * // Delete a few WalletSchemas
+     * const { count } = await prisma.walletSchema.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WalletSchemaDeleteManyArgs>(args?: SelectSubset<T, WalletSchemaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WalletSchemas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WalletSchemaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WalletSchemas
+     * const walletSchema = await prisma.walletSchema.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WalletSchemaUpdateManyArgs>(args: SelectSubset<T, WalletSchemaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WalletSchemas and returns the data updated in the database.
+     * @param {WalletSchemaUpdateManyAndReturnArgs} args - Arguments to update many WalletSchemas.
+     * @example
+     * // Update many WalletSchemas
+     * const walletSchema = await prisma.walletSchema.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more WalletSchemas and only return the `walletid`
+     * const walletSchemaWithWalletidOnly = await prisma.walletSchema.updateManyAndReturn({
+     *   select: { walletid: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends WalletSchemaUpdateManyAndReturnArgs>(args: SelectSubset<T, WalletSchemaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WalletSchemaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one WalletSchema.
+     * @param {WalletSchemaUpsertArgs} args - Arguments to update or create a WalletSchema.
+     * @example
+     * // Update or create a WalletSchema
+     * const walletSchema = await prisma.walletSchema.upsert({
+     *   create: {
+     *     // ... data to create a WalletSchema
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WalletSchema we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WalletSchemaUpsertArgs>(args: SelectSubset<T, WalletSchemaUpsertArgs<ExtArgs>>): Prisma__WalletSchemaClient<$Result.GetResult<Prisma.$WalletSchemaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of WalletSchemas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WalletSchemaCountArgs} args - Arguments to filter WalletSchemas to count.
+     * @example
+     * // Count the number of WalletSchemas
+     * const count = await prisma.walletSchema.count({
+     *   where: {
+     *     // ... the filter for the WalletSchemas we want to count
+     *   }
+     * })
+    **/
+    count<T extends WalletSchemaCountArgs>(
+      args?: Subset<T, WalletSchemaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WalletSchemaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WalletSchema.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WalletSchemaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WalletSchemaAggregateArgs>(args: Subset<T, WalletSchemaAggregateArgs>): Prisma.PrismaPromise<GetWalletSchemaAggregateType<T>>
+
+    /**
+     * Group by WalletSchema.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WalletSchemaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WalletSchemaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WalletSchemaGroupByArgs['orderBy'] }
+        : { orderBy?: WalletSchemaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WalletSchemaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWalletSchemaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WalletSchema model
+   */
+  readonly fields: WalletSchemaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WalletSchema.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WalletSchemaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WalletSchema model
+   */ 
+  interface WalletSchemaFieldRefs {
+    readonly walletid: FieldRef<"WalletSchema", 'Int'>
+    readonly name: FieldRef<"WalletSchema", 'String'>
+    readonly email: FieldRef<"WalletSchema", 'String'>
+    readonly role: FieldRef<"WalletSchema", 'String'>
+    readonly accountnumber: FieldRef<"WalletSchema", 'String'>
+    readonly amount: FieldRef<"WalletSchema", 'String'>
+    readonly uniqueid: FieldRef<"WalletSchema", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WalletSchema findUnique
+   */
+  export type WalletSchemaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WalletSchema
+     */
+    select?: WalletSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WalletSchema
+     */
+    omit?: WalletSchemaOmit<ExtArgs> | null
+    /**
+     * Filter, which WalletSchema to fetch.
+     */
+    where: WalletSchemaWhereUniqueInput
+  }
+
+  /**
+   * WalletSchema findUniqueOrThrow
+   */
+  export type WalletSchemaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WalletSchema
+     */
+    select?: WalletSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WalletSchema
+     */
+    omit?: WalletSchemaOmit<ExtArgs> | null
+    /**
+     * Filter, which WalletSchema to fetch.
+     */
+    where: WalletSchemaWhereUniqueInput
+  }
+
+  /**
+   * WalletSchema findFirst
+   */
+  export type WalletSchemaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WalletSchema
+     */
+    select?: WalletSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WalletSchema
+     */
+    omit?: WalletSchemaOmit<ExtArgs> | null
+    /**
+     * Filter, which WalletSchema to fetch.
+     */
+    where?: WalletSchemaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WalletSchemas to fetch.
+     */
+    orderBy?: WalletSchemaOrderByWithRelationInput | WalletSchemaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WalletSchemas.
+     */
+    cursor?: WalletSchemaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WalletSchemas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WalletSchemas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WalletSchemas.
+     */
+    distinct?: WalletSchemaScalarFieldEnum | WalletSchemaScalarFieldEnum[]
+  }
+
+  /**
+   * WalletSchema findFirstOrThrow
+   */
+  export type WalletSchemaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WalletSchema
+     */
+    select?: WalletSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WalletSchema
+     */
+    omit?: WalletSchemaOmit<ExtArgs> | null
+    /**
+     * Filter, which WalletSchema to fetch.
+     */
+    where?: WalletSchemaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WalletSchemas to fetch.
+     */
+    orderBy?: WalletSchemaOrderByWithRelationInput | WalletSchemaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WalletSchemas.
+     */
+    cursor?: WalletSchemaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WalletSchemas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WalletSchemas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WalletSchemas.
+     */
+    distinct?: WalletSchemaScalarFieldEnum | WalletSchemaScalarFieldEnum[]
+  }
+
+  /**
+   * WalletSchema findMany
+   */
+  export type WalletSchemaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WalletSchema
+     */
+    select?: WalletSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WalletSchema
+     */
+    omit?: WalletSchemaOmit<ExtArgs> | null
+    /**
+     * Filter, which WalletSchemas to fetch.
+     */
+    where?: WalletSchemaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WalletSchemas to fetch.
+     */
+    orderBy?: WalletSchemaOrderByWithRelationInput | WalletSchemaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WalletSchemas.
+     */
+    cursor?: WalletSchemaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WalletSchemas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WalletSchemas.
+     */
+    skip?: number
+    distinct?: WalletSchemaScalarFieldEnum | WalletSchemaScalarFieldEnum[]
+  }
+
+  /**
+   * WalletSchema create
+   */
+  export type WalletSchemaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WalletSchema
+     */
+    select?: WalletSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WalletSchema
+     */
+    omit?: WalletSchemaOmit<ExtArgs> | null
+    /**
+     * The data needed to create a WalletSchema.
+     */
+    data: XOR<WalletSchemaCreateInput, WalletSchemaUncheckedCreateInput>
+  }
+
+  /**
+   * WalletSchema createMany
+   */
+  export type WalletSchemaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WalletSchemas.
+     */
+    data: WalletSchemaCreateManyInput | WalletSchemaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WalletSchema createManyAndReturn
+   */
+  export type WalletSchemaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WalletSchema
+     */
+    select?: WalletSchemaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WalletSchema
+     */
+    omit?: WalletSchemaOmit<ExtArgs> | null
+    /**
+     * The data used to create many WalletSchemas.
+     */
+    data: WalletSchemaCreateManyInput | WalletSchemaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WalletSchema update
+   */
+  export type WalletSchemaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WalletSchema
+     */
+    select?: WalletSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WalletSchema
+     */
+    omit?: WalletSchemaOmit<ExtArgs> | null
+    /**
+     * The data needed to update a WalletSchema.
+     */
+    data: XOR<WalletSchemaUpdateInput, WalletSchemaUncheckedUpdateInput>
+    /**
+     * Choose, which WalletSchema to update.
+     */
+    where: WalletSchemaWhereUniqueInput
+  }
+
+  /**
+   * WalletSchema updateMany
+   */
+  export type WalletSchemaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WalletSchemas.
+     */
+    data: XOR<WalletSchemaUpdateManyMutationInput, WalletSchemaUncheckedUpdateManyInput>
+    /**
+     * Filter which WalletSchemas to update
+     */
+    where?: WalletSchemaWhereInput
+    /**
+     * Limit how many WalletSchemas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * WalletSchema updateManyAndReturn
+   */
+  export type WalletSchemaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WalletSchema
+     */
+    select?: WalletSchemaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WalletSchema
+     */
+    omit?: WalletSchemaOmit<ExtArgs> | null
+    /**
+     * The data used to update WalletSchemas.
+     */
+    data: XOR<WalletSchemaUpdateManyMutationInput, WalletSchemaUncheckedUpdateManyInput>
+    /**
+     * Filter which WalletSchemas to update
+     */
+    where?: WalletSchemaWhereInput
+    /**
+     * Limit how many WalletSchemas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * WalletSchema upsert
+   */
+  export type WalletSchemaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WalletSchema
+     */
+    select?: WalletSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WalletSchema
+     */
+    omit?: WalletSchemaOmit<ExtArgs> | null
+    /**
+     * The filter to search for the WalletSchema to update in case it exists.
+     */
+    where: WalletSchemaWhereUniqueInput
+    /**
+     * In case the WalletSchema found by the `where` argument doesn't exist, create a new WalletSchema with this data.
+     */
+    create: XOR<WalletSchemaCreateInput, WalletSchemaUncheckedCreateInput>
+    /**
+     * In case the WalletSchema was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WalletSchemaUpdateInput, WalletSchemaUncheckedUpdateInput>
+  }
+
+  /**
+   * WalletSchema delete
+   */
+  export type WalletSchemaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WalletSchema
+     */
+    select?: WalletSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WalletSchema
+     */
+    omit?: WalletSchemaOmit<ExtArgs> | null
+    /**
+     * Filter which WalletSchema to delete.
+     */
+    where: WalletSchemaWhereUniqueInput
+  }
+
+  /**
+   * WalletSchema deleteMany
+   */
+  export type WalletSchemaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WalletSchemas to delete
+     */
+    where?: WalletSchemaWhereInput
+    /**
+     * Limit how many WalletSchemas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * WalletSchema without action
+   */
+  export type WalletSchemaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WalletSchema
+     */
+    select?: WalletSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WalletSchema
+     */
+    omit?: WalletSchemaOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8425,6 +10678,29 @@ export namespace Prisma {
   };
 
   export type AcceptedProjectScalarFieldEnum = (typeof AcceptedProjectScalarFieldEnum)[keyof typeof AcceptedProjectScalarFieldEnum]
+
+
+  export const BankSchemaScalarFieldEnum: {
+    accountid: 'accountid',
+    email: 'email',
+    accountnumber: 'accountnumber',
+    amount: 'amount'
+  };
+
+  export type BankSchemaScalarFieldEnum = (typeof BankSchemaScalarFieldEnum)[keyof typeof BankSchemaScalarFieldEnum]
+
+
+  export const WalletSchemaScalarFieldEnum: {
+    walletid: 'walletid',
+    name: 'name',
+    email: 'email',
+    role: 'role',
+    accountnumber: 'accountnumber',
+    amount: 'amount',
+    uniqueid: 'uniqueid'
+  };
+
+  export type WalletSchemaScalarFieldEnum = (typeof WalletSchemaScalarFieldEnum)[keyof typeof WalletSchemaScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8900,6 +11176,120 @@ export namespace Prisma {
     timeline?: StringWithAggregatesFilter<"AcceptedProject"> | string
   }
 
+  export type BankSchemaWhereInput = {
+    AND?: BankSchemaWhereInput | BankSchemaWhereInput[]
+    OR?: BankSchemaWhereInput[]
+    NOT?: BankSchemaWhereInput | BankSchemaWhereInput[]
+    accountid?: IntFilter<"BankSchema"> | number
+    email?: StringFilter<"BankSchema"> | string
+    accountnumber?: StringFilter<"BankSchema"> | string
+    amount?: StringFilter<"BankSchema"> | string
+  }
+
+  export type BankSchemaOrderByWithRelationInput = {
+    accountid?: SortOrder
+    email?: SortOrder
+    accountnumber?: SortOrder
+    amount?: SortOrder
+  }
+
+  export type BankSchemaWhereUniqueInput = Prisma.AtLeast<{
+    accountid?: number
+    accountnumber?: string
+    AND?: BankSchemaWhereInput | BankSchemaWhereInput[]
+    OR?: BankSchemaWhereInput[]
+    NOT?: BankSchemaWhereInput | BankSchemaWhereInput[]
+    email?: StringFilter<"BankSchema"> | string
+    amount?: StringFilter<"BankSchema"> | string
+  }, "accountid" | "accountnumber">
+
+  export type BankSchemaOrderByWithAggregationInput = {
+    accountid?: SortOrder
+    email?: SortOrder
+    accountnumber?: SortOrder
+    amount?: SortOrder
+    _count?: BankSchemaCountOrderByAggregateInput
+    _avg?: BankSchemaAvgOrderByAggregateInput
+    _max?: BankSchemaMaxOrderByAggregateInput
+    _min?: BankSchemaMinOrderByAggregateInput
+    _sum?: BankSchemaSumOrderByAggregateInput
+  }
+
+  export type BankSchemaScalarWhereWithAggregatesInput = {
+    AND?: BankSchemaScalarWhereWithAggregatesInput | BankSchemaScalarWhereWithAggregatesInput[]
+    OR?: BankSchemaScalarWhereWithAggregatesInput[]
+    NOT?: BankSchemaScalarWhereWithAggregatesInput | BankSchemaScalarWhereWithAggregatesInput[]
+    accountid?: IntWithAggregatesFilter<"BankSchema"> | number
+    email?: StringWithAggregatesFilter<"BankSchema"> | string
+    accountnumber?: StringWithAggregatesFilter<"BankSchema"> | string
+    amount?: StringWithAggregatesFilter<"BankSchema"> | string
+  }
+
+  export type WalletSchemaWhereInput = {
+    AND?: WalletSchemaWhereInput | WalletSchemaWhereInput[]
+    OR?: WalletSchemaWhereInput[]
+    NOT?: WalletSchemaWhereInput | WalletSchemaWhereInput[]
+    walletid?: IntFilter<"WalletSchema"> | number
+    name?: StringFilter<"WalletSchema"> | string
+    email?: StringFilter<"WalletSchema"> | string
+    role?: StringFilter<"WalletSchema"> | string
+    accountnumber?: StringFilter<"WalletSchema"> | string
+    amount?: StringFilter<"WalletSchema"> | string
+    uniqueid?: StringFilter<"WalletSchema"> | string
+  }
+
+  export type WalletSchemaOrderByWithRelationInput = {
+    walletid?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    role?: SortOrder
+    accountnumber?: SortOrder
+    amount?: SortOrder
+    uniqueid?: SortOrder
+  }
+
+  export type WalletSchemaWhereUniqueInput = Prisma.AtLeast<{
+    walletid?: number
+    accountnumber?: string
+    uniqueid?: string
+    email_role?: WalletSchemaEmailRoleCompoundUniqueInput
+    AND?: WalletSchemaWhereInput | WalletSchemaWhereInput[]
+    OR?: WalletSchemaWhereInput[]
+    NOT?: WalletSchemaWhereInput | WalletSchemaWhereInput[]
+    name?: StringFilter<"WalletSchema"> | string
+    email?: StringFilter<"WalletSchema"> | string
+    role?: StringFilter<"WalletSchema"> | string
+    amount?: StringFilter<"WalletSchema"> | string
+  }, "walletid" | "accountnumber" | "uniqueid" | "email_role">
+
+  export type WalletSchemaOrderByWithAggregationInput = {
+    walletid?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    role?: SortOrder
+    accountnumber?: SortOrder
+    amount?: SortOrder
+    uniqueid?: SortOrder
+    _count?: WalletSchemaCountOrderByAggregateInput
+    _avg?: WalletSchemaAvgOrderByAggregateInput
+    _max?: WalletSchemaMaxOrderByAggregateInput
+    _min?: WalletSchemaMinOrderByAggregateInput
+    _sum?: WalletSchemaSumOrderByAggregateInput
+  }
+
+  export type WalletSchemaScalarWhereWithAggregatesInput = {
+    AND?: WalletSchemaScalarWhereWithAggregatesInput | WalletSchemaScalarWhereWithAggregatesInput[]
+    OR?: WalletSchemaScalarWhereWithAggregatesInput[]
+    NOT?: WalletSchemaScalarWhereWithAggregatesInput | WalletSchemaScalarWhereWithAggregatesInput[]
+    walletid?: IntWithAggregatesFilter<"WalletSchema"> | number
+    name?: StringWithAggregatesFilter<"WalletSchema"> | string
+    email?: StringWithAggregatesFilter<"WalletSchema"> | string
+    role?: StringWithAggregatesFilter<"WalletSchema"> | string
+    accountnumber?: StringWithAggregatesFilter<"WalletSchema"> | string
+    amount?: StringWithAggregatesFilter<"WalletSchema"> | string
+    uniqueid?: StringWithAggregatesFilter<"WalletSchema"> | string
+  }
+
   export type UserSchemaCreateInput = {
     Name: string
     Email: string
@@ -9278,6 +11668,119 @@ export namespace Prisma {
     project_title?: StringFieldUpdateOperationsInput | string
     budget?: StringFieldUpdateOperationsInput | string
     timeline?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BankSchemaCreateInput = {
+    email: string
+    accountnumber: string
+    amount?: string
+  }
+
+  export type BankSchemaUncheckedCreateInput = {
+    accountid?: number
+    email: string
+    accountnumber: string
+    amount?: string
+  }
+
+  export type BankSchemaUpdateInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    accountnumber?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BankSchemaUncheckedUpdateInput = {
+    accountid?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    accountnumber?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BankSchemaCreateManyInput = {
+    accountid?: number
+    email: string
+    accountnumber: string
+    amount?: string
+  }
+
+  export type BankSchemaUpdateManyMutationInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    accountnumber?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BankSchemaUncheckedUpdateManyInput = {
+    accountid?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    accountnumber?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WalletSchemaCreateInput = {
+    name: string
+    email: string
+    role: string
+    accountnumber: string
+    amount?: string
+    uniqueid: string
+  }
+
+  export type WalletSchemaUncheckedCreateInput = {
+    walletid?: number
+    name: string
+    email: string
+    role: string
+    accountnumber: string
+    amount?: string
+    uniqueid: string
+  }
+
+  export type WalletSchemaUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    accountnumber?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+    uniqueid?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WalletSchemaUncheckedUpdateInput = {
+    walletid?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    accountnumber?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+    uniqueid?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WalletSchemaCreateManyInput = {
+    walletid?: number
+    name: string
+    email: string
+    role: string
+    accountnumber: string
+    amount?: string
+    uniqueid: string
+  }
+
+  export type WalletSchemaUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    accountnumber?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+    uniqueid?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WalletSchemaUncheckedUpdateManyInput = {
+    walletid?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    accountnumber?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+    uniqueid?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -9672,6 +12175,78 @@ export namespace Prisma {
     aaplyproject?: SortOrder
     client_id?: SortOrder
     userid?: SortOrder
+  }
+
+  export type BankSchemaCountOrderByAggregateInput = {
+    accountid?: SortOrder
+    email?: SortOrder
+    accountnumber?: SortOrder
+    amount?: SortOrder
+  }
+
+  export type BankSchemaAvgOrderByAggregateInput = {
+    accountid?: SortOrder
+  }
+
+  export type BankSchemaMaxOrderByAggregateInput = {
+    accountid?: SortOrder
+    email?: SortOrder
+    accountnumber?: SortOrder
+    amount?: SortOrder
+  }
+
+  export type BankSchemaMinOrderByAggregateInput = {
+    accountid?: SortOrder
+    email?: SortOrder
+    accountnumber?: SortOrder
+    amount?: SortOrder
+  }
+
+  export type BankSchemaSumOrderByAggregateInput = {
+    accountid?: SortOrder
+  }
+
+  export type WalletSchemaEmailRoleCompoundUniqueInput = {
+    email: string
+    role: string
+  }
+
+  export type WalletSchemaCountOrderByAggregateInput = {
+    walletid?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    role?: SortOrder
+    accountnumber?: SortOrder
+    amount?: SortOrder
+    uniqueid?: SortOrder
+  }
+
+  export type WalletSchemaAvgOrderByAggregateInput = {
+    walletid?: SortOrder
+  }
+
+  export type WalletSchemaMaxOrderByAggregateInput = {
+    walletid?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    role?: SortOrder
+    accountnumber?: SortOrder
+    amount?: SortOrder
+    uniqueid?: SortOrder
+  }
+
+  export type WalletSchemaMinOrderByAggregateInput = {
+    walletid?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    role?: SortOrder
+    accountnumber?: SortOrder
+    amount?: SortOrder
+    uniqueid?: SortOrder
+  }
+
+  export type WalletSchemaSumOrderByAggregateInput = {
+    walletid?: SortOrder
   }
 
   export type UserSchemaCreateSkillsInput = {

@@ -1,12 +1,18 @@
 'use client'
 import {useState} from 'react'
 import ClientRegister from '../actions/ClientRegister';
+import {useStore} from '../zustand/Store/useStore';
+import {useRouter} from 'next/navigation'
 export default function(){
+    const router = useRouter();
     const [name,setName] = useState<string>('');
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState<string>('');
     const [organization,setOrganization] = useState<string>('');
     const [loading,setLoading] = useState<Boolean>(false);
+    const {setrole} = useStore();
+    const {setname} = useStore();
+    const {setemail} = useStore();
     async function insertdataintodb(){
         setLoading(true);
         try{
@@ -16,13 +22,18 @@ export default function(){
              setLoading(false);
              return;
          }
+         setrole('Client')
+         setname(name);
+         setemail(email);
          alert("User Registered Successfully");
          setLoading(false);
+         router.push('/wallet');
         }
         catch(err){
           console.log(err);
           return err;
         }
+       
      }
     return(
         <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100">

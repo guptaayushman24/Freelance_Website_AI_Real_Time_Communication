@@ -13,6 +13,10 @@ export default function(){
     const [loading,setLoading] = useState<Boolean>(false);
     // Using state variable from the zustand
     const {setuserid} = useStore();
+    const {setrole} = useStore();
+    const {setuseremail} = useStore();
+    const {setname} = useStore();
+    const {setemail} = useStore();
     const router = useRouter();
     async function insertdataintodb(){
        setLoading(true);
@@ -29,6 +33,9 @@ export default function(){
         }
         // Here we can store the user_id globally can use that user_id in the profile creation of the user
         if (createnewuser){
+            setrole('Job Seeker')
+            setname(name);
+            setemail(email);
             setuserid(createnewuser);
         }
         alert("User Registered Successfully");
