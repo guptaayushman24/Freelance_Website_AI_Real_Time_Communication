@@ -21,7 +21,7 @@ export default function () {
       name: name,
       email: email,
       role: role,
-      amount: 0,
+      amount: amount,
       accountnumber: accountnumber,
       uniqueid: uniqueid
     })
@@ -32,24 +32,13 @@ export default function () {
       alert("Please fill the details correctly");
       return;
     }
-    const data = await CreateWallet(name, email, role, amount, accountnumber, uniqueid); // Here also amount is going
-    // try {
-    //   if (data && uniqueid) {
-    //     const transaction = await axios.post('http://localhost:5001/addmoneytowallet', {
-    //       amount: amount,
-    //       accountnumber: accountnumber
-    //     })
-    //     if (transaction) {
-    //       route.push('api/auth/signin');
-    //     }
-    //   }
-    // }
-    // catch (err) {
-    //   console.log(err);
-    // }
+    const data = await CreateWallet(name, email, role, amount, accountnumber, uniqueid);
     if (data == -1) {
       alert("Something went wrong try after some time");
       return -1;
+    }
+    else{
+      route.push('/api/auth/signin');
     }
   }
   function generateUniqueid(email: string, accountnumber: string) {
@@ -89,7 +78,7 @@ export default function () {
         </button>
 
         <button className="bg-green-500 text-white px-4 py-2 rounded"
-          onClick={() => createWallet(accountnumber, amount)}>
+          onClick={() => createWallet(accountnumber, "0")}>
           Create Wallet
         </button>
       </div>

@@ -2,6 +2,7 @@
 import { useSession } from "next-auth/react"
 import { useState, useEffect, useMemo, useRef} from "react";
 import { useStore} from '../zustand/Store/useStore'
+import { useRouter } from "next/navigation";
 import {io} from 'socket.io-client'
 import Ongoingproject from "../actions/Ongoing_Project";
 import ChatBox from '../components/Chat'
@@ -17,6 +18,7 @@ export default function () {
   const [recievemessage,Setrecievemessage] = useState('');
   const clientid = session?.user?.id;
   const clientemail = session?.user?.email;
+  const route = useRouter();
   const socket = useMemo(()=>io('http://localhost:8001'),[]);
 
   // Creating Map
@@ -82,9 +84,15 @@ export default function () {
               Start Communication
             </button>
 
+            <button
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-xl shadow-md transition-all duration-200 mt-[2rem]"
+              onClick={()=>route.push('/makepayment')}
+            >
+              Make Payment To Freelancer
+            </button>
+
             {
               acceptbuttonstate && activeindex == index && (
-                // <ChatBox whichuser='client' clientemail={clientemail || ''} useremail={useremail}></ChatBox>
                 <ChatBox></ChatBox>
               )
             }

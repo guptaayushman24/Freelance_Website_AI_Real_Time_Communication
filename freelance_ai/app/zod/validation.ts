@@ -42,3 +42,9 @@ export const walletvalidation = zod.object({
     uniqueid:zod.string()
 
 })
+
+export const P2Pvalidation = zod.object({
+    clientuniqueid: zod.string().min(1).regex(/^[\d\w\p{P}\p{S}]+$/u),
+    freelanceruniqueid:zod.string().min(1).regex(/^[\d\w\p{P}\p{S}]+$/u),
+    amount:zod.string().min(1).regex(/^[0-9]+$/),
+})

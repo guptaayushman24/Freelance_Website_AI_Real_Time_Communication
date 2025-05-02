@@ -187,6 +187,15 @@ exports.Prisma.WalletSchemaScalarFieldEnum = {
   uniqueid: 'uniqueid'
 };
 
+exports.Prisma.CompletedPojectScalarFieldEnum = {
+  completedprojectid: 'completedprojectid',
+  client_id: 'client_id',
+  userid: 'userid',
+  project_title: 'project_title',
+  budget: 'budget',
+  timeline: 'timeline'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -211,7 +220,8 @@ exports.Prisma.ModelName = {
   ApplyJob: 'ApplyJob',
   AcceptedProject: 'AcceptedProject',
   BankSchema: 'BankSchema',
-  WalletSchema: 'WalletSchema'
+  WalletSchema: 'WalletSchema',
+  CompletedPoject: 'CompletedPoject'
 };
 
 /**

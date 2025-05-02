@@ -53,6 +53,11 @@ export type BankSchema = $Result.DefaultSelection<Prisma.$BankSchemaPayload>
  * 
  */
 export type WalletSchema = $Result.DefaultSelection<Prisma.$WalletSchemaPayload>
+/**
+ * Model CompletedPoject
+ * 
+ */
+export type CompletedPoject = $Result.DefaultSelection<Prisma.$CompletedPojectPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -258,6 +263,16 @@ export class PrismaClient<
     * ```
     */
   get walletSchema(): Prisma.WalletSchemaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.completedPoject`: Exposes CRUD operations for the **CompletedPoject** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CompletedPojects
+    * const completedPojects = await prisma.completedPoject.findMany()
+    * ```
+    */
+  get completedPoject(): Prisma.CompletedPojectDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -705,7 +720,8 @@ export namespace Prisma {
     ApplyJob: 'ApplyJob',
     AcceptedProject: 'AcceptedProject',
     BankSchema: 'BankSchema',
-    WalletSchema: 'WalletSchema'
+    WalletSchema: 'WalletSchema',
+    CompletedPoject: 'CompletedPoject'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -724,7 +740,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "userSchema" | "clientSchema" | "profileSchema" | "jobSchema" | "applyJob" | "acceptedProject" | "bankSchema" | "walletSchema"
+      modelProps: "userSchema" | "clientSchema" | "profileSchema" | "jobSchema" | "applyJob" | "acceptedProject" | "bankSchema" | "walletSchema" | "completedPoject"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1320,6 +1336,80 @@ export namespace Prisma {
           }
         }
       }
+      CompletedPoject: {
+        payload: Prisma.$CompletedPojectPayload<ExtArgs>
+        fields: Prisma.CompletedPojectFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CompletedPojectFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompletedPojectPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CompletedPojectFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompletedPojectPayload>
+          }
+          findFirst: {
+            args: Prisma.CompletedPojectFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompletedPojectPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CompletedPojectFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompletedPojectPayload>
+          }
+          findMany: {
+            args: Prisma.CompletedPojectFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompletedPojectPayload>[]
+          }
+          create: {
+            args: Prisma.CompletedPojectCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompletedPojectPayload>
+          }
+          createMany: {
+            args: Prisma.CompletedPojectCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CompletedPojectCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompletedPojectPayload>[]
+          }
+          delete: {
+            args: Prisma.CompletedPojectDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompletedPojectPayload>
+          }
+          update: {
+            args: Prisma.CompletedPojectUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompletedPojectPayload>
+          }
+          deleteMany: {
+            args: Prisma.CompletedPojectDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CompletedPojectUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CompletedPojectUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompletedPojectPayload>[]
+          }
+          upsert: {
+            args: Prisma.CompletedPojectUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompletedPojectPayload>
+          }
+          aggregate: {
+            args: Prisma.CompletedPojectAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCompletedPoject>
+          }
+          groupBy: {
+            args: Prisma.CompletedPojectGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CompletedPojectGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CompletedPojectCountArgs<ExtArgs>
+            result: $Utils.Optional<CompletedPojectCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1412,6 +1502,7 @@ export namespace Prisma {
     acceptedProject?: AcceptedProjectOmit
     bankSchema?: BankSchemaOmit
     walletSchema?: WalletSchemaOmit
+    completedPoject?: CompletedPojectOmit
   }
 
   /* Types for Logging */
@@ -1508,11 +1599,13 @@ export namespace Prisma {
   export type UserSchemaCountOutputType = {
     ApplyJob: number
     AcceptedProject: number
+    CompletedPoject: number
   }
 
   export type UserSchemaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ApplyJob?: boolean | UserSchemaCountOutputTypeCountApplyJobArgs
     AcceptedProject?: boolean | UserSchemaCountOutputTypeCountAcceptedProjectArgs
+    CompletedPoject?: boolean | UserSchemaCountOutputTypeCountCompletedPojectArgs
   }
 
   // Custom InputTypes
@@ -1540,6 +1633,13 @@ export namespace Prisma {
     where?: AcceptedProjectWhereInput
   }
 
+  /**
+   * UserSchemaCountOutputType without action
+   */
+  export type UserSchemaCountOutputTypeCountCompletedPojectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompletedPojectWhereInput
+  }
+
 
   /**
    * Count Type ClientSchemaCountOutputType
@@ -1549,12 +1649,14 @@ export namespace Prisma {
     jobschema: number
     ApplyJobs: number
     AcceptedProject: number
+    CompletedPoject: number
   }
 
   export type ClientSchemaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     jobschema?: boolean | ClientSchemaCountOutputTypeCountJobschemaArgs
     ApplyJobs?: boolean | ClientSchemaCountOutputTypeCountApplyJobsArgs
     AcceptedProject?: boolean | ClientSchemaCountOutputTypeCountAcceptedProjectArgs
+    CompletedPoject?: boolean | ClientSchemaCountOutputTypeCountCompletedPojectArgs
   }
 
   // Custom InputTypes
@@ -1587,6 +1689,13 @@ export namespace Prisma {
    */
   export type ClientSchemaCountOutputTypeCountAcceptedProjectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AcceptedProjectWhereInput
+  }
+
+  /**
+   * ClientSchemaCountOutputType without action
+   */
+  export type ClientSchemaCountOutputTypeCountCompletedPojectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompletedPojectWhereInput
   }
 
 
@@ -1877,6 +1986,7 @@ export namespace Prisma {
     Profile?: boolean | UserSchema$ProfileArgs<ExtArgs>
     ApplyJob?: boolean | UserSchema$ApplyJobArgs<ExtArgs>
     AcceptedProject?: boolean | UserSchema$AcceptedProjectArgs<ExtArgs>
+    CompletedPoject?: boolean | UserSchema$CompletedPojectArgs<ExtArgs>
     _count?: boolean | UserSchemaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userSchema"]>
 
@@ -1915,6 +2025,7 @@ export namespace Prisma {
     Profile?: boolean | UserSchema$ProfileArgs<ExtArgs>
     ApplyJob?: boolean | UserSchema$ApplyJobArgs<ExtArgs>
     AcceptedProject?: boolean | UserSchema$AcceptedProjectArgs<ExtArgs>
+    CompletedPoject?: boolean | UserSchema$CompletedPojectArgs<ExtArgs>
     _count?: boolean | UserSchemaCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserSchemaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1926,6 +2037,7 @@ export namespace Prisma {
       Profile: Prisma.$ProfileSchemaPayload<ExtArgs> | null
       ApplyJob: Prisma.$ApplyJobPayload<ExtArgs>[]
       AcceptedProject: Prisma.$AcceptedProjectPayload<ExtArgs>[]
+      CompletedPoject: Prisma.$CompletedPojectPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       user_id: number
@@ -2332,6 +2444,7 @@ export namespace Prisma {
     Profile<T extends UserSchema$ProfileArgs<ExtArgs> = {}>(args?: Subset<T, UserSchema$ProfileArgs<ExtArgs>>): Prisma__ProfileSchemaClient<$Result.GetResult<Prisma.$ProfileSchemaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     ApplyJob<T extends UserSchema$ApplyJobArgs<ExtArgs> = {}>(args?: Subset<T, UserSchema$ApplyJobArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplyJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     AcceptedProject<T extends UserSchema$AcceptedProjectArgs<ExtArgs> = {}>(args?: Subset<T, UserSchema$AcceptedProjectArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AcceptedProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    CompletedPoject<T extends UserSchema$CompletedPojectArgs<ExtArgs> = {}>(args?: Subset<T, UserSchema$CompletedPojectArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2823,6 +2936,30 @@ export namespace Prisma {
   }
 
   /**
+   * UserSchema.CompletedPoject
+   */
+  export type UserSchema$CompletedPojectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectInclude<ExtArgs> | null
+    where?: CompletedPojectWhereInput
+    orderBy?: CompletedPojectOrderByWithRelationInput | CompletedPojectOrderByWithRelationInput[]
+    cursor?: CompletedPojectWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompletedPojectScalarFieldEnum | CompletedPojectScalarFieldEnum[]
+  }
+
+  /**
    * UserSchema without action
    */
   export type UserSchemaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3042,6 +3179,7 @@ export namespace Prisma {
     jobschema?: boolean | ClientSchema$jobschemaArgs<ExtArgs>
     ApplyJobs?: boolean | ClientSchema$ApplyJobsArgs<ExtArgs>
     AcceptedProject?: boolean | ClientSchema$AcceptedProjectArgs<ExtArgs>
+    CompletedPoject?: boolean | ClientSchema$CompletedPojectArgs<ExtArgs>
     _count?: boolean | ClientSchemaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["clientSchema"]>
 
@@ -3074,6 +3212,7 @@ export namespace Prisma {
     jobschema?: boolean | ClientSchema$jobschemaArgs<ExtArgs>
     ApplyJobs?: boolean | ClientSchema$ApplyJobsArgs<ExtArgs>
     AcceptedProject?: boolean | ClientSchema$AcceptedProjectArgs<ExtArgs>
+    CompletedPoject?: boolean | ClientSchema$CompletedPojectArgs<ExtArgs>
     _count?: boolean | ClientSchemaCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ClientSchemaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3085,6 +3224,7 @@ export namespace Prisma {
       jobschema: Prisma.$JobSchemaPayload<ExtArgs>[]
       ApplyJobs: Prisma.$ApplyJobPayload<ExtArgs>[]
       AcceptedProject: Prisma.$AcceptedProjectPayload<ExtArgs>[]
+      CompletedPoject: Prisma.$CompletedPojectPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       client_id: number
@@ -3489,6 +3629,7 @@ export namespace Prisma {
     jobschema<T extends ClientSchema$jobschemaArgs<ExtArgs> = {}>(args?: Subset<T, ClientSchema$jobschemaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JobSchemaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     ApplyJobs<T extends ClientSchema$ApplyJobsArgs<ExtArgs> = {}>(args?: Subset<T, ClientSchema$ApplyJobsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplyJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     AcceptedProject<T extends ClientSchema$AcceptedProjectArgs<ExtArgs> = {}>(args?: Subset<T, ClientSchema$AcceptedProjectArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AcceptedProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    CompletedPoject<T extends ClientSchema$CompletedPojectArgs<ExtArgs> = {}>(args?: Subset<T, ClientSchema$CompletedPojectArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3980,6 +4121,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AcceptedProjectScalarFieldEnum | AcceptedProjectScalarFieldEnum[]
+  }
+
+  /**
+   * ClientSchema.CompletedPoject
+   */
+  export type ClientSchema$CompletedPojectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectInclude<ExtArgs> | null
+    where?: CompletedPojectWhereInput
+    orderBy?: CompletedPojectOrderByWithRelationInput | CompletedPojectOrderByWithRelationInput[]
+    cursor?: CompletedPojectWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompletedPojectScalarFieldEnum | CompletedPojectScalarFieldEnum[]
   }
 
   /**
@@ -10596,6 +10761,1127 @@ export namespace Prisma {
 
 
   /**
+   * Model CompletedPoject
+   */
+
+  export type AggregateCompletedPoject = {
+    _count: CompletedPojectCountAggregateOutputType | null
+    _avg: CompletedPojectAvgAggregateOutputType | null
+    _sum: CompletedPojectSumAggregateOutputType | null
+    _min: CompletedPojectMinAggregateOutputType | null
+    _max: CompletedPojectMaxAggregateOutputType | null
+  }
+
+  export type CompletedPojectAvgAggregateOutputType = {
+    completedprojectid: number | null
+    client_id: number | null
+    userid: number | null
+  }
+
+  export type CompletedPojectSumAggregateOutputType = {
+    completedprojectid: number | null
+    client_id: number | null
+    userid: number | null
+  }
+
+  export type CompletedPojectMinAggregateOutputType = {
+    completedprojectid: number | null
+    client_id: number | null
+    userid: number | null
+    project_title: string | null
+    budget: string | null
+    timeline: string | null
+  }
+
+  export type CompletedPojectMaxAggregateOutputType = {
+    completedprojectid: number | null
+    client_id: number | null
+    userid: number | null
+    project_title: string | null
+    budget: string | null
+    timeline: string | null
+  }
+
+  export type CompletedPojectCountAggregateOutputType = {
+    completedprojectid: number
+    client_id: number
+    userid: number
+    project_title: number
+    budget: number
+    timeline: number
+    _all: number
+  }
+
+
+  export type CompletedPojectAvgAggregateInputType = {
+    completedprojectid?: true
+    client_id?: true
+    userid?: true
+  }
+
+  export type CompletedPojectSumAggregateInputType = {
+    completedprojectid?: true
+    client_id?: true
+    userid?: true
+  }
+
+  export type CompletedPojectMinAggregateInputType = {
+    completedprojectid?: true
+    client_id?: true
+    userid?: true
+    project_title?: true
+    budget?: true
+    timeline?: true
+  }
+
+  export type CompletedPojectMaxAggregateInputType = {
+    completedprojectid?: true
+    client_id?: true
+    userid?: true
+    project_title?: true
+    budget?: true
+    timeline?: true
+  }
+
+  export type CompletedPojectCountAggregateInputType = {
+    completedprojectid?: true
+    client_id?: true
+    userid?: true
+    project_title?: true
+    budget?: true
+    timeline?: true
+    _all?: true
+  }
+
+  export type CompletedPojectAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CompletedPoject to aggregate.
+     */
+    where?: CompletedPojectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompletedPojects to fetch.
+     */
+    orderBy?: CompletedPojectOrderByWithRelationInput | CompletedPojectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CompletedPojectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompletedPojects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompletedPojects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CompletedPojects
+    **/
+    _count?: true | CompletedPojectCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CompletedPojectAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CompletedPojectSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CompletedPojectMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CompletedPojectMaxAggregateInputType
+  }
+
+  export type GetCompletedPojectAggregateType<T extends CompletedPojectAggregateArgs> = {
+        [P in keyof T & keyof AggregateCompletedPoject]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCompletedPoject[P]>
+      : GetScalarType<T[P], AggregateCompletedPoject[P]>
+  }
+
+
+
+
+  export type CompletedPojectGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompletedPojectWhereInput
+    orderBy?: CompletedPojectOrderByWithAggregationInput | CompletedPojectOrderByWithAggregationInput[]
+    by: CompletedPojectScalarFieldEnum[] | CompletedPojectScalarFieldEnum
+    having?: CompletedPojectScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CompletedPojectCountAggregateInputType | true
+    _avg?: CompletedPojectAvgAggregateInputType
+    _sum?: CompletedPojectSumAggregateInputType
+    _min?: CompletedPojectMinAggregateInputType
+    _max?: CompletedPojectMaxAggregateInputType
+  }
+
+  export type CompletedPojectGroupByOutputType = {
+    completedprojectid: number
+    client_id: number
+    userid: number
+    project_title: string
+    budget: string
+    timeline: string
+    _count: CompletedPojectCountAggregateOutputType | null
+    _avg: CompletedPojectAvgAggregateOutputType | null
+    _sum: CompletedPojectSumAggregateOutputType | null
+    _min: CompletedPojectMinAggregateOutputType | null
+    _max: CompletedPojectMaxAggregateOutputType | null
+  }
+
+  type GetCompletedPojectGroupByPayload<T extends CompletedPojectGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CompletedPojectGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CompletedPojectGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CompletedPojectGroupByOutputType[P]>
+            : GetScalarType<T[P], CompletedPojectGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CompletedPojectSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    completedprojectid?: boolean
+    client_id?: boolean
+    userid?: boolean
+    project_title?: boolean
+    budget?: boolean
+    timeline?: boolean
+    client?: boolean | ClientSchemaDefaultArgs<ExtArgs>
+    user?: boolean | UserSchemaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["completedPoject"]>
+
+  export type CompletedPojectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    completedprojectid?: boolean
+    client_id?: boolean
+    userid?: boolean
+    project_title?: boolean
+    budget?: boolean
+    timeline?: boolean
+    client?: boolean | ClientSchemaDefaultArgs<ExtArgs>
+    user?: boolean | UserSchemaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["completedPoject"]>
+
+  export type CompletedPojectSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    completedprojectid?: boolean
+    client_id?: boolean
+    userid?: boolean
+    project_title?: boolean
+    budget?: boolean
+    timeline?: boolean
+    client?: boolean | ClientSchemaDefaultArgs<ExtArgs>
+    user?: boolean | UserSchemaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["completedPoject"]>
+
+  export type CompletedPojectSelectScalar = {
+    completedprojectid?: boolean
+    client_id?: boolean
+    userid?: boolean
+    project_title?: boolean
+    budget?: boolean
+    timeline?: boolean
+  }
+
+  export type CompletedPojectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"completedprojectid" | "client_id" | "userid" | "project_title" | "budget" | "timeline", ExtArgs["result"]["completedPoject"]>
+  export type CompletedPojectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | ClientSchemaDefaultArgs<ExtArgs>
+    user?: boolean | UserSchemaDefaultArgs<ExtArgs>
+  }
+  export type CompletedPojectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | ClientSchemaDefaultArgs<ExtArgs>
+    user?: boolean | UserSchemaDefaultArgs<ExtArgs>
+  }
+  export type CompletedPojectIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | ClientSchemaDefaultArgs<ExtArgs>
+    user?: boolean | UserSchemaDefaultArgs<ExtArgs>
+  }
+
+  export type $CompletedPojectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CompletedPoject"
+    objects: {
+      client: Prisma.$ClientSchemaPayload<ExtArgs>
+      user: Prisma.$UserSchemaPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      completedprojectid: number
+      client_id: number
+      userid: number
+      project_title: string
+      budget: string
+      timeline: string
+    }, ExtArgs["result"]["completedPoject"]>
+    composites: {}
+  }
+
+  type CompletedPojectGetPayload<S extends boolean | null | undefined | CompletedPojectDefaultArgs> = $Result.GetResult<Prisma.$CompletedPojectPayload, S>
+
+  type CompletedPojectCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CompletedPojectFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CompletedPojectCountAggregateInputType | true
+    }
+
+  export interface CompletedPojectDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CompletedPoject'], meta: { name: 'CompletedPoject' } }
+    /**
+     * Find zero or one CompletedPoject that matches the filter.
+     * @param {CompletedPojectFindUniqueArgs} args - Arguments to find a CompletedPoject
+     * @example
+     * // Get one CompletedPoject
+     * const completedPoject = await prisma.completedPoject.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CompletedPojectFindUniqueArgs>(args: SelectSubset<T, CompletedPojectFindUniqueArgs<ExtArgs>>): Prisma__CompletedPojectClient<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CompletedPoject that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CompletedPojectFindUniqueOrThrowArgs} args - Arguments to find a CompletedPoject
+     * @example
+     * // Get one CompletedPoject
+     * const completedPoject = await prisma.completedPoject.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CompletedPojectFindUniqueOrThrowArgs>(args: SelectSubset<T, CompletedPojectFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CompletedPojectClient<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CompletedPoject that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompletedPojectFindFirstArgs} args - Arguments to find a CompletedPoject
+     * @example
+     * // Get one CompletedPoject
+     * const completedPoject = await prisma.completedPoject.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CompletedPojectFindFirstArgs>(args?: SelectSubset<T, CompletedPojectFindFirstArgs<ExtArgs>>): Prisma__CompletedPojectClient<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CompletedPoject that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompletedPojectFindFirstOrThrowArgs} args - Arguments to find a CompletedPoject
+     * @example
+     * // Get one CompletedPoject
+     * const completedPoject = await prisma.completedPoject.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CompletedPojectFindFirstOrThrowArgs>(args?: SelectSubset<T, CompletedPojectFindFirstOrThrowArgs<ExtArgs>>): Prisma__CompletedPojectClient<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CompletedPojects that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompletedPojectFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CompletedPojects
+     * const completedPojects = await prisma.completedPoject.findMany()
+     * 
+     * // Get first 10 CompletedPojects
+     * const completedPojects = await prisma.completedPoject.findMany({ take: 10 })
+     * 
+     * // Only select the `completedprojectid`
+     * const completedPojectWithCompletedprojectidOnly = await prisma.completedPoject.findMany({ select: { completedprojectid: true } })
+     * 
+     */
+    findMany<T extends CompletedPojectFindManyArgs>(args?: SelectSubset<T, CompletedPojectFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CompletedPoject.
+     * @param {CompletedPojectCreateArgs} args - Arguments to create a CompletedPoject.
+     * @example
+     * // Create one CompletedPoject
+     * const CompletedPoject = await prisma.completedPoject.create({
+     *   data: {
+     *     // ... data to create a CompletedPoject
+     *   }
+     * })
+     * 
+     */
+    create<T extends CompletedPojectCreateArgs>(args: SelectSubset<T, CompletedPojectCreateArgs<ExtArgs>>): Prisma__CompletedPojectClient<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CompletedPojects.
+     * @param {CompletedPojectCreateManyArgs} args - Arguments to create many CompletedPojects.
+     * @example
+     * // Create many CompletedPojects
+     * const completedPoject = await prisma.completedPoject.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CompletedPojectCreateManyArgs>(args?: SelectSubset<T, CompletedPojectCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CompletedPojects and returns the data saved in the database.
+     * @param {CompletedPojectCreateManyAndReturnArgs} args - Arguments to create many CompletedPojects.
+     * @example
+     * // Create many CompletedPojects
+     * const completedPoject = await prisma.completedPoject.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CompletedPojects and only return the `completedprojectid`
+     * const completedPojectWithCompletedprojectidOnly = await prisma.completedPoject.createManyAndReturn({
+     *   select: { completedprojectid: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CompletedPojectCreateManyAndReturnArgs>(args?: SelectSubset<T, CompletedPojectCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CompletedPoject.
+     * @param {CompletedPojectDeleteArgs} args - Arguments to delete one CompletedPoject.
+     * @example
+     * // Delete one CompletedPoject
+     * const CompletedPoject = await prisma.completedPoject.delete({
+     *   where: {
+     *     // ... filter to delete one CompletedPoject
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CompletedPojectDeleteArgs>(args: SelectSubset<T, CompletedPojectDeleteArgs<ExtArgs>>): Prisma__CompletedPojectClient<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CompletedPoject.
+     * @param {CompletedPojectUpdateArgs} args - Arguments to update one CompletedPoject.
+     * @example
+     * // Update one CompletedPoject
+     * const completedPoject = await prisma.completedPoject.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CompletedPojectUpdateArgs>(args: SelectSubset<T, CompletedPojectUpdateArgs<ExtArgs>>): Prisma__CompletedPojectClient<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CompletedPojects.
+     * @param {CompletedPojectDeleteManyArgs} args - Arguments to filter CompletedPojects to delete.
+     * @example
+     * // Delete a few CompletedPojects
+     * const { count } = await prisma.completedPoject.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CompletedPojectDeleteManyArgs>(args?: SelectSubset<T, CompletedPojectDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CompletedPojects.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompletedPojectUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CompletedPojects
+     * const completedPoject = await prisma.completedPoject.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CompletedPojectUpdateManyArgs>(args: SelectSubset<T, CompletedPojectUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CompletedPojects and returns the data updated in the database.
+     * @param {CompletedPojectUpdateManyAndReturnArgs} args - Arguments to update many CompletedPojects.
+     * @example
+     * // Update many CompletedPojects
+     * const completedPoject = await prisma.completedPoject.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CompletedPojects and only return the `completedprojectid`
+     * const completedPojectWithCompletedprojectidOnly = await prisma.completedPoject.updateManyAndReturn({
+     *   select: { completedprojectid: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CompletedPojectUpdateManyAndReturnArgs>(args: SelectSubset<T, CompletedPojectUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CompletedPoject.
+     * @param {CompletedPojectUpsertArgs} args - Arguments to update or create a CompletedPoject.
+     * @example
+     * // Update or create a CompletedPoject
+     * const completedPoject = await prisma.completedPoject.upsert({
+     *   create: {
+     *     // ... data to create a CompletedPoject
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CompletedPoject we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CompletedPojectUpsertArgs>(args: SelectSubset<T, CompletedPojectUpsertArgs<ExtArgs>>): Prisma__CompletedPojectClient<$Result.GetResult<Prisma.$CompletedPojectPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CompletedPojects.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompletedPojectCountArgs} args - Arguments to filter CompletedPojects to count.
+     * @example
+     * // Count the number of CompletedPojects
+     * const count = await prisma.completedPoject.count({
+     *   where: {
+     *     // ... the filter for the CompletedPojects we want to count
+     *   }
+     * })
+    **/
+    count<T extends CompletedPojectCountArgs>(
+      args?: Subset<T, CompletedPojectCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CompletedPojectCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CompletedPoject.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompletedPojectAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CompletedPojectAggregateArgs>(args: Subset<T, CompletedPojectAggregateArgs>): Prisma.PrismaPromise<GetCompletedPojectAggregateType<T>>
+
+    /**
+     * Group by CompletedPoject.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompletedPojectGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CompletedPojectGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CompletedPojectGroupByArgs['orderBy'] }
+        : { orderBy?: CompletedPojectGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CompletedPojectGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCompletedPojectGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CompletedPoject model
+   */
+  readonly fields: CompletedPojectFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CompletedPoject.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CompletedPojectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    client<T extends ClientSchemaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClientSchemaDefaultArgs<ExtArgs>>): Prisma__ClientSchemaClient<$Result.GetResult<Prisma.$ClientSchemaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserSchemaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserSchemaDefaultArgs<ExtArgs>>): Prisma__UserSchemaClient<$Result.GetResult<Prisma.$UserSchemaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CompletedPoject model
+   */ 
+  interface CompletedPojectFieldRefs {
+    readonly completedprojectid: FieldRef<"CompletedPoject", 'Int'>
+    readonly client_id: FieldRef<"CompletedPoject", 'Int'>
+    readonly userid: FieldRef<"CompletedPoject", 'Int'>
+    readonly project_title: FieldRef<"CompletedPoject", 'String'>
+    readonly budget: FieldRef<"CompletedPoject", 'String'>
+    readonly timeline: FieldRef<"CompletedPoject", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CompletedPoject findUnique
+   */
+  export type CompletedPojectFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectInclude<ExtArgs> | null
+    /**
+     * Filter, which CompletedPoject to fetch.
+     */
+    where: CompletedPojectWhereUniqueInput
+  }
+
+  /**
+   * CompletedPoject findUniqueOrThrow
+   */
+  export type CompletedPojectFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectInclude<ExtArgs> | null
+    /**
+     * Filter, which CompletedPoject to fetch.
+     */
+    where: CompletedPojectWhereUniqueInput
+  }
+
+  /**
+   * CompletedPoject findFirst
+   */
+  export type CompletedPojectFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectInclude<ExtArgs> | null
+    /**
+     * Filter, which CompletedPoject to fetch.
+     */
+    where?: CompletedPojectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompletedPojects to fetch.
+     */
+    orderBy?: CompletedPojectOrderByWithRelationInput | CompletedPojectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CompletedPojects.
+     */
+    cursor?: CompletedPojectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompletedPojects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompletedPojects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompletedPojects.
+     */
+    distinct?: CompletedPojectScalarFieldEnum | CompletedPojectScalarFieldEnum[]
+  }
+
+  /**
+   * CompletedPoject findFirstOrThrow
+   */
+  export type CompletedPojectFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectInclude<ExtArgs> | null
+    /**
+     * Filter, which CompletedPoject to fetch.
+     */
+    where?: CompletedPojectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompletedPojects to fetch.
+     */
+    orderBy?: CompletedPojectOrderByWithRelationInput | CompletedPojectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CompletedPojects.
+     */
+    cursor?: CompletedPojectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompletedPojects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompletedPojects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompletedPojects.
+     */
+    distinct?: CompletedPojectScalarFieldEnum | CompletedPojectScalarFieldEnum[]
+  }
+
+  /**
+   * CompletedPoject findMany
+   */
+  export type CompletedPojectFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectInclude<ExtArgs> | null
+    /**
+     * Filter, which CompletedPojects to fetch.
+     */
+    where?: CompletedPojectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompletedPojects to fetch.
+     */
+    orderBy?: CompletedPojectOrderByWithRelationInput | CompletedPojectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CompletedPojects.
+     */
+    cursor?: CompletedPojectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompletedPojects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompletedPojects.
+     */
+    skip?: number
+    distinct?: CompletedPojectScalarFieldEnum | CompletedPojectScalarFieldEnum[]
+  }
+
+  /**
+   * CompletedPoject create
+   */
+  export type CompletedPojectCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CompletedPoject.
+     */
+    data: XOR<CompletedPojectCreateInput, CompletedPojectUncheckedCreateInput>
+  }
+
+  /**
+   * CompletedPoject createMany
+   */
+  export type CompletedPojectCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CompletedPojects.
+     */
+    data: CompletedPojectCreateManyInput | CompletedPojectCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CompletedPoject createManyAndReturn
+   */
+  export type CompletedPojectCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * The data used to create many CompletedPojects.
+     */
+    data: CompletedPojectCreateManyInput | CompletedPojectCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CompletedPoject update
+   */
+  export type CompletedPojectUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CompletedPoject.
+     */
+    data: XOR<CompletedPojectUpdateInput, CompletedPojectUncheckedUpdateInput>
+    /**
+     * Choose, which CompletedPoject to update.
+     */
+    where: CompletedPojectWhereUniqueInput
+  }
+
+  /**
+   * CompletedPoject updateMany
+   */
+  export type CompletedPojectUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CompletedPojects.
+     */
+    data: XOR<CompletedPojectUpdateManyMutationInput, CompletedPojectUncheckedUpdateManyInput>
+    /**
+     * Filter which CompletedPojects to update
+     */
+    where?: CompletedPojectWhereInput
+    /**
+     * Limit how many CompletedPojects to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CompletedPoject updateManyAndReturn
+   */
+  export type CompletedPojectUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * The data used to update CompletedPojects.
+     */
+    data: XOR<CompletedPojectUpdateManyMutationInput, CompletedPojectUncheckedUpdateManyInput>
+    /**
+     * Filter which CompletedPojects to update
+     */
+    where?: CompletedPojectWhereInput
+    /**
+     * Limit how many CompletedPojects to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CompletedPoject upsert
+   */
+  export type CompletedPojectUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CompletedPoject to update in case it exists.
+     */
+    where: CompletedPojectWhereUniqueInput
+    /**
+     * In case the CompletedPoject found by the `where` argument doesn't exist, create a new CompletedPoject with this data.
+     */
+    create: XOR<CompletedPojectCreateInput, CompletedPojectUncheckedCreateInput>
+    /**
+     * In case the CompletedPoject was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CompletedPojectUpdateInput, CompletedPojectUncheckedUpdateInput>
+  }
+
+  /**
+   * CompletedPoject delete
+   */
+  export type CompletedPojectDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectInclude<ExtArgs> | null
+    /**
+     * Filter which CompletedPoject to delete.
+     */
+    where: CompletedPojectWhereUniqueInput
+  }
+
+  /**
+   * CompletedPoject deleteMany
+   */
+  export type CompletedPojectDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CompletedPojects to delete
+     */
+    where?: CompletedPojectWhereInput
+    /**
+     * Limit how many CompletedPojects to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CompletedPoject without action
+   */
+  export type CompletedPojectDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompletedPoject
+     */
+    select?: CompletedPojectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompletedPoject
+     */
+    omit?: CompletedPojectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompletedPojectInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -10703,6 +11989,18 @@ export namespace Prisma {
   export type WalletSchemaScalarFieldEnum = (typeof WalletSchemaScalarFieldEnum)[keyof typeof WalletSchemaScalarFieldEnum]
 
 
+  export const CompletedPojectScalarFieldEnum: {
+    completedprojectid: 'completedprojectid',
+    client_id: 'client_id',
+    userid: 'userid',
+    project_title: 'project_title',
+    budget: 'budget',
+    timeline: 'timeline'
+  };
+
+  export type CompletedPojectScalarFieldEnum = (typeof CompletedPojectScalarFieldEnum)[keyof typeof CompletedPojectScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -10791,6 +12089,7 @@ export namespace Prisma {
     Profile?: XOR<ProfileSchemaNullableScalarRelationFilter, ProfileSchemaWhereInput> | null
     ApplyJob?: ApplyJobListRelationFilter
     AcceptedProject?: AcceptedProjectListRelationFilter
+    CompletedPoject?: CompletedPojectListRelationFilter
   }
 
   export type UserSchemaOrderByWithRelationInput = {
@@ -10804,6 +12103,7 @@ export namespace Prisma {
     Profile?: ProfileSchemaOrderByWithRelationInput
     ApplyJob?: ApplyJobOrderByRelationAggregateInput
     AcceptedProject?: AcceptedProjectOrderByRelationAggregateInput
+    CompletedPoject?: CompletedPojectOrderByRelationAggregateInput
   }
 
   export type UserSchemaWhereUniqueInput = Prisma.AtLeast<{
@@ -10820,6 +12120,7 @@ export namespace Prisma {
     Profile?: XOR<ProfileSchemaNullableScalarRelationFilter, ProfileSchemaWhereInput> | null
     ApplyJob?: ApplyJobListRelationFilter
     AcceptedProject?: AcceptedProjectListRelationFilter
+    CompletedPoject?: CompletedPojectListRelationFilter
   }, "user_id" | "Email">
 
   export type UserSchemaOrderByWithAggregationInput = {
@@ -10862,6 +12163,7 @@ export namespace Prisma {
     jobschema?: JobSchemaListRelationFilter
     ApplyJobs?: ApplyJobListRelationFilter
     AcceptedProject?: AcceptedProjectListRelationFilter
+    CompletedPoject?: CompletedPojectListRelationFilter
   }
 
   export type ClientSchemaOrderByWithRelationInput = {
@@ -10873,6 +12175,7 @@ export namespace Prisma {
     jobschema?: JobSchemaOrderByRelationAggregateInput
     ApplyJobs?: ApplyJobOrderByRelationAggregateInput
     AcceptedProject?: AcceptedProjectOrderByRelationAggregateInput
+    CompletedPoject?: CompletedPojectOrderByRelationAggregateInput
   }
 
   export type ClientSchemaWhereUniqueInput = Prisma.AtLeast<{
@@ -10887,6 +12190,7 @@ export namespace Prisma {
     jobschema?: JobSchemaListRelationFilter
     ApplyJobs?: ApplyJobListRelationFilter
     AcceptedProject?: AcceptedProjectListRelationFilter
+    CompletedPoject?: CompletedPojectListRelationFilter
   }, "client_id" | "Email">
 
   export type ClientSchemaOrderByWithAggregationInput = {
@@ -11250,6 +12554,7 @@ export namespace Prisma {
 
   export type WalletSchemaWhereUniqueInput = Prisma.AtLeast<{
     walletid?: number
+    email?: string
     accountnumber?: string
     uniqueid?: string
     email_role?: WalletSchemaEmailRoleCompoundUniqueInput
@@ -11257,10 +12562,9 @@ export namespace Prisma {
     OR?: WalletSchemaWhereInput[]
     NOT?: WalletSchemaWhereInput | WalletSchemaWhereInput[]
     name?: StringFilter<"WalletSchema"> | string
-    email?: StringFilter<"WalletSchema"> | string
     role?: StringFilter<"WalletSchema"> | string
     amount?: StringFilter<"WalletSchema"> | string
-  }, "walletid" | "accountnumber" | "uniqueid" | "email_role">
+  }, "walletid" | "email" | "accountnumber" | "uniqueid" | "email_role">
 
   export type WalletSchemaOrderByWithAggregationInput = {
     walletid?: SortOrder
@@ -11290,6 +12594,72 @@ export namespace Prisma {
     uniqueid?: StringWithAggregatesFilter<"WalletSchema"> | string
   }
 
+  export type CompletedPojectWhereInput = {
+    AND?: CompletedPojectWhereInput | CompletedPojectWhereInput[]
+    OR?: CompletedPojectWhereInput[]
+    NOT?: CompletedPojectWhereInput | CompletedPojectWhereInput[]
+    completedprojectid?: IntFilter<"CompletedPoject"> | number
+    client_id?: IntFilter<"CompletedPoject"> | number
+    userid?: IntFilter<"CompletedPoject"> | number
+    project_title?: StringFilter<"CompletedPoject"> | string
+    budget?: StringFilter<"CompletedPoject"> | string
+    timeline?: StringFilter<"CompletedPoject"> | string
+    client?: XOR<ClientSchemaScalarRelationFilter, ClientSchemaWhereInput>
+    user?: XOR<UserSchemaScalarRelationFilter, UserSchemaWhereInput>
+  }
+
+  export type CompletedPojectOrderByWithRelationInput = {
+    completedprojectid?: SortOrder
+    client_id?: SortOrder
+    userid?: SortOrder
+    project_title?: SortOrder
+    budget?: SortOrder
+    timeline?: SortOrder
+    client?: ClientSchemaOrderByWithRelationInput
+    user?: UserSchemaOrderByWithRelationInput
+  }
+
+  export type CompletedPojectWhereUniqueInput = Prisma.AtLeast<{
+    completedprojectid?: number
+    client_id_userid_project_title?: CompletedPojectClient_idUseridProject_titleCompoundUniqueInput
+    AND?: CompletedPojectWhereInput | CompletedPojectWhereInput[]
+    OR?: CompletedPojectWhereInput[]
+    NOT?: CompletedPojectWhereInput | CompletedPojectWhereInput[]
+    client_id?: IntFilter<"CompletedPoject"> | number
+    userid?: IntFilter<"CompletedPoject"> | number
+    project_title?: StringFilter<"CompletedPoject"> | string
+    budget?: StringFilter<"CompletedPoject"> | string
+    timeline?: StringFilter<"CompletedPoject"> | string
+    client?: XOR<ClientSchemaScalarRelationFilter, ClientSchemaWhereInput>
+    user?: XOR<UserSchemaScalarRelationFilter, UserSchemaWhereInput>
+  }, "completedprojectid" | "client_id_userid_project_title">
+
+  export type CompletedPojectOrderByWithAggregationInput = {
+    completedprojectid?: SortOrder
+    client_id?: SortOrder
+    userid?: SortOrder
+    project_title?: SortOrder
+    budget?: SortOrder
+    timeline?: SortOrder
+    _count?: CompletedPojectCountOrderByAggregateInput
+    _avg?: CompletedPojectAvgOrderByAggregateInput
+    _max?: CompletedPojectMaxOrderByAggregateInput
+    _min?: CompletedPojectMinOrderByAggregateInput
+    _sum?: CompletedPojectSumOrderByAggregateInput
+  }
+
+  export type CompletedPojectScalarWhereWithAggregatesInput = {
+    AND?: CompletedPojectScalarWhereWithAggregatesInput | CompletedPojectScalarWhereWithAggregatesInput[]
+    OR?: CompletedPojectScalarWhereWithAggregatesInput[]
+    NOT?: CompletedPojectScalarWhereWithAggregatesInput | CompletedPojectScalarWhereWithAggregatesInput[]
+    completedprojectid?: IntWithAggregatesFilter<"CompletedPoject"> | number
+    client_id?: IntWithAggregatesFilter<"CompletedPoject"> | number
+    userid?: IntWithAggregatesFilter<"CompletedPoject"> | number
+    project_title?: StringWithAggregatesFilter<"CompletedPoject"> | string
+    budget?: StringWithAggregatesFilter<"CompletedPoject"> | string
+    timeline?: StringWithAggregatesFilter<"CompletedPoject"> | string
+  }
+
   export type UserSchemaCreateInput = {
     Name: string
     Email: string
@@ -11300,6 +12670,7 @@ export namespace Prisma {
     Profile?: ProfileSchemaCreateNestedOneWithoutUserInput
     ApplyJob?: ApplyJobCreateNestedManyWithoutUserInput
     AcceptedProject?: AcceptedProjectCreateNestedManyWithoutUserInput
+    CompletedPoject?: CompletedPojectCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaUncheckedCreateInput = {
@@ -11313,6 +12684,7 @@ export namespace Prisma {
     Profile?: ProfileSchemaUncheckedCreateNestedOneWithoutUserInput
     ApplyJob?: ApplyJobUncheckedCreateNestedManyWithoutUserInput
     AcceptedProject?: AcceptedProjectUncheckedCreateNestedManyWithoutUserInput
+    CompletedPoject?: CompletedPojectUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaUpdateInput = {
@@ -11325,6 +12697,7 @@ export namespace Prisma {
     Profile?: ProfileSchemaUpdateOneWithoutUserNestedInput
     ApplyJob?: ApplyJobUpdateManyWithoutUserNestedInput
     AcceptedProject?: AcceptedProjectUpdateManyWithoutUserNestedInput
+    CompletedPoject?: CompletedPojectUpdateManyWithoutUserNestedInput
   }
 
   export type UserSchemaUncheckedUpdateInput = {
@@ -11338,6 +12711,7 @@ export namespace Prisma {
     Profile?: ProfileSchemaUncheckedUpdateOneWithoutUserNestedInput
     ApplyJob?: ApplyJobUncheckedUpdateManyWithoutUserNestedInput
     AcceptedProject?: AcceptedProjectUncheckedUpdateManyWithoutUserNestedInput
+    CompletedPoject?: CompletedPojectUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserSchemaCreateManyInput = {
@@ -11377,6 +12751,7 @@ export namespace Prisma {
     jobschema?: JobSchemaCreateNestedManyWithoutClientInput
     ApplyJobs?: ApplyJobCreateNestedManyWithoutClientInput
     AcceptedProject?: AcceptedProjectCreateNestedManyWithoutClientInput
+    CompletedPoject?: CompletedPojectCreateNestedManyWithoutClientInput
   }
 
   export type ClientSchemaUncheckedCreateInput = {
@@ -11388,6 +12763,7 @@ export namespace Prisma {
     jobschema?: JobSchemaUncheckedCreateNestedManyWithoutClientInput
     ApplyJobs?: ApplyJobUncheckedCreateNestedManyWithoutClientInput
     AcceptedProject?: AcceptedProjectUncheckedCreateNestedManyWithoutClientInput
+    CompletedPoject?: CompletedPojectUncheckedCreateNestedManyWithoutClientInput
   }
 
   export type ClientSchemaUpdateInput = {
@@ -11398,6 +12774,7 @@ export namespace Prisma {
     jobschema?: JobSchemaUpdateManyWithoutClientNestedInput
     ApplyJobs?: ApplyJobUpdateManyWithoutClientNestedInput
     AcceptedProject?: AcceptedProjectUpdateManyWithoutClientNestedInput
+    CompletedPoject?: CompletedPojectUpdateManyWithoutClientNestedInput
   }
 
   export type ClientSchemaUncheckedUpdateInput = {
@@ -11409,6 +12786,7 @@ export namespace Prisma {
     jobschema?: JobSchemaUncheckedUpdateManyWithoutClientNestedInput
     ApplyJobs?: ApplyJobUncheckedUpdateManyWithoutClientNestedInput
     AcceptedProject?: AcceptedProjectUncheckedUpdateManyWithoutClientNestedInput
+    CompletedPoject?: CompletedPojectUncheckedUpdateManyWithoutClientNestedInput
   }
 
   export type ClientSchemaCreateManyInput = {
@@ -11783,6 +13161,64 @@ export namespace Prisma {
     uniqueid?: StringFieldUpdateOperationsInput | string
   }
 
+  export type CompletedPojectCreateInput = {
+    project_title: string
+    budget: string
+    timeline: string
+    client: ClientSchemaCreateNestedOneWithoutCompletedPojectInput
+    user: UserSchemaCreateNestedOneWithoutCompletedPojectInput
+  }
+
+  export type CompletedPojectUncheckedCreateInput = {
+    completedprojectid?: number
+    client_id: number
+    userid: number
+    project_title: string
+    budget: string
+    timeline: string
+  }
+
+  export type CompletedPojectUpdateInput = {
+    project_title?: StringFieldUpdateOperationsInput | string
+    budget?: StringFieldUpdateOperationsInput | string
+    timeline?: StringFieldUpdateOperationsInput | string
+    client?: ClientSchemaUpdateOneRequiredWithoutCompletedPojectNestedInput
+    user?: UserSchemaUpdateOneRequiredWithoutCompletedPojectNestedInput
+  }
+
+  export type CompletedPojectUncheckedUpdateInput = {
+    completedprojectid?: IntFieldUpdateOperationsInput | number
+    client_id?: IntFieldUpdateOperationsInput | number
+    userid?: IntFieldUpdateOperationsInput | number
+    project_title?: StringFieldUpdateOperationsInput | string
+    budget?: StringFieldUpdateOperationsInput | string
+    timeline?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CompletedPojectCreateManyInput = {
+    completedprojectid?: number
+    client_id: number
+    userid: number
+    project_title: string
+    budget: string
+    timeline: string
+  }
+
+  export type CompletedPojectUpdateManyMutationInput = {
+    project_title?: StringFieldUpdateOperationsInput | string
+    budget?: StringFieldUpdateOperationsInput | string
+    timeline?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CompletedPojectUncheckedUpdateManyInput = {
+    completedprojectid?: IntFieldUpdateOperationsInput | number
+    client_id?: IntFieldUpdateOperationsInput | number
+    userid?: IntFieldUpdateOperationsInput | number
+    project_title?: StringFieldUpdateOperationsInput | string
+    budget?: StringFieldUpdateOperationsInput | string
+    timeline?: StringFieldUpdateOperationsInput | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -11834,11 +13270,21 @@ export namespace Prisma {
     none?: AcceptedProjectWhereInput
   }
 
+  export type CompletedPojectListRelationFilter = {
+    every?: CompletedPojectWhereInput
+    some?: CompletedPojectWhereInput
+    none?: CompletedPojectWhereInput
+  }
+
   export type ApplyJobOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type AcceptedProjectOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CompletedPojectOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12249,6 +13695,51 @@ export namespace Prisma {
     walletid?: SortOrder
   }
 
+  export type CompletedPojectClient_idUseridProject_titleCompoundUniqueInput = {
+    client_id: number
+    userid: number
+    project_title: string
+  }
+
+  export type CompletedPojectCountOrderByAggregateInput = {
+    completedprojectid?: SortOrder
+    client_id?: SortOrder
+    userid?: SortOrder
+    project_title?: SortOrder
+    budget?: SortOrder
+    timeline?: SortOrder
+  }
+
+  export type CompletedPojectAvgOrderByAggregateInput = {
+    completedprojectid?: SortOrder
+    client_id?: SortOrder
+    userid?: SortOrder
+  }
+
+  export type CompletedPojectMaxOrderByAggregateInput = {
+    completedprojectid?: SortOrder
+    client_id?: SortOrder
+    userid?: SortOrder
+    project_title?: SortOrder
+    budget?: SortOrder
+    timeline?: SortOrder
+  }
+
+  export type CompletedPojectMinOrderByAggregateInput = {
+    completedprojectid?: SortOrder
+    client_id?: SortOrder
+    userid?: SortOrder
+    project_title?: SortOrder
+    budget?: SortOrder
+    timeline?: SortOrder
+  }
+
+  export type CompletedPojectSumOrderByAggregateInput = {
+    completedprojectid?: SortOrder
+    client_id?: SortOrder
+    userid?: SortOrder
+  }
+
   export type UserSchemaCreateSkillsInput = {
     set: string[]
   }
@@ -12273,6 +13764,13 @@ export namespace Prisma {
     connect?: AcceptedProjectWhereUniqueInput | AcceptedProjectWhereUniqueInput[]
   }
 
+  export type CompletedPojectCreateNestedManyWithoutUserInput = {
+    create?: XOR<CompletedPojectCreateWithoutUserInput, CompletedPojectUncheckedCreateWithoutUserInput> | CompletedPojectCreateWithoutUserInput[] | CompletedPojectUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CompletedPojectCreateOrConnectWithoutUserInput | CompletedPojectCreateOrConnectWithoutUserInput[]
+    createMany?: CompletedPojectCreateManyUserInputEnvelope
+    connect?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+  }
+
   export type ProfileSchemaUncheckedCreateNestedOneWithoutUserInput = {
     create?: XOR<ProfileSchemaCreateWithoutUserInput, ProfileSchemaUncheckedCreateWithoutUserInput>
     connectOrCreate?: ProfileSchemaCreateOrConnectWithoutUserInput
@@ -12291,6 +13789,13 @@ export namespace Prisma {
     connectOrCreate?: AcceptedProjectCreateOrConnectWithoutUserInput | AcceptedProjectCreateOrConnectWithoutUserInput[]
     createMany?: AcceptedProjectCreateManyUserInputEnvelope
     connect?: AcceptedProjectWhereUniqueInput | AcceptedProjectWhereUniqueInput[]
+  }
+
+  export type CompletedPojectUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CompletedPojectCreateWithoutUserInput, CompletedPojectUncheckedCreateWithoutUserInput> | CompletedPojectCreateWithoutUserInput[] | CompletedPojectUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CompletedPojectCreateOrConnectWithoutUserInput | CompletedPojectCreateOrConnectWithoutUserInput[]
+    createMany?: CompletedPojectCreateManyUserInputEnvelope
+    connect?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -12348,6 +13853,20 @@ export namespace Prisma {
     deleteMany?: AcceptedProjectScalarWhereInput | AcceptedProjectScalarWhereInput[]
   }
 
+  export type CompletedPojectUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CompletedPojectCreateWithoutUserInput, CompletedPojectUncheckedCreateWithoutUserInput> | CompletedPojectCreateWithoutUserInput[] | CompletedPojectUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CompletedPojectCreateOrConnectWithoutUserInput | CompletedPojectCreateOrConnectWithoutUserInput[]
+    upsert?: CompletedPojectUpsertWithWhereUniqueWithoutUserInput | CompletedPojectUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CompletedPojectCreateManyUserInputEnvelope
+    set?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    disconnect?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    delete?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    connect?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    update?: CompletedPojectUpdateWithWhereUniqueWithoutUserInput | CompletedPojectUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CompletedPojectUpdateManyWithWhereWithoutUserInput | CompletedPojectUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CompletedPojectScalarWhereInput | CompletedPojectScalarWhereInput[]
+  }
+
   export type ProfileSchemaUncheckedUpdateOneWithoutUserNestedInput = {
     create?: XOR<ProfileSchemaCreateWithoutUserInput, ProfileSchemaUncheckedCreateWithoutUserInput>
     connectOrCreate?: ProfileSchemaCreateOrConnectWithoutUserInput
@@ -12386,6 +13905,20 @@ export namespace Prisma {
     deleteMany?: AcceptedProjectScalarWhereInput | AcceptedProjectScalarWhereInput[]
   }
 
+  export type CompletedPojectUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CompletedPojectCreateWithoutUserInput, CompletedPojectUncheckedCreateWithoutUserInput> | CompletedPojectCreateWithoutUserInput[] | CompletedPojectUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CompletedPojectCreateOrConnectWithoutUserInput | CompletedPojectCreateOrConnectWithoutUserInput[]
+    upsert?: CompletedPojectUpsertWithWhereUniqueWithoutUserInput | CompletedPojectUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CompletedPojectCreateManyUserInputEnvelope
+    set?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    disconnect?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    delete?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    connect?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    update?: CompletedPojectUpdateWithWhereUniqueWithoutUserInput | CompletedPojectUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CompletedPojectUpdateManyWithWhereWithoutUserInput | CompletedPojectUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CompletedPojectScalarWhereInput | CompletedPojectScalarWhereInput[]
+  }
+
   export type JobSchemaCreateNestedManyWithoutClientInput = {
     create?: XOR<JobSchemaCreateWithoutClientInput, JobSchemaUncheckedCreateWithoutClientInput> | JobSchemaCreateWithoutClientInput[] | JobSchemaUncheckedCreateWithoutClientInput[]
     connectOrCreate?: JobSchemaCreateOrConnectWithoutClientInput | JobSchemaCreateOrConnectWithoutClientInput[]
@@ -12407,6 +13940,13 @@ export namespace Prisma {
     connect?: AcceptedProjectWhereUniqueInput | AcceptedProjectWhereUniqueInput[]
   }
 
+  export type CompletedPojectCreateNestedManyWithoutClientInput = {
+    create?: XOR<CompletedPojectCreateWithoutClientInput, CompletedPojectUncheckedCreateWithoutClientInput> | CompletedPojectCreateWithoutClientInput[] | CompletedPojectUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: CompletedPojectCreateOrConnectWithoutClientInput | CompletedPojectCreateOrConnectWithoutClientInput[]
+    createMany?: CompletedPojectCreateManyClientInputEnvelope
+    connect?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+  }
+
   export type JobSchemaUncheckedCreateNestedManyWithoutClientInput = {
     create?: XOR<JobSchemaCreateWithoutClientInput, JobSchemaUncheckedCreateWithoutClientInput> | JobSchemaCreateWithoutClientInput[] | JobSchemaUncheckedCreateWithoutClientInput[]
     connectOrCreate?: JobSchemaCreateOrConnectWithoutClientInput | JobSchemaCreateOrConnectWithoutClientInput[]
@@ -12426,6 +13966,13 @@ export namespace Prisma {
     connectOrCreate?: AcceptedProjectCreateOrConnectWithoutClientInput | AcceptedProjectCreateOrConnectWithoutClientInput[]
     createMany?: AcceptedProjectCreateManyClientInputEnvelope
     connect?: AcceptedProjectWhereUniqueInput | AcceptedProjectWhereUniqueInput[]
+  }
+
+  export type CompletedPojectUncheckedCreateNestedManyWithoutClientInput = {
+    create?: XOR<CompletedPojectCreateWithoutClientInput, CompletedPojectUncheckedCreateWithoutClientInput> | CompletedPojectCreateWithoutClientInput[] | CompletedPojectUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: CompletedPojectCreateOrConnectWithoutClientInput | CompletedPojectCreateOrConnectWithoutClientInput[]
+    createMany?: CompletedPojectCreateManyClientInputEnvelope
+    connect?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -12474,6 +14021,20 @@ export namespace Prisma {
     deleteMany?: AcceptedProjectScalarWhereInput | AcceptedProjectScalarWhereInput[]
   }
 
+  export type CompletedPojectUpdateManyWithoutClientNestedInput = {
+    create?: XOR<CompletedPojectCreateWithoutClientInput, CompletedPojectUncheckedCreateWithoutClientInput> | CompletedPojectCreateWithoutClientInput[] | CompletedPojectUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: CompletedPojectCreateOrConnectWithoutClientInput | CompletedPojectCreateOrConnectWithoutClientInput[]
+    upsert?: CompletedPojectUpsertWithWhereUniqueWithoutClientInput | CompletedPojectUpsertWithWhereUniqueWithoutClientInput[]
+    createMany?: CompletedPojectCreateManyClientInputEnvelope
+    set?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    disconnect?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    delete?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    connect?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    update?: CompletedPojectUpdateWithWhereUniqueWithoutClientInput | CompletedPojectUpdateWithWhereUniqueWithoutClientInput[]
+    updateMany?: CompletedPojectUpdateManyWithWhereWithoutClientInput | CompletedPojectUpdateManyWithWhereWithoutClientInput[]
+    deleteMany?: CompletedPojectScalarWhereInput | CompletedPojectScalarWhereInput[]
+  }
+
   export type JobSchemaUncheckedUpdateManyWithoutClientNestedInput = {
     create?: XOR<JobSchemaCreateWithoutClientInput, JobSchemaUncheckedCreateWithoutClientInput> | JobSchemaCreateWithoutClientInput[] | JobSchemaUncheckedCreateWithoutClientInput[]
     connectOrCreate?: JobSchemaCreateOrConnectWithoutClientInput | JobSchemaCreateOrConnectWithoutClientInput[]
@@ -12514,6 +14075,20 @@ export namespace Prisma {
     update?: AcceptedProjectUpdateWithWhereUniqueWithoutClientInput | AcceptedProjectUpdateWithWhereUniqueWithoutClientInput[]
     updateMany?: AcceptedProjectUpdateManyWithWhereWithoutClientInput | AcceptedProjectUpdateManyWithWhereWithoutClientInput[]
     deleteMany?: AcceptedProjectScalarWhereInput | AcceptedProjectScalarWhereInput[]
+  }
+
+  export type CompletedPojectUncheckedUpdateManyWithoutClientNestedInput = {
+    create?: XOR<CompletedPojectCreateWithoutClientInput, CompletedPojectUncheckedCreateWithoutClientInput> | CompletedPojectCreateWithoutClientInput[] | CompletedPojectUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: CompletedPojectCreateOrConnectWithoutClientInput | CompletedPojectCreateOrConnectWithoutClientInput[]
+    upsert?: CompletedPojectUpsertWithWhereUniqueWithoutClientInput | CompletedPojectUpsertWithWhereUniqueWithoutClientInput[]
+    createMany?: CompletedPojectCreateManyClientInputEnvelope
+    set?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    disconnect?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    delete?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    connect?: CompletedPojectWhereUniqueInput | CompletedPojectWhereUniqueInput[]
+    update?: CompletedPojectUpdateWithWhereUniqueWithoutClientInput | CompletedPojectUpdateWithWhereUniqueWithoutClientInput[]
+    updateMany?: CompletedPojectUpdateManyWithWhereWithoutClientInput | CompletedPojectUpdateManyWithWhereWithoutClientInput[]
+    deleteMany?: CompletedPojectScalarWhereInput | CompletedPojectScalarWhereInput[]
   }
 
   export type ProfileSchemaCreateProjectLinkInput = {
@@ -12721,6 +14296,34 @@ export namespace Prisma {
     update?: XOR<XOR<UserSchemaUpdateToOneWithWhereWithoutAcceptedProjectInput, UserSchemaUpdateWithoutAcceptedProjectInput>, UserSchemaUncheckedUpdateWithoutAcceptedProjectInput>
   }
 
+  export type ClientSchemaCreateNestedOneWithoutCompletedPojectInput = {
+    create?: XOR<ClientSchemaCreateWithoutCompletedPojectInput, ClientSchemaUncheckedCreateWithoutCompletedPojectInput>
+    connectOrCreate?: ClientSchemaCreateOrConnectWithoutCompletedPojectInput
+    connect?: ClientSchemaWhereUniqueInput
+  }
+
+  export type UserSchemaCreateNestedOneWithoutCompletedPojectInput = {
+    create?: XOR<UserSchemaCreateWithoutCompletedPojectInput, UserSchemaUncheckedCreateWithoutCompletedPojectInput>
+    connectOrCreate?: UserSchemaCreateOrConnectWithoutCompletedPojectInput
+    connect?: UserSchemaWhereUniqueInput
+  }
+
+  export type ClientSchemaUpdateOneRequiredWithoutCompletedPojectNestedInput = {
+    create?: XOR<ClientSchemaCreateWithoutCompletedPojectInput, ClientSchemaUncheckedCreateWithoutCompletedPojectInput>
+    connectOrCreate?: ClientSchemaCreateOrConnectWithoutCompletedPojectInput
+    upsert?: ClientSchemaUpsertWithoutCompletedPojectInput
+    connect?: ClientSchemaWhereUniqueInput
+    update?: XOR<XOR<ClientSchemaUpdateToOneWithWhereWithoutCompletedPojectInput, ClientSchemaUpdateWithoutCompletedPojectInput>, ClientSchemaUncheckedUpdateWithoutCompletedPojectInput>
+  }
+
+  export type UserSchemaUpdateOneRequiredWithoutCompletedPojectNestedInput = {
+    create?: XOR<UserSchemaCreateWithoutCompletedPojectInput, UserSchemaUncheckedCreateWithoutCompletedPojectInput>
+    connectOrCreate?: UserSchemaCreateOrConnectWithoutCompletedPojectInput
+    upsert?: UserSchemaUpsertWithoutCompletedPojectInput
+    connect?: UserSchemaWhereUniqueInput
+    update?: XOR<XOR<UserSchemaUpdateToOneWithWhereWithoutCompletedPojectInput, UserSchemaUpdateWithoutCompletedPojectInput>, UserSchemaUncheckedUpdateWithoutCompletedPojectInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -12903,6 +14506,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CompletedPojectCreateWithoutUserInput = {
+    project_title: string
+    budget: string
+    timeline: string
+    client: ClientSchemaCreateNestedOneWithoutCompletedPojectInput
+  }
+
+  export type CompletedPojectUncheckedCreateWithoutUserInput = {
+    completedprojectid?: number
+    client_id: number
+    project_title: string
+    budget: string
+    timeline: string
+  }
+
+  export type CompletedPojectCreateOrConnectWithoutUserInput = {
+    where: CompletedPojectWhereUniqueInput
+    create: XOR<CompletedPojectCreateWithoutUserInput, CompletedPojectUncheckedCreateWithoutUserInput>
+  }
+
+  export type CompletedPojectCreateManyUserInputEnvelope = {
+    data: CompletedPojectCreateManyUserInput | CompletedPojectCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProfileSchemaUpsertWithoutUserInput = {
     update: XOR<ProfileSchemaUpdateWithoutUserInput, ProfileSchemaUncheckedUpdateWithoutUserInput>
     create: XOR<ProfileSchemaCreateWithoutUserInput, ProfileSchemaUncheckedCreateWithoutUserInput>
@@ -12982,6 +14610,34 @@ export namespace Prisma {
     project_title?: StringFilter<"AcceptedProject"> | string
     budget?: StringFilter<"AcceptedProject"> | string
     timeline?: StringFilter<"AcceptedProject"> | string
+  }
+
+  export type CompletedPojectUpsertWithWhereUniqueWithoutUserInput = {
+    where: CompletedPojectWhereUniqueInput
+    update: XOR<CompletedPojectUpdateWithoutUserInput, CompletedPojectUncheckedUpdateWithoutUserInput>
+    create: XOR<CompletedPojectCreateWithoutUserInput, CompletedPojectUncheckedCreateWithoutUserInput>
+  }
+
+  export type CompletedPojectUpdateWithWhereUniqueWithoutUserInput = {
+    where: CompletedPojectWhereUniqueInput
+    data: XOR<CompletedPojectUpdateWithoutUserInput, CompletedPojectUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CompletedPojectUpdateManyWithWhereWithoutUserInput = {
+    where: CompletedPojectScalarWhereInput
+    data: XOR<CompletedPojectUpdateManyMutationInput, CompletedPojectUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type CompletedPojectScalarWhereInput = {
+    AND?: CompletedPojectScalarWhereInput | CompletedPojectScalarWhereInput[]
+    OR?: CompletedPojectScalarWhereInput[]
+    NOT?: CompletedPojectScalarWhereInput | CompletedPojectScalarWhereInput[]
+    completedprojectid?: IntFilter<"CompletedPoject"> | number
+    client_id?: IntFilter<"CompletedPoject"> | number
+    userid?: IntFilter<"CompletedPoject"> | number
+    project_title?: StringFilter<"CompletedPoject"> | string
+    budget?: StringFilter<"CompletedPoject"> | string
+    timeline?: StringFilter<"CompletedPoject"> | string
   }
 
   export type JobSchemaCreateWithoutClientInput = {
@@ -13064,6 +14720,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CompletedPojectCreateWithoutClientInput = {
+    project_title: string
+    budget: string
+    timeline: string
+    user: UserSchemaCreateNestedOneWithoutCompletedPojectInput
+  }
+
+  export type CompletedPojectUncheckedCreateWithoutClientInput = {
+    completedprojectid?: number
+    userid: number
+    project_title: string
+    budget: string
+    timeline: string
+  }
+
+  export type CompletedPojectCreateOrConnectWithoutClientInput = {
+    where: CompletedPojectWhereUniqueInput
+    create: XOR<CompletedPojectCreateWithoutClientInput, CompletedPojectUncheckedCreateWithoutClientInput>
+  }
+
+  export type CompletedPojectCreateManyClientInputEnvelope = {
+    data: CompletedPojectCreateManyClientInput | CompletedPojectCreateManyClientInput[]
+    skipDuplicates?: boolean
+  }
+
   export type JobSchemaUpsertWithWhereUniqueWithoutClientInput = {
     where: JobSchemaWhereUniqueInput
     update: XOR<JobSchemaUpdateWithoutClientInput, JobSchemaUncheckedUpdateWithoutClientInput>
@@ -13124,6 +14805,22 @@ export namespace Prisma {
     data: XOR<AcceptedProjectUpdateManyMutationInput, AcceptedProjectUncheckedUpdateManyWithoutClientInput>
   }
 
+  export type CompletedPojectUpsertWithWhereUniqueWithoutClientInput = {
+    where: CompletedPojectWhereUniqueInput
+    update: XOR<CompletedPojectUpdateWithoutClientInput, CompletedPojectUncheckedUpdateWithoutClientInput>
+    create: XOR<CompletedPojectCreateWithoutClientInput, CompletedPojectUncheckedCreateWithoutClientInput>
+  }
+
+  export type CompletedPojectUpdateWithWhereUniqueWithoutClientInput = {
+    where: CompletedPojectWhereUniqueInput
+    data: XOR<CompletedPojectUpdateWithoutClientInput, CompletedPojectUncheckedUpdateWithoutClientInput>
+  }
+
+  export type CompletedPojectUpdateManyWithWhereWithoutClientInput = {
+    where: CompletedPojectScalarWhereInput
+    data: XOR<CompletedPojectUpdateManyMutationInput, CompletedPojectUncheckedUpdateManyWithoutClientInput>
+  }
+
   export type UserSchemaCreateWithoutProfileInput = {
     Name: string
     Email: string
@@ -13133,6 +14830,7 @@ export namespace Prisma {
     Skills?: UserSchemaCreateSkillsInput | string[]
     ApplyJob?: ApplyJobCreateNestedManyWithoutUserInput
     AcceptedProject?: AcceptedProjectCreateNestedManyWithoutUserInput
+    CompletedPoject?: CompletedPojectCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaUncheckedCreateWithoutProfileInput = {
@@ -13145,6 +14843,7 @@ export namespace Prisma {
     Skills?: UserSchemaCreateSkillsInput | string[]
     ApplyJob?: ApplyJobUncheckedCreateNestedManyWithoutUserInput
     AcceptedProject?: AcceptedProjectUncheckedCreateNestedManyWithoutUserInput
+    CompletedPoject?: CompletedPojectUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaCreateOrConnectWithoutProfileInput = {
@@ -13200,6 +14899,7 @@ export namespace Prisma {
     Skills?: UserSchemaUpdateSkillsInput | string[]
     ApplyJob?: ApplyJobUpdateManyWithoutUserNestedInput
     AcceptedProject?: AcceptedProjectUpdateManyWithoutUserNestedInput
+    CompletedPoject?: CompletedPojectUpdateManyWithoutUserNestedInput
   }
 
   export type UserSchemaUncheckedUpdateWithoutProfileInput = {
@@ -13212,6 +14912,7 @@ export namespace Prisma {
     Skills?: UserSchemaUpdateSkillsInput | string[]
     ApplyJob?: ApplyJobUncheckedUpdateManyWithoutUserNestedInput
     AcceptedProject?: AcceptedProjectUncheckedUpdateManyWithoutUserNestedInput
+    CompletedPoject?: CompletedPojectUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ApplyJobUpsertWithWhereUniqueWithoutProfileInput = {
@@ -13237,6 +14938,7 @@ export namespace Prisma {
     Organization?: string | null
     ApplyJobs?: ApplyJobCreateNestedManyWithoutClientInput
     AcceptedProject?: AcceptedProjectCreateNestedManyWithoutClientInput
+    CompletedPoject?: CompletedPojectCreateNestedManyWithoutClientInput
   }
 
   export type ClientSchemaUncheckedCreateWithoutJobschemaInput = {
@@ -13247,6 +14949,7 @@ export namespace Prisma {
     Organization?: string | null
     ApplyJobs?: ApplyJobUncheckedCreateNestedManyWithoutClientInput
     AcceptedProject?: AcceptedProjectUncheckedCreateNestedManyWithoutClientInput
+    CompletedPoject?: CompletedPojectUncheckedCreateNestedManyWithoutClientInput
   }
 
   export type ClientSchemaCreateOrConnectWithoutJobschemaInput = {
@@ -13300,6 +15003,7 @@ export namespace Prisma {
     Organization?: NullableStringFieldUpdateOperationsInput | string | null
     ApplyJobs?: ApplyJobUpdateManyWithoutClientNestedInput
     AcceptedProject?: AcceptedProjectUpdateManyWithoutClientNestedInput
+    CompletedPoject?: CompletedPojectUpdateManyWithoutClientNestedInput
   }
 
   export type ClientSchemaUncheckedUpdateWithoutJobschemaInput = {
@@ -13310,6 +15014,7 @@ export namespace Prisma {
     Organization?: NullableStringFieldUpdateOperationsInput | string | null
     ApplyJobs?: ApplyJobUncheckedUpdateManyWithoutClientNestedInput
     AcceptedProject?: AcceptedProjectUncheckedUpdateManyWithoutClientNestedInput
+    CompletedPoject?: CompletedPojectUncheckedUpdateManyWithoutClientNestedInput
   }
 
   export type ApplyJobUpsertWithWhereUniqueWithoutJobschemaInput = {
@@ -13337,6 +15042,7 @@ export namespace Prisma {
     Skills?: UserSchemaCreateSkillsInput | string[]
     Profile?: ProfileSchemaCreateNestedOneWithoutUserInput
     AcceptedProject?: AcceptedProjectCreateNestedManyWithoutUserInput
+    CompletedPoject?: CompletedPojectCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaUncheckedCreateWithoutApplyJobInput = {
@@ -13349,6 +15055,7 @@ export namespace Prisma {
     Skills?: UserSchemaCreateSkillsInput | string[]
     Profile?: ProfileSchemaUncheckedCreateNestedOneWithoutUserInput
     AcceptedProject?: AcceptedProjectUncheckedCreateNestedManyWithoutUserInput
+    CompletedPoject?: CompletedPojectUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaCreateOrConnectWithoutApplyJobInput = {
@@ -13363,6 +15070,7 @@ export namespace Prisma {
     Organization?: string | null
     jobschema?: JobSchemaCreateNestedManyWithoutClientInput
     AcceptedProject?: AcceptedProjectCreateNestedManyWithoutClientInput
+    CompletedPoject?: CompletedPojectCreateNestedManyWithoutClientInput
   }
 
   export type ClientSchemaUncheckedCreateWithoutApplyJobsInput = {
@@ -13373,6 +15081,7 @@ export namespace Prisma {
     Organization?: string | null
     jobschema?: JobSchemaUncheckedCreateNestedManyWithoutClientInput
     AcceptedProject?: AcceptedProjectUncheckedCreateNestedManyWithoutClientInput
+    CompletedPoject?: CompletedPojectUncheckedCreateNestedManyWithoutClientInput
   }
 
   export type ClientSchemaCreateOrConnectWithoutApplyJobsInput = {
@@ -13440,6 +15149,7 @@ export namespace Prisma {
     Skills?: UserSchemaUpdateSkillsInput | string[]
     Profile?: ProfileSchemaUpdateOneWithoutUserNestedInput
     AcceptedProject?: AcceptedProjectUpdateManyWithoutUserNestedInput
+    CompletedPoject?: CompletedPojectUpdateManyWithoutUserNestedInput
   }
 
   export type UserSchemaUncheckedUpdateWithoutApplyJobInput = {
@@ -13452,6 +15162,7 @@ export namespace Prisma {
     Skills?: UserSchemaUpdateSkillsInput | string[]
     Profile?: ProfileSchemaUncheckedUpdateOneWithoutUserNestedInput
     AcceptedProject?: AcceptedProjectUncheckedUpdateManyWithoutUserNestedInput
+    CompletedPoject?: CompletedPojectUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ClientSchemaUpsertWithoutApplyJobsInput = {
@@ -13472,6 +15183,7 @@ export namespace Prisma {
     Organization?: NullableStringFieldUpdateOperationsInput | string | null
     jobschema?: JobSchemaUpdateManyWithoutClientNestedInput
     AcceptedProject?: AcceptedProjectUpdateManyWithoutClientNestedInput
+    CompletedPoject?: CompletedPojectUpdateManyWithoutClientNestedInput
   }
 
   export type ClientSchemaUncheckedUpdateWithoutApplyJobsInput = {
@@ -13482,6 +15194,7 @@ export namespace Prisma {
     Organization?: NullableStringFieldUpdateOperationsInput | string | null
     jobschema?: JobSchemaUncheckedUpdateManyWithoutClientNestedInput
     AcceptedProject?: AcceptedProjectUncheckedUpdateManyWithoutClientNestedInput
+    CompletedPoject?: CompletedPojectUncheckedUpdateManyWithoutClientNestedInput
   }
 
   export type ProfileSchemaUpsertWithoutApplyJobsInput = {
@@ -13543,6 +15256,7 @@ export namespace Prisma {
     Organization?: string | null
     jobschema?: JobSchemaCreateNestedManyWithoutClientInput
     ApplyJobs?: ApplyJobCreateNestedManyWithoutClientInput
+    CompletedPoject?: CompletedPojectCreateNestedManyWithoutClientInput
   }
 
   export type ClientSchemaUncheckedCreateWithoutAcceptedProjectInput = {
@@ -13553,6 +15267,7 @@ export namespace Prisma {
     Organization?: string | null
     jobschema?: JobSchemaUncheckedCreateNestedManyWithoutClientInput
     ApplyJobs?: ApplyJobUncheckedCreateNestedManyWithoutClientInput
+    CompletedPoject?: CompletedPojectUncheckedCreateNestedManyWithoutClientInput
   }
 
   export type ClientSchemaCreateOrConnectWithoutAcceptedProjectInput = {
@@ -13569,6 +15284,7 @@ export namespace Prisma {
     Skills?: UserSchemaCreateSkillsInput | string[]
     Profile?: ProfileSchemaCreateNestedOneWithoutUserInput
     ApplyJob?: ApplyJobCreateNestedManyWithoutUserInput
+    CompletedPoject?: CompletedPojectCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaUncheckedCreateWithoutAcceptedProjectInput = {
@@ -13581,6 +15297,7 @@ export namespace Prisma {
     Skills?: UserSchemaCreateSkillsInput | string[]
     Profile?: ProfileSchemaUncheckedCreateNestedOneWithoutUserInput
     ApplyJob?: ApplyJobUncheckedCreateNestedManyWithoutUserInput
+    CompletedPoject?: CompletedPojectUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaCreateOrConnectWithoutAcceptedProjectInput = {
@@ -13606,6 +15323,7 @@ export namespace Prisma {
     Organization?: NullableStringFieldUpdateOperationsInput | string | null
     jobschema?: JobSchemaUpdateManyWithoutClientNestedInput
     ApplyJobs?: ApplyJobUpdateManyWithoutClientNestedInput
+    CompletedPoject?: CompletedPojectUpdateManyWithoutClientNestedInput
   }
 
   export type ClientSchemaUncheckedUpdateWithoutAcceptedProjectInput = {
@@ -13616,6 +15334,7 @@ export namespace Prisma {
     Organization?: NullableStringFieldUpdateOperationsInput | string | null
     jobschema?: JobSchemaUncheckedUpdateManyWithoutClientNestedInput
     ApplyJobs?: ApplyJobUncheckedUpdateManyWithoutClientNestedInput
+    CompletedPoject?: CompletedPojectUncheckedUpdateManyWithoutClientNestedInput
   }
 
   export type UserSchemaUpsertWithoutAcceptedProjectInput = {
@@ -13638,6 +15357,7 @@ export namespace Prisma {
     Skills?: UserSchemaUpdateSkillsInput | string[]
     Profile?: ProfileSchemaUpdateOneWithoutUserNestedInput
     ApplyJob?: ApplyJobUpdateManyWithoutUserNestedInput
+    CompletedPoject?: CompletedPojectUpdateManyWithoutUserNestedInput
   }
 
   export type UserSchemaUncheckedUpdateWithoutAcceptedProjectInput = {
@@ -13650,6 +15370,131 @@ export namespace Prisma {
     Skills?: UserSchemaUpdateSkillsInput | string[]
     Profile?: ProfileSchemaUncheckedUpdateOneWithoutUserNestedInput
     ApplyJob?: ApplyJobUncheckedUpdateManyWithoutUserNestedInput
+    CompletedPoject?: CompletedPojectUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ClientSchemaCreateWithoutCompletedPojectInput = {
+    client_name: string
+    Email: string
+    Password: string
+    Organization?: string | null
+    jobschema?: JobSchemaCreateNestedManyWithoutClientInput
+    ApplyJobs?: ApplyJobCreateNestedManyWithoutClientInput
+    AcceptedProject?: AcceptedProjectCreateNestedManyWithoutClientInput
+  }
+
+  export type ClientSchemaUncheckedCreateWithoutCompletedPojectInput = {
+    client_id?: number
+    client_name: string
+    Email: string
+    Password: string
+    Organization?: string | null
+    jobschema?: JobSchemaUncheckedCreateNestedManyWithoutClientInput
+    ApplyJobs?: ApplyJobUncheckedCreateNestedManyWithoutClientInput
+    AcceptedProject?: AcceptedProjectUncheckedCreateNestedManyWithoutClientInput
+  }
+
+  export type ClientSchemaCreateOrConnectWithoutCompletedPojectInput = {
+    where: ClientSchemaWhereUniqueInput
+    create: XOR<ClientSchemaCreateWithoutCompletedPojectInput, ClientSchemaUncheckedCreateWithoutCompletedPojectInput>
+  }
+
+  export type UserSchemaCreateWithoutCompletedPojectInput = {
+    Name: string
+    Email: string
+    Password: string
+    Experience: number
+    Rating: number
+    Skills?: UserSchemaCreateSkillsInput | string[]
+    Profile?: ProfileSchemaCreateNestedOneWithoutUserInput
+    ApplyJob?: ApplyJobCreateNestedManyWithoutUserInput
+    AcceptedProject?: AcceptedProjectCreateNestedManyWithoutUserInput
+  }
+
+  export type UserSchemaUncheckedCreateWithoutCompletedPojectInput = {
+    user_id?: number
+    Name: string
+    Email: string
+    Password: string
+    Experience: number
+    Rating: number
+    Skills?: UserSchemaCreateSkillsInput | string[]
+    Profile?: ProfileSchemaUncheckedCreateNestedOneWithoutUserInput
+    ApplyJob?: ApplyJobUncheckedCreateNestedManyWithoutUserInput
+    AcceptedProject?: AcceptedProjectUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserSchemaCreateOrConnectWithoutCompletedPojectInput = {
+    where: UserSchemaWhereUniqueInput
+    create: XOR<UserSchemaCreateWithoutCompletedPojectInput, UserSchemaUncheckedCreateWithoutCompletedPojectInput>
+  }
+
+  export type ClientSchemaUpsertWithoutCompletedPojectInput = {
+    update: XOR<ClientSchemaUpdateWithoutCompletedPojectInput, ClientSchemaUncheckedUpdateWithoutCompletedPojectInput>
+    create: XOR<ClientSchemaCreateWithoutCompletedPojectInput, ClientSchemaUncheckedCreateWithoutCompletedPojectInput>
+    where?: ClientSchemaWhereInput
+  }
+
+  export type ClientSchemaUpdateToOneWithWhereWithoutCompletedPojectInput = {
+    where?: ClientSchemaWhereInput
+    data: XOR<ClientSchemaUpdateWithoutCompletedPojectInput, ClientSchemaUncheckedUpdateWithoutCompletedPojectInput>
+  }
+
+  export type ClientSchemaUpdateWithoutCompletedPojectInput = {
+    client_name?: StringFieldUpdateOperationsInput | string
+    Email?: StringFieldUpdateOperationsInput | string
+    Password?: StringFieldUpdateOperationsInput | string
+    Organization?: NullableStringFieldUpdateOperationsInput | string | null
+    jobschema?: JobSchemaUpdateManyWithoutClientNestedInput
+    ApplyJobs?: ApplyJobUpdateManyWithoutClientNestedInput
+    AcceptedProject?: AcceptedProjectUpdateManyWithoutClientNestedInput
+  }
+
+  export type ClientSchemaUncheckedUpdateWithoutCompletedPojectInput = {
+    client_id?: IntFieldUpdateOperationsInput | number
+    client_name?: StringFieldUpdateOperationsInput | string
+    Email?: StringFieldUpdateOperationsInput | string
+    Password?: StringFieldUpdateOperationsInput | string
+    Organization?: NullableStringFieldUpdateOperationsInput | string | null
+    jobschema?: JobSchemaUncheckedUpdateManyWithoutClientNestedInput
+    ApplyJobs?: ApplyJobUncheckedUpdateManyWithoutClientNestedInput
+    AcceptedProject?: AcceptedProjectUncheckedUpdateManyWithoutClientNestedInput
+  }
+
+  export type UserSchemaUpsertWithoutCompletedPojectInput = {
+    update: XOR<UserSchemaUpdateWithoutCompletedPojectInput, UserSchemaUncheckedUpdateWithoutCompletedPojectInput>
+    create: XOR<UserSchemaCreateWithoutCompletedPojectInput, UserSchemaUncheckedCreateWithoutCompletedPojectInput>
+    where?: UserSchemaWhereInput
+  }
+
+  export type UserSchemaUpdateToOneWithWhereWithoutCompletedPojectInput = {
+    where?: UserSchemaWhereInput
+    data: XOR<UserSchemaUpdateWithoutCompletedPojectInput, UserSchemaUncheckedUpdateWithoutCompletedPojectInput>
+  }
+
+  export type UserSchemaUpdateWithoutCompletedPojectInput = {
+    Name?: StringFieldUpdateOperationsInput | string
+    Email?: StringFieldUpdateOperationsInput | string
+    Password?: StringFieldUpdateOperationsInput | string
+    Experience?: IntFieldUpdateOperationsInput | number
+    Rating?: IntFieldUpdateOperationsInput | number
+    Skills?: UserSchemaUpdateSkillsInput | string[]
+    Profile?: ProfileSchemaUpdateOneWithoutUserNestedInput
+    ApplyJob?: ApplyJobUpdateManyWithoutUserNestedInput
+    AcceptedProject?: AcceptedProjectUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserSchemaUncheckedUpdateWithoutCompletedPojectInput = {
+    user_id?: IntFieldUpdateOperationsInput | number
+    Name?: StringFieldUpdateOperationsInput | string
+    Email?: StringFieldUpdateOperationsInput | string
+    Password?: StringFieldUpdateOperationsInput | string
+    Experience?: IntFieldUpdateOperationsInput | number
+    Rating?: IntFieldUpdateOperationsInput | number
+    Skills?: UserSchemaUpdateSkillsInput | string[]
+    Profile?: ProfileSchemaUncheckedUpdateOneWithoutUserNestedInput
+    ApplyJob?: ApplyJobUncheckedUpdateManyWithoutUserNestedInput
+    AcceptedProject?: AcceptedProjectUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ApplyJobCreateManyUserInput = {
@@ -13663,6 +15508,14 @@ export namespace Prisma {
 
   export type AcceptedProjectCreateManyUserInput = {
     aaplyproject?: number
+    client_id: number
+    project_title: string
+    budget: string
+    timeline: string
+  }
+
+  export type CompletedPojectCreateManyUserInput = {
+    completedprojectid?: number
     client_id: number
     project_title: string
     budget: string
@@ -13719,6 +15572,29 @@ export namespace Prisma {
     timeline?: StringFieldUpdateOperationsInput | string
   }
 
+  export type CompletedPojectUpdateWithoutUserInput = {
+    project_title?: StringFieldUpdateOperationsInput | string
+    budget?: StringFieldUpdateOperationsInput | string
+    timeline?: StringFieldUpdateOperationsInput | string
+    client?: ClientSchemaUpdateOneRequiredWithoutCompletedPojectNestedInput
+  }
+
+  export type CompletedPojectUncheckedUpdateWithoutUserInput = {
+    completedprojectid?: IntFieldUpdateOperationsInput | number
+    client_id?: IntFieldUpdateOperationsInput | number
+    project_title?: StringFieldUpdateOperationsInput | string
+    budget?: StringFieldUpdateOperationsInput | string
+    timeline?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CompletedPojectUncheckedUpdateManyWithoutUserInput = {
+    completedprojectid?: IntFieldUpdateOperationsInput | number
+    client_id?: IntFieldUpdateOperationsInput | number
+    project_title?: StringFieldUpdateOperationsInput | string
+    budget?: StringFieldUpdateOperationsInput | string
+    timeline?: StringFieldUpdateOperationsInput | string
+  }
+
   export type JobSchemaCreateManyClientInput = {
     job_id?: number
     Job_titile: string
@@ -13738,6 +15614,14 @@ export namespace Prisma {
 
   export type AcceptedProjectCreateManyClientInput = {
     aaplyproject?: number
+    userid: number
+    project_title: string
+    budget: string
+    timeline: string
+  }
+
+  export type CompletedPojectCreateManyClientInput = {
+    completedprojectid?: number
     userid: number
     project_title: string
     budget: string
@@ -13813,6 +15697,29 @@ export namespace Prisma {
 
   export type AcceptedProjectUncheckedUpdateManyWithoutClientInput = {
     aaplyproject?: IntFieldUpdateOperationsInput | number
+    userid?: IntFieldUpdateOperationsInput | number
+    project_title?: StringFieldUpdateOperationsInput | string
+    budget?: StringFieldUpdateOperationsInput | string
+    timeline?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CompletedPojectUpdateWithoutClientInput = {
+    project_title?: StringFieldUpdateOperationsInput | string
+    budget?: StringFieldUpdateOperationsInput | string
+    timeline?: StringFieldUpdateOperationsInput | string
+    user?: UserSchemaUpdateOneRequiredWithoutCompletedPojectNestedInput
+  }
+
+  export type CompletedPojectUncheckedUpdateWithoutClientInput = {
+    completedprojectid?: IntFieldUpdateOperationsInput | number
+    userid?: IntFieldUpdateOperationsInput | number
+    project_title?: StringFieldUpdateOperationsInput | string
+    budget?: StringFieldUpdateOperationsInput | string
+    timeline?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CompletedPojectUncheckedUpdateManyWithoutClientInput = {
+    completedprojectid?: IntFieldUpdateOperationsInput | number
     userid?: IntFieldUpdateOperationsInput | number
     project_title?: StringFieldUpdateOperationsInput | string
     budget?: StringFieldUpdateOperationsInput | string
