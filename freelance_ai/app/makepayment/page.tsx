@@ -5,10 +5,13 @@ import CheckUserUniqueId from "../actions/CheckUserUniqueId";
 import { P2Pvalidation } from '../zod/validation'
 import PaymentToFreelancer from "../actions/PaymenttoFreelancer";
 import { useRouter } from "next/navigation";
+import { useStore } from "../zustand/Store/useStore";
+import { Deletedproject } from "../actions/Completed_Projected";
 export default function () {
     const [clientuniqueid, Setclientuniqueid] = useState('');
     const [freelanceruniqueid, Setfreelanceruniqueid] = useState('');
     const [amount, Setamount] = useState('');
+    const { projectidtodelete } = useStore();
     const { data: session } = useSession();
     const email = session?.user?.email
     const route = useRouter();
@@ -24,15 +27,24 @@ export default function () {
                 alert("Please enter all the fields");
                 return;
             }
-            if (clientuniqueid==freelanceruniqueid){
+            if (clientuniqueid == freelanceruniqueid) {
                 alert("Both the unique id's are same");
                 return;
             }
             const data = await PaymentToFreelancer(clientuniqueid, freelaneruniqueid, amount);
             if (data == 1) {
                 alert("Transaction is done from the client to freelancer");
-                route.push('/homepage');
-                return;
+                console.log("id is", projectidtodelete);
+                const projectcompleted = await Deletedproject(projectidtodelete);
+                if (projectcompleted?.status == 1) {
+                    alert(projectcompleted.message)
+                    route.push('/homepage');
+                    return;
+                }
+                else {
+                    alert("Something went wrong when deleting completed project");
+                    return;
+                }
             }
         }
         catch (err: any) {

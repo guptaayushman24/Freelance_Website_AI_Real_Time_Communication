@@ -27,7 +27,7 @@ model UserSchema{
   Profile ProfileSchema ?
   ApplyJob ApplyJob[] 
   AcceptedProject AcceptedProject[]
-  CompletedPoject CompletedPoject[]
+  
 }
 
 model ClientSchema{
@@ -39,7 +39,7 @@ model ClientSchema{
   jobschema JobSchema[]
   ApplyJobs ApplyJob[]
   AcceptedProject AcceptedProject[]
-  CompletedPoject CompletedPoject[]
+  
    
 }
 
@@ -83,8 +83,8 @@ model AcceptedProject{
   aaplyproject Int @id @default(autoincrement())
   client_id Int
   userid Int
-  client ClientSchema @relation(fields: [client_id],references: [client_id])
-  user UserSchema @relation(fields: [userid],references: [user_id])
+   client ClientSchema @relation(fields: [client_id],references: [client_id])
+   user UserSchema @relation(fields: [userid],references: [user_id])
   project_title String
   budget String
   timeline String
@@ -112,11 +112,9 @@ model WalletSchema{
 model CompletedPoject{
   completedprojectid Int @id @default(autoincrement())
   client_id Int
-  userid Int
-  client ClientSchema @relation(fields: [client_id],references: [client_id])
-  user UserSchema @relation(fields: [userid],references: [user_id])
+  useremail String
   project_title String
   budget String
   timeline String
-  @@unique([client_id,userid,project_title])
+ 
 }

@@ -190,7 +190,7 @@ exports.Prisma.WalletSchemaScalarFieldEnum = {
 exports.Prisma.CompletedPojectScalarFieldEnum = {
   completedprojectid: 'completedprojectid',
   client_id: 'client_id',
-  userid: 'userid',
+  useremail: 'useremail',
   project_title: 'project_title',
   budget: 'budget',
   timeline: 'timeline'

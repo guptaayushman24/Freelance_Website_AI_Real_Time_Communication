@@ -14,9 +14,6 @@ export default function () {
   const { email } = useStore();
   const { role } = useStore();
   async function createWallet(accountnumber: string, amount: string) {
-    console.log("Name", name);
-    console.log("Email", email);
-    console.log("Role", role);
     const { success } = walletvalidation.safeParse({
       name: name,
       email: email,

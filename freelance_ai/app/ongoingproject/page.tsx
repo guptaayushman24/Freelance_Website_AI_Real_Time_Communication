@@ -1,10 +1,11 @@
 'use client'
 import { useSession } from "next-auth/react"
-import { useState, useEffect, useMemo, useRef} from "react";
-import { useStore} from '../zustand/Store/useStore'
+import { useState, useEffect, useMemo, useRef } from "react";
+import { useStore } from '../zustand/Store/useStore'
 import { useRouter } from "next/navigation";
-import {io} from 'socket.io-client'
+import { io } from 'socket.io-client'
 import Ongoingproject from "../actions/Ongoing_Project";
+import { Completedproject } from "../actions/Completed_Projected";
 import ChatBox from '../components/Chat'
 export default function () {
   const { data: session } = useSession();
@@ -12,16 +13,12 @@ export default function () {
   const [acceptbuttonstate, Setacceptbuttonstate] = useState<boolean>(false);
   const [activeindex, Setactiveindex] = useState<number>(-1);
   // const [useremail,Setuseremail] = useState('');
-  const {setuseremail} = useStore();
-  const {setwhichuser} = useStore();
-  const [sendmessage,Setsendmessage] = useState('');
-  const [recievemessage,Setrecievemessage] = useState('');
+  const { setuseremail } = useStore();
+  const { setwhichuser } = useStore();
   const clientid = session?.user?.id;
   const clientemail = session?.user?.email;
   const route = useRouter();
-  const socket = useMemo(()=>io('http://localhost:8001'),[]);
-
-  // Creating Map
+  const socket = useMemo(() => io('http://localhost:8001'), []);
 
   async function allprojectsofclient() {
     if (!clientid) {
@@ -34,17 +31,35 @@ export default function () {
 
   }
 
-  async function startcommunication(index: number,useremail:string) {
+  async function startcommunication(index: number, useremail: string) {
     Setacceptbuttonstate(true);
     Setactiveindex(index);
-    console.log("User email in the ongoing is",useremail);
+    console.log("User email in the ongoing is", useremail);
     setuseremail(useremail);
     setwhichuser(session?.user.whichuser);
   }
+
+  async function completedProject(clientid: number, useremail: string, projecttitle: string, timeline: string, budget: string) {
+    try {
+      const data = await Completedproject(clientid, useremail, projecttitle, timeline, budget);
+      if (data?.status == 1) {
+        alert(data.message);
+        console.log("The project id to delete is", data.id);
+        route.push('/makepayment');
+        return;
+      }
+      alert("Something went wrong in the when saving the data in the db")
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+
+
   useEffect(() => {
     allprojectsofclient();
-    if (clientemail){
-      socket.emit("register-user",clientemail);
+    if (clientemail) {
+      socket.emit("register-user", clientemail);
     }
   }, [])
   return (
@@ -72,6 +87,7 @@ export default function () {
             </div>
             <h3 className="text-gray-700 font-semibold mb-1">Project Title :-  {item?.project_title || 'N/A'}</h3>
             <h3 className="text-gray-700 font-semibold mb-1">Timeline:-  {item?.timeline || 'N/A'}</h3>
+            <h3 className="text-gray-700 font-semibold mb-1">💰 Budget:- {item?.budget}</h3>
           </div>
 
           <div className="flex flex-col gap-[2rem]">
@@ -79,15 +95,16 @@ export default function () {
 
             <button
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-xl shadow-md transition-all duration-200 mt-[2rem]"
-              onClick={() => startcommunication(index,item?.user?.Email)}
+              onClick={() => startcommunication(index, item?.user?.Email)}
             >
               Start Communication
             </button>
 
             <button
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-xl shadow-md transition-all duration-200 mt-[2rem]"
-              onClick={()=>route.push('/makepayment')}
+              className="bg-blue-600 hover:bg-bluine-700 text-white font-semibold py-2 px-6 rounded-xl shadow-md transition-all duration-200 mt-[2rem]"
+              onClick={() => completedProject(clientid, item?.user?.Email, item?.project_title, item?.timeline, item?.budget)}
             >
+
               Make Payment To Freelancer
             </button>
 
