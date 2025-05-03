@@ -26,7 +26,7 @@ export default function RoleBasedDashboard(){
                         <div className="flex flex-row justify-end gap-[2rem] mt-[2.5rem] mr-[1rem]">
                              <button className="bg-white text-red-500 px-4 py-2 rounded" onClick={()=>route.push('/pendingrequest')}>Pending Request</button>
                             <button className="bg-white text-red-500 px-4 py-2 rounded" onClick={()=>route.push('/ongoingproject')}>Client Ongoing Project</button>
-                            <button className="bg-white text-red-500 px-4 py-2 rounded">Client Completed Project</button>
+                            <button className="bg-white text-red-500 px-4 py-2 rounded" onClick={()=>route.push('/clientcompletedproject')}>Client Completed Project</button>
                             <button className="bg-white text-red-500 px-4 py-2 rounded" onClick={()=>{
                                 route.push('/postjob')
                             }}>Post Job</button>
@@ -37,7 +37,7 @@ export default function RoleBasedDashboard(){
                         </div>
                     ) : session?.user.whichuser === 'Job Seeker' ? (
                         <div className="flex flex-row justify-end gap-[2rem] mt-[2.5rem]">
-                            <button className="bg-white text-red-500 px-4 py-2 rounded">User Completed Project</button>
+                            <button className="bg-white text-red-500 px-4 py-2 rounded"onClick={()=>route.push('/usercompletedproject')}>User Completed Project</button>
                             <button className="bg-white text-red-500 px-4 py-2 rounded" onClick={()=>route.push('/userongoingproject')}>User Ongoing Project</button>
                             <button className="bg-white text-red-500 px-4 py-2 rounded" onClick={()=>route.push('/addmoneytowallet')}>Add Money To Wallet</button>
                             <button className="bg-white text-red-500 px-4 py-2 rounded" onClick={()=>route.push('/addmoneytobank')}>Add Money To Bank</button>
