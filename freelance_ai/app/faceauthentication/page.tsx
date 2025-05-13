@@ -4,7 +4,9 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import {useRouter} from 'next/navigation'
 import { signIn } from "next-auth/react"
+import deleteimagesfromfolder from '../actions/Delete_Images_Folder';
 export default function () {
+  const [loading,Setloading] = useState<Boolean>(false);
   const route = useRouter();
   async function captureImage() {
     try {
@@ -28,6 +30,7 @@ export default function () {
   }
 
   async function authenticateUser() {
+    Setloading(true);
     const video = document.getElementById('video') as HTMLVideoElement;
     const canvas = document.getElementById('canvas') as HTMLCanvasElement;
     const contex = canvas.getContext('2d') || null;
@@ -51,12 +54,16 @@ export default function () {
       const result = await response.json();
 
       if (result.user_id === -1 || result.user_id === null) {
+        await deleteimagesfromfolder('D:/Freelance_Project/Face_Detection/DecodedImages');
+        await deleteimagesfromfolder('D:/Freelance_Project/Face_Detection/Imageforauthentication')
         alert("User not found in the database")
         route.push('/')
         return null; // Stop further actions
       }
       else{
          // continue with signIn
+         await deleteimagesfromfolder('D:/Freelance_Project/Face_Detection/DecodedImages');
+         await deleteimagesfromfolder('D:/Freelance_Project/Face_Detection/Imageforauthentication')
       signIn('credentials', {
         userIdFromFaceAuth:result.user_id,
         callbackUrl: '/homepage'
@@ -92,12 +99,22 @@ export default function () {
         ></canvas>
 
 
-        <button
+
+        {
+          loading?(
+            <button className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+             Authenticating User
+            </button>
+          ):(
+             <button
           onClick={authenticateUser}
           className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200"
         >
           Authenticate User
         </button>
+          
+          )
+        }
         
       </div>
     </div>

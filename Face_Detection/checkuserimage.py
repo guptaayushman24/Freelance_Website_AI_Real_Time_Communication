@@ -60,6 +60,8 @@ def checkuserimageisvalid(imagestring, userid):
 
                 if is_match:
                     print(f"✅ Match found! UserID: {userid} | Image: {image_file}")
+                   
+
                     return userid
 
             except Exception as e:
@@ -67,6 +69,7 @@ def checkuserimageisvalid(imagestring, userid):
                 continue
 
         print("❌ No match found with any stored image.")
+        
         return -1
 
     except Exception as e:
