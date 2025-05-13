@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@techstark/opencv-js": "^4.10.0-release.1",
     "axios": "^1.8.4",
     "bcrypt": "^5.1.1",
     "cookies-next": "^5.1.0",
     "dotenv": "^16.4.7",
+    "face-api.js": "^0.22.2",
+    "multer": "^1.4.5-lts.2",
     "next": "15.2.4",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
@@ -30,6 +33,6 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5.8.3"
   }
 }

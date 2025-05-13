@@ -13,6 +13,7 @@ export default function(){
     const {setrole} = useStore();
     const {setname} = useStore();
     const {setemail} = useStore();
+    const {setclientid} = useStore();
     async function insertdataintodb(){
         setLoading(true);
         try{
@@ -27,6 +28,9 @@ export default function(){
          setemail(email);
          alert("User Registered Successfully");
          setLoading(false);
+         if (createnewuser && createnewuser !== -1) {
+            setclientid(createnewuser.user.client_id);
+        }
          router.push('/wallet');
         }
         catch(err){

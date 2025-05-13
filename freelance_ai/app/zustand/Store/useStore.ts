@@ -2,6 +2,8 @@ import { create } from 'zustand'
 interface AppState {
     userid: number,
     setuserid: (id: number) => void
+    clientid:number,
+    setclientid:(clientid:number)=>void,
     client_name: string,
     setclient_name: (client_name: string) => void,
     name: string,
@@ -32,6 +34,8 @@ interface AppState {
 export const useStore = create<AppState>((set) => ({
     userid: 0,
     setuserid: (userid => set({ userid: userid })),
+    clientid:0,
+    setclientid:(clientid=>set({clientid:clientid})),
     client_name: '',
     setclient_name: (client_name => set({ client_name: client_name })),
     name: '',

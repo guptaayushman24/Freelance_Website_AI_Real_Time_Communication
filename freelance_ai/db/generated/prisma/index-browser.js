@@ -196,6 +196,12 @@ exports.Prisma.CompletedPojectScalarFieldEnum = {
   timeline: 'timeline'
 };
 
+exports.Prisma.FaceAuthenticationScalarFieldEnum = {
+  faceauthentication: 'faceauthentication',
+  imagestring: 'imagestring',
+  userid: 'userid'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -221,7 +227,8 @@ exports.Prisma.ModelName = {
   AcceptedProject: 'AcceptedProject',
   BankSchema: 'BankSchema',
   WalletSchema: 'WalletSchema',
-  CompletedPoject: 'CompletedPoject'
+  CompletedPoject: 'CompletedPoject',
+  FaceAuthentication: 'FaceAuthentication'
 };
 
 /**

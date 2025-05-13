@@ -19,9 +19,30 @@ export const  NEXT_AUTH = ({
                 
             },
             async authorize(credentials:any) {
-                const email = credentials.email;
+                // Face Authentication
+
+                if (credentials.userIdFromFaceAuth){
+                    const user = await client.userSchema.findUnique({
+                        where:{
+                            user_id:parseInt(credentials.userIdFromFaceAuth)
+                        }
+                    })
+                    if (!user){
+                        console.log("Hiii why null is comming")
+                        return null;
+                    }
+                    return {
+                        id:user.user_id,
+                        name:user.Name,
+                        email:user.Email,
+                        whichuser:'Job Seeker'
+                    }
+                }
+               
+                    const email = credentials.email;
                 const password = credentials.password;
                 const whichuser = credentials.clientjobseeker
+                
                 if (!email || !password || !whichuser) {
                     throw new Error("Email and Password are user is required");
                   }
@@ -58,9 +79,13 @@ export const  NEXT_AUTH = ({
                         
                     }
                 }
+                
                 else{
                     return null;
                 }
+
+               
+
                 }
                 else if (whichuser=='Client'){
                     const user = await client.clientSchema.findUnique({

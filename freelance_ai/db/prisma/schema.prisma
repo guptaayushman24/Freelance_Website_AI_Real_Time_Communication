@@ -27,7 +27,7 @@ model UserSchema{
   Profile ProfileSchema ?
   ApplyJob ApplyJob[] 
   AcceptedProject AcceptedProject[]
-  
+  FaceAuthentication FaceAuthentication[]
 }
 
 model ClientSchema{
@@ -39,8 +39,6 @@ model ClientSchema{
   jobschema JobSchema[]
   ApplyJobs ApplyJob[]
   AcceptedProject AcceptedProject[]
-  
-   
 }
 
 model ProfileSchema{
@@ -117,4 +115,11 @@ model CompletedPoject{
   budget String
   timeline String
  
+}
+
+model FaceAuthentication{
+  faceauthentication Int @id @default(autoincrement())
+  imagestring String
+  userid Int @unique
+  user UserSchema  @relation(fields: [userid],references:[user_id])
 }

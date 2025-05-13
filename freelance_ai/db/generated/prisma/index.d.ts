@@ -58,6 +58,11 @@ export type WalletSchema = $Result.DefaultSelection<Prisma.$WalletSchemaPayload>
  * 
  */
 export type CompletedPoject = $Result.DefaultSelection<Prisma.$CompletedPojectPayload>
+/**
+ * Model FaceAuthentication
+ * 
+ */
+export type FaceAuthentication = $Result.DefaultSelection<Prisma.$FaceAuthenticationPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -273,6 +278,16 @@ export class PrismaClient<
     * ```
     */
   get completedPoject(): Prisma.CompletedPojectDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.faceAuthentication`: Exposes CRUD operations for the **FaceAuthentication** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FaceAuthentications
+    * const faceAuthentications = await prisma.faceAuthentication.findMany()
+    * ```
+    */
+  get faceAuthentication(): Prisma.FaceAuthenticationDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -721,7 +736,8 @@ export namespace Prisma {
     AcceptedProject: 'AcceptedProject',
     BankSchema: 'BankSchema',
     WalletSchema: 'WalletSchema',
-    CompletedPoject: 'CompletedPoject'
+    CompletedPoject: 'CompletedPoject',
+    FaceAuthentication: 'FaceAuthentication'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -740,7 +756,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "userSchema" | "clientSchema" | "profileSchema" | "jobSchema" | "applyJob" | "acceptedProject" | "bankSchema" | "walletSchema" | "completedPoject"
+      modelProps: "userSchema" | "clientSchema" | "profileSchema" | "jobSchema" | "applyJob" | "acceptedProject" | "bankSchema" | "walletSchema" | "completedPoject" | "faceAuthentication"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1410,6 +1426,80 @@ export namespace Prisma {
           }
         }
       }
+      FaceAuthentication: {
+        payload: Prisma.$FaceAuthenticationPayload<ExtArgs>
+        fields: Prisma.FaceAuthenticationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FaceAuthenticationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAuthenticationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FaceAuthenticationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAuthenticationPayload>
+          }
+          findFirst: {
+            args: Prisma.FaceAuthenticationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAuthenticationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FaceAuthenticationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAuthenticationPayload>
+          }
+          findMany: {
+            args: Prisma.FaceAuthenticationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAuthenticationPayload>[]
+          }
+          create: {
+            args: Prisma.FaceAuthenticationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAuthenticationPayload>
+          }
+          createMany: {
+            args: Prisma.FaceAuthenticationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FaceAuthenticationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAuthenticationPayload>[]
+          }
+          delete: {
+            args: Prisma.FaceAuthenticationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAuthenticationPayload>
+          }
+          update: {
+            args: Prisma.FaceAuthenticationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAuthenticationPayload>
+          }
+          deleteMany: {
+            args: Prisma.FaceAuthenticationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FaceAuthenticationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FaceAuthenticationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAuthenticationPayload>[]
+          }
+          upsert: {
+            args: Prisma.FaceAuthenticationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAuthenticationPayload>
+          }
+          aggregate: {
+            args: Prisma.FaceAuthenticationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFaceAuthentication>
+          }
+          groupBy: {
+            args: Prisma.FaceAuthenticationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FaceAuthenticationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FaceAuthenticationCountArgs<ExtArgs>
+            result: $Utils.Optional<FaceAuthenticationCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1503,6 +1593,7 @@ export namespace Prisma {
     bankSchema?: BankSchemaOmit
     walletSchema?: WalletSchemaOmit
     completedPoject?: CompletedPojectOmit
+    faceAuthentication?: FaceAuthenticationOmit
   }
 
   /* Types for Logging */
@@ -1599,11 +1690,13 @@ export namespace Prisma {
   export type UserSchemaCountOutputType = {
     ApplyJob: number
     AcceptedProject: number
+    FaceAuthentication: number
   }
 
   export type UserSchemaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ApplyJob?: boolean | UserSchemaCountOutputTypeCountApplyJobArgs
     AcceptedProject?: boolean | UserSchemaCountOutputTypeCountAcceptedProjectArgs
+    FaceAuthentication?: boolean | UserSchemaCountOutputTypeCountFaceAuthenticationArgs
   }
 
   // Custom InputTypes
@@ -1629,6 +1722,13 @@ export namespace Prisma {
    */
   export type UserSchemaCountOutputTypeCountAcceptedProjectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AcceptedProjectWhereInput
+  }
+
+  /**
+   * UserSchemaCountOutputType without action
+   */
+  export type UserSchemaCountOutputTypeCountFaceAuthenticationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FaceAuthenticationWhereInput
   }
 
 
@@ -1968,6 +2068,7 @@ export namespace Prisma {
     Profile?: boolean | UserSchema$ProfileArgs<ExtArgs>
     ApplyJob?: boolean | UserSchema$ApplyJobArgs<ExtArgs>
     AcceptedProject?: boolean | UserSchema$AcceptedProjectArgs<ExtArgs>
+    FaceAuthentication?: boolean | UserSchema$FaceAuthenticationArgs<ExtArgs>
     _count?: boolean | UserSchemaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userSchema"]>
 
@@ -2006,6 +2107,7 @@ export namespace Prisma {
     Profile?: boolean | UserSchema$ProfileArgs<ExtArgs>
     ApplyJob?: boolean | UserSchema$ApplyJobArgs<ExtArgs>
     AcceptedProject?: boolean | UserSchema$AcceptedProjectArgs<ExtArgs>
+    FaceAuthentication?: boolean | UserSchema$FaceAuthenticationArgs<ExtArgs>
     _count?: boolean | UserSchemaCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserSchemaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2017,6 +2119,7 @@ export namespace Prisma {
       Profile: Prisma.$ProfileSchemaPayload<ExtArgs> | null
       ApplyJob: Prisma.$ApplyJobPayload<ExtArgs>[]
       AcceptedProject: Prisma.$AcceptedProjectPayload<ExtArgs>[]
+      FaceAuthentication: Prisma.$FaceAuthenticationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       user_id: number
@@ -2423,6 +2526,7 @@ export namespace Prisma {
     Profile<T extends UserSchema$ProfileArgs<ExtArgs> = {}>(args?: Subset<T, UserSchema$ProfileArgs<ExtArgs>>): Prisma__ProfileSchemaClient<$Result.GetResult<Prisma.$ProfileSchemaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     ApplyJob<T extends UserSchema$ApplyJobArgs<ExtArgs> = {}>(args?: Subset<T, UserSchema$ApplyJobArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplyJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     AcceptedProject<T extends UserSchema$AcceptedProjectArgs<ExtArgs> = {}>(args?: Subset<T, UserSchema$AcceptedProjectArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AcceptedProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    FaceAuthentication<T extends UserSchema$FaceAuthenticationArgs<ExtArgs> = {}>(args?: Subset<T, UserSchema$FaceAuthenticationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FaceAuthenticationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2911,6 +3015,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AcceptedProjectScalarFieldEnum | AcceptedProjectScalarFieldEnum[]
+  }
+
+  /**
+   * UserSchema.FaceAuthentication
+   */
+  export type UserSchema$FaceAuthenticationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationInclude<ExtArgs> | null
+    where?: FaceAuthenticationWhereInput
+    orderBy?: FaceAuthenticationOrderByWithRelationInput | FaceAuthenticationOrderByWithRelationInput[]
+    cursor?: FaceAuthenticationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FaceAuthenticationScalarFieldEnum | FaceAuthenticationScalarFieldEnum[]
   }
 
   /**
@@ -11733,6 +11861,1076 @@ export namespace Prisma {
 
 
   /**
+   * Model FaceAuthentication
+   */
+
+  export type AggregateFaceAuthentication = {
+    _count: FaceAuthenticationCountAggregateOutputType | null
+    _avg: FaceAuthenticationAvgAggregateOutputType | null
+    _sum: FaceAuthenticationSumAggregateOutputType | null
+    _min: FaceAuthenticationMinAggregateOutputType | null
+    _max: FaceAuthenticationMaxAggregateOutputType | null
+  }
+
+  export type FaceAuthenticationAvgAggregateOutputType = {
+    faceauthentication: number | null
+    userid: number | null
+  }
+
+  export type FaceAuthenticationSumAggregateOutputType = {
+    faceauthentication: number | null
+    userid: number | null
+  }
+
+  export type FaceAuthenticationMinAggregateOutputType = {
+    faceauthentication: number | null
+    imagestring: string | null
+    userid: number | null
+  }
+
+  export type FaceAuthenticationMaxAggregateOutputType = {
+    faceauthentication: number | null
+    imagestring: string | null
+    userid: number | null
+  }
+
+  export type FaceAuthenticationCountAggregateOutputType = {
+    faceauthentication: number
+    imagestring: number
+    userid: number
+    _all: number
+  }
+
+
+  export type FaceAuthenticationAvgAggregateInputType = {
+    faceauthentication?: true
+    userid?: true
+  }
+
+  export type FaceAuthenticationSumAggregateInputType = {
+    faceauthentication?: true
+    userid?: true
+  }
+
+  export type FaceAuthenticationMinAggregateInputType = {
+    faceauthentication?: true
+    imagestring?: true
+    userid?: true
+  }
+
+  export type FaceAuthenticationMaxAggregateInputType = {
+    faceauthentication?: true
+    imagestring?: true
+    userid?: true
+  }
+
+  export type FaceAuthenticationCountAggregateInputType = {
+    faceauthentication?: true
+    imagestring?: true
+    userid?: true
+    _all?: true
+  }
+
+  export type FaceAuthenticationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FaceAuthentication to aggregate.
+     */
+    where?: FaceAuthenticationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FaceAuthentications to fetch.
+     */
+    orderBy?: FaceAuthenticationOrderByWithRelationInput | FaceAuthenticationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FaceAuthenticationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FaceAuthentications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FaceAuthentications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FaceAuthentications
+    **/
+    _count?: true | FaceAuthenticationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FaceAuthenticationAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FaceAuthenticationSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FaceAuthenticationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FaceAuthenticationMaxAggregateInputType
+  }
+
+  export type GetFaceAuthenticationAggregateType<T extends FaceAuthenticationAggregateArgs> = {
+        [P in keyof T & keyof AggregateFaceAuthentication]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFaceAuthentication[P]>
+      : GetScalarType<T[P], AggregateFaceAuthentication[P]>
+  }
+
+
+
+
+  export type FaceAuthenticationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FaceAuthenticationWhereInput
+    orderBy?: FaceAuthenticationOrderByWithAggregationInput | FaceAuthenticationOrderByWithAggregationInput[]
+    by: FaceAuthenticationScalarFieldEnum[] | FaceAuthenticationScalarFieldEnum
+    having?: FaceAuthenticationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FaceAuthenticationCountAggregateInputType | true
+    _avg?: FaceAuthenticationAvgAggregateInputType
+    _sum?: FaceAuthenticationSumAggregateInputType
+    _min?: FaceAuthenticationMinAggregateInputType
+    _max?: FaceAuthenticationMaxAggregateInputType
+  }
+
+  export type FaceAuthenticationGroupByOutputType = {
+    faceauthentication: number
+    imagestring: string
+    userid: number
+    _count: FaceAuthenticationCountAggregateOutputType | null
+    _avg: FaceAuthenticationAvgAggregateOutputType | null
+    _sum: FaceAuthenticationSumAggregateOutputType | null
+    _min: FaceAuthenticationMinAggregateOutputType | null
+    _max: FaceAuthenticationMaxAggregateOutputType | null
+  }
+
+  type GetFaceAuthenticationGroupByPayload<T extends FaceAuthenticationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FaceAuthenticationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FaceAuthenticationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FaceAuthenticationGroupByOutputType[P]>
+            : GetScalarType<T[P], FaceAuthenticationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FaceAuthenticationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    faceauthentication?: boolean
+    imagestring?: boolean
+    userid?: boolean
+    user?: boolean | UserSchemaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["faceAuthentication"]>
+
+  export type FaceAuthenticationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    faceauthentication?: boolean
+    imagestring?: boolean
+    userid?: boolean
+    user?: boolean | UserSchemaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["faceAuthentication"]>
+
+  export type FaceAuthenticationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    faceauthentication?: boolean
+    imagestring?: boolean
+    userid?: boolean
+    user?: boolean | UserSchemaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["faceAuthentication"]>
+
+  export type FaceAuthenticationSelectScalar = {
+    faceauthentication?: boolean
+    imagestring?: boolean
+    userid?: boolean
+  }
+
+  export type FaceAuthenticationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"faceauthentication" | "imagestring" | "userid", ExtArgs["result"]["faceAuthentication"]>
+  export type FaceAuthenticationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserSchemaDefaultArgs<ExtArgs>
+  }
+  export type FaceAuthenticationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserSchemaDefaultArgs<ExtArgs>
+  }
+  export type FaceAuthenticationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserSchemaDefaultArgs<ExtArgs>
+  }
+
+  export type $FaceAuthenticationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FaceAuthentication"
+    objects: {
+      user: Prisma.$UserSchemaPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      faceauthentication: number
+      imagestring: string
+      userid: number
+    }, ExtArgs["result"]["faceAuthentication"]>
+    composites: {}
+  }
+
+  type FaceAuthenticationGetPayload<S extends boolean | null | undefined | FaceAuthenticationDefaultArgs> = $Result.GetResult<Prisma.$FaceAuthenticationPayload, S>
+
+  type FaceAuthenticationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FaceAuthenticationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FaceAuthenticationCountAggregateInputType | true
+    }
+
+  export interface FaceAuthenticationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FaceAuthentication'], meta: { name: 'FaceAuthentication' } }
+    /**
+     * Find zero or one FaceAuthentication that matches the filter.
+     * @param {FaceAuthenticationFindUniqueArgs} args - Arguments to find a FaceAuthentication
+     * @example
+     * // Get one FaceAuthentication
+     * const faceAuthentication = await prisma.faceAuthentication.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FaceAuthenticationFindUniqueArgs>(args: SelectSubset<T, FaceAuthenticationFindUniqueArgs<ExtArgs>>): Prisma__FaceAuthenticationClient<$Result.GetResult<Prisma.$FaceAuthenticationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FaceAuthentication that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FaceAuthenticationFindUniqueOrThrowArgs} args - Arguments to find a FaceAuthentication
+     * @example
+     * // Get one FaceAuthentication
+     * const faceAuthentication = await prisma.faceAuthentication.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FaceAuthenticationFindUniqueOrThrowArgs>(args: SelectSubset<T, FaceAuthenticationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FaceAuthenticationClient<$Result.GetResult<Prisma.$FaceAuthenticationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FaceAuthentication that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAuthenticationFindFirstArgs} args - Arguments to find a FaceAuthentication
+     * @example
+     * // Get one FaceAuthentication
+     * const faceAuthentication = await prisma.faceAuthentication.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FaceAuthenticationFindFirstArgs>(args?: SelectSubset<T, FaceAuthenticationFindFirstArgs<ExtArgs>>): Prisma__FaceAuthenticationClient<$Result.GetResult<Prisma.$FaceAuthenticationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FaceAuthentication that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAuthenticationFindFirstOrThrowArgs} args - Arguments to find a FaceAuthentication
+     * @example
+     * // Get one FaceAuthentication
+     * const faceAuthentication = await prisma.faceAuthentication.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FaceAuthenticationFindFirstOrThrowArgs>(args?: SelectSubset<T, FaceAuthenticationFindFirstOrThrowArgs<ExtArgs>>): Prisma__FaceAuthenticationClient<$Result.GetResult<Prisma.$FaceAuthenticationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FaceAuthentications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAuthenticationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FaceAuthentications
+     * const faceAuthentications = await prisma.faceAuthentication.findMany()
+     * 
+     * // Get first 10 FaceAuthentications
+     * const faceAuthentications = await prisma.faceAuthentication.findMany({ take: 10 })
+     * 
+     * // Only select the `faceauthentication`
+     * const faceAuthenticationWithFaceauthenticationOnly = await prisma.faceAuthentication.findMany({ select: { faceauthentication: true } })
+     * 
+     */
+    findMany<T extends FaceAuthenticationFindManyArgs>(args?: SelectSubset<T, FaceAuthenticationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FaceAuthenticationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FaceAuthentication.
+     * @param {FaceAuthenticationCreateArgs} args - Arguments to create a FaceAuthentication.
+     * @example
+     * // Create one FaceAuthentication
+     * const FaceAuthentication = await prisma.faceAuthentication.create({
+     *   data: {
+     *     // ... data to create a FaceAuthentication
+     *   }
+     * })
+     * 
+     */
+    create<T extends FaceAuthenticationCreateArgs>(args: SelectSubset<T, FaceAuthenticationCreateArgs<ExtArgs>>): Prisma__FaceAuthenticationClient<$Result.GetResult<Prisma.$FaceAuthenticationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FaceAuthentications.
+     * @param {FaceAuthenticationCreateManyArgs} args - Arguments to create many FaceAuthentications.
+     * @example
+     * // Create many FaceAuthentications
+     * const faceAuthentication = await prisma.faceAuthentication.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FaceAuthenticationCreateManyArgs>(args?: SelectSubset<T, FaceAuthenticationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FaceAuthentications and returns the data saved in the database.
+     * @param {FaceAuthenticationCreateManyAndReturnArgs} args - Arguments to create many FaceAuthentications.
+     * @example
+     * // Create many FaceAuthentications
+     * const faceAuthentication = await prisma.faceAuthentication.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FaceAuthentications and only return the `faceauthentication`
+     * const faceAuthenticationWithFaceauthenticationOnly = await prisma.faceAuthentication.createManyAndReturn({
+     *   select: { faceauthentication: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FaceAuthenticationCreateManyAndReturnArgs>(args?: SelectSubset<T, FaceAuthenticationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FaceAuthenticationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FaceAuthentication.
+     * @param {FaceAuthenticationDeleteArgs} args - Arguments to delete one FaceAuthentication.
+     * @example
+     * // Delete one FaceAuthentication
+     * const FaceAuthentication = await prisma.faceAuthentication.delete({
+     *   where: {
+     *     // ... filter to delete one FaceAuthentication
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FaceAuthenticationDeleteArgs>(args: SelectSubset<T, FaceAuthenticationDeleteArgs<ExtArgs>>): Prisma__FaceAuthenticationClient<$Result.GetResult<Prisma.$FaceAuthenticationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FaceAuthentication.
+     * @param {FaceAuthenticationUpdateArgs} args - Arguments to update one FaceAuthentication.
+     * @example
+     * // Update one FaceAuthentication
+     * const faceAuthentication = await prisma.faceAuthentication.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FaceAuthenticationUpdateArgs>(args: SelectSubset<T, FaceAuthenticationUpdateArgs<ExtArgs>>): Prisma__FaceAuthenticationClient<$Result.GetResult<Prisma.$FaceAuthenticationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FaceAuthentications.
+     * @param {FaceAuthenticationDeleteManyArgs} args - Arguments to filter FaceAuthentications to delete.
+     * @example
+     * // Delete a few FaceAuthentications
+     * const { count } = await prisma.faceAuthentication.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FaceAuthenticationDeleteManyArgs>(args?: SelectSubset<T, FaceAuthenticationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FaceAuthentications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAuthenticationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FaceAuthentications
+     * const faceAuthentication = await prisma.faceAuthentication.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FaceAuthenticationUpdateManyArgs>(args: SelectSubset<T, FaceAuthenticationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FaceAuthentications and returns the data updated in the database.
+     * @param {FaceAuthenticationUpdateManyAndReturnArgs} args - Arguments to update many FaceAuthentications.
+     * @example
+     * // Update many FaceAuthentications
+     * const faceAuthentication = await prisma.faceAuthentication.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FaceAuthentications and only return the `faceauthentication`
+     * const faceAuthenticationWithFaceauthenticationOnly = await prisma.faceAuthentication.updateManyAndReturn({
+     *   select: { faceauthentication: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FaceAuthenticationUpdateManyAndReturnArgs>(args: SelectSubset<T, FaceAuthenticationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FaceAuthenticationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FaceAuthentication.
+     * @param {FaceAuthenticationUpsertArgs} args - Arguments to update or create a FaceAuthentication.
+     * @example
+     * // Update or create a FaceAuthentication
+     * const faceAuthentication = await prisma.faceAuthentication.upsert({
+     *   create: {
+     *     // ... data to create a FaceAuthentication
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FaceAuthentication we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FaceAuthenticationUpsertArgs>(args: SelectSubset<T, FaceAuthenticationUpsertArgs<ExtArgs>>): Prisma__FaceAuthenticationClient<$Result.GetResult<Prisma.$FaceAuthenticationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FaceAuthentications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAuthenticationCountArgs} args - Arguments to filter FaceAuthentications to count.
+     * @example
+     * // Count the number of FaceAuthentications
+     * const count = await prisma.faceAuthentication.count({
+     *   where: {
+     *     // ... the filter for the FaceAuthentications we want to count
+     *   }
+     * })
+    **/
+    count<T extends FaceAuthenticationCountArgs>(
+      args?: Subset<T, FaceAuthenticationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FaceAuthenticationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FaceAuthentication.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAuthenticationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FaceAuthenticationAggregateArgs>(args: Subset<T, FaceAuthenticationAggregateArgs>): Prisma.PrismaPromise<GetFaceAuthenticationAggregateType<T>>
+
+    /**
+     * Group by FaceAuthentication.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAuthenticationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FaceAuthenticationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FaceAuthenticationGroupByArgs['orderBy'] }
+        : { orderBy?: FaceAuthenticationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FaceAuthenticationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFaceAuthenticationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FaceAuthentication model
+   */
+  readonly fields: FaceAuthenticationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FaceAuthentication.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FaceAuthenticationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserSchemaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserSchemaDefaultArgs<ExtArgs>>): Prisma__UserSchemaClient<$Result.GetResult<Prisma.$UserSchemaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FaceAuthentication model
+   */ 
+  interface FaceAuthenticationFieldRefs {
+    readonly faceauthentication: FieldRef<"FaceAuthentication", 'Int'>
+    readonly imagestring: FieldRef<"FaceAuthentication", 'String'>
+    readonly userid: FieldRef<"FaceAuthentication", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FaceAuthentication findUnique
+   */
+  export type FaceAuthenticationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationInclude<ExtArgs> | null
+    /**
+     * Filter, which FaceAuthentication to fetch.
+     */
+    where: FaceAuthenticationWhereUniqueInput
+  }
+
+  /**
+   * FaceAuthentication findUniqueOrThrow
+   */
+  export type FaceAuthenticationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationInclude<ExtArgs> | null
+    /**
+     * Filter, which FaceAuthentication to fetch.
+     */
+    where: FaceAuthenticationWhereUniqueInput
+  }
+
+  /**
+   * FaceAuthentication findFirst
+   */
+  export type FaceAuthenticationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationInclude<ExtArgs> | null
+    /**
+     * Filter, which FaceAuthentication to fetch.
+     */
+    where?: FaceAuthenticationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FaceAuthentications to fetch.
+     */
+    orderBy?: FaceAuthenticationOrderByWithRelationInput | FaceAuthenticationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FaceAuthentications.
+     */
+    cursor?: FaceAuthenticationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FaceAuthentications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FaceAuthentications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FaceAuthentications.
+     */
+    distinct?: FaceAuthenticationScalarFieldEnum | FaceAuthenticationScalarFieldEnum[]
+  }
+
+  /**
+   * FaceAuthentication findFirstOrThrow
+   */
+  export type FaceAuthenticationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationInclude<ExtArgs> | null
+    /**
+     * Filter, which FaceAuthentication to fetch.
+     */
+    where?: FaceAuthenticationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FaceAuthentications to fetch.
+     */
+    orderBy?: FaceAuthenticationOrderByWithRelationInput | FaceAuthenticationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FaceAuthentications.
+     */
+    cursor?: FaceAuthenticationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FaceAuthentications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FaceAuthentications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FaceAuthentications.
+     */
+    distinct?: FaceAuthenticationScalarFieldEnum | FaceAuthenticationScalarFieldEnum[]
+  }
+
+  /**
+   * FaceAuthentication findMany
+   */
+  export type FaceAuthenticationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationInclude<ExtArgs> | null
+    /**
+     * Filter, which FaceAuthentications to fetch.
+     */
+    where?: FaceAuthenticationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FaceAuthentications to fetch.
+     */
+    orderBy?: FaceAuthenticationOrderByWithRelationInput | FaceAuthenticationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FaceAuthentications.
+     */
+    cursor?: FaceAuthenticationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FaceAuthentications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FaceAuthentications.
+     */
+    skip?: number
+    distinct?: FaceAuthenticationScalarFieldEnum | FaceAuthenticationScalarFieldEnum[]
+  }
+
+  /**
+   * FaceAuthentication create
+   */
+  export type FaceAuthenticationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FaceAuthentication.
+     */
+    data: XOR<FaceAuthenticationCreateInput, FaceAuthenticationUncheckedCreateInput>
+  }
+
+  /**
+   * FaceAuthentication createMany
+   */
+  export type FaceAuthenticationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FaceAuthentications.
+     */
+    data: FaceAuthenticationCreateManyInput | FaceAuthenticationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FaceAuthentication createManyAndReturn
+   */
+  export type FaceAuthenticationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * The data used to create many FaceAuthentications.
+     */
+    data: FaceAuthenticationCreateManyInput | FaceAuthenticationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FaceAuthentication update
+   */
+  export type FaceAuthenticationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FaceAuthentication.
+     */
+    data: XOR<FaceAuthenticationUpdateInput, FaceAuthenticationUncheckedUpdateInput>
+    /**
+     * Choose, which FaceAuthentication to update.
+     */
+    where: FaceAuthenticationWhereUniqueInput
+  }
+
+  /**
+   * FaceAuthentication updateMany
+   */
+  export type FaceAuthenticationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FaceAuthentications.
+     */
+    data: XOR<FaceAuthenticationUpdateManyMutationInput, FaceAuthenticationUncheckedUpdateManyInput>
+    /**
+     * Filter which FaceAuthentications to update
+     */
+    where?: FaceAuthenticationWhereInput
+    /**
+     * Limit how many FaceAuthentications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FaceAuthentication updateManyAndReturn
+   */
+  export type FaceAuthenticationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * The data used to update FaceAuthentications.
+     */
+    data: XOR<FaceAuthenticationUpdateManyMutationInput, FaceAuthenticationUncheckedUpdateManyInput>
+    /**
+     * Filter which FaceAuthentications to update
+     */
+    where?: FaceAuthenticationWhereInput
+    /**
+     * Limit how many FaceAuthentications to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FaceAuthentication upsert
+   */
+  export type FaceAuthenticationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FaceAuthentication to update in case it exists.
+     */
+    where: FaceAuthenticationWhereUniqueInput
+    /**
+     * In case the FaceAuthentication found by the `where` argument doesn't exist, create a new FaceAuthentication with this data.
+     */
+    create: XOR<FaceAuthenticationCreateInput, FaceAuthenticationUncheckedCreateInput>
+    /**
+     * In case the FaceAuthentication was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FaceAuthenticationUpdateInput, FaceAuthenticationUncheckedUpdateInput>
+  }
+
+  /**
+   * FaceAuthentication delete
+   */
+  export type FaceAuthenticationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationInclude<ExtArgs> | null
+    /**
+     * Filter which FaceAuthentication to delete.
+     */
+    where: FaceAuthenticationWhereUniqueInput
+  }
+
+  /**
+   * FaceAuthentication deleteMany
+   */
+  export type FaceAuthenticationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FaceAuthentications to delete
+     */
+    where?: FaceAuthenticationWhereInput
+    /**
+     * Limit how many FaceAuthentications to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FaceAuthentication without action
+   */
+  export type FaceAuthenticationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAuthentication
+     */
+    select?: FaceAuthenticationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FaceAuthentication
+     */
+    omit?: FaceAuthenticationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAuthenticationInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -11852,6 +13050,15 @@ export namespace Prisma {
   export type CompletedPojectScalarFieldEnum = (typeof CompletedPojectScalarFieldEnum)[keyof typeof CompletedPojectScalarFieldEnum]
 
 
+  export const FaceAuthenticationScalarFieldEnum: {
+    faceauthentication: 'faceauthentication',
+    imagestring: 'imagestring',
+    userid: 'userid'
+  };
+
+  export type FaceAuthenticationScalarFieldEnum = (typeof FaceAuthenticationScalarFieldEnum)[keyof typeof FaceAuthenticationScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -11940,6 +13147,7 @@ export namespace Prisma {
     Profile?: XOR<ProfileSchemaNullableScalarRelationFilter, ProfileSchemaWhereInput> | null
     ApplyJob?: ApplyJobListRelationFilter
     AcceptedProject?: AcceptedProjectListRelationFilter
+    FaceAuthentication?: FaceAuthenticationListRelationFilter
   }
 
   export type UserSchemaOrderByWithRelationInput = {
@@ -11953,6 +13161,7 @@ export namespace Prisma {
     Profile?: ProfileSchemaOrderByWithRelationInput
     ApplyJob?: ApplyJobOrderByRelationAggregateInput
     AcceptedProject?: AcceptedProjectOrderByRelationAggregateInput
+    FaceAuthentication?: FaceAuthenticationOrderByRelationAggregateInput
   }
 
   export type UserSchemaWhereUniqueInput = Prisma.AtLeast<{
@@ -11969,6 +13178,7 @@ export namespace Prisma {
     Profile?: XOR<ProfileSchemaNullableScalarRelationFilter, ProfileSchemaWhereInput> | null
     ApplyJob?: ApplyJobListRelationFilter
     AcceptedProject?: AcceptedProjectListRelationFilter
+    FaceAuthentication?: FaceAuthenticationListRelationFilter
   }, "user_id" | "Email">
 
   export type UserSchemaOrderByWithAggregationInput = {
@@ -12498,6 +13708,53 @@ export namespace Prisma {
     timeline?: StringWithAggregatesFilter<"CompletedPoject"> | string
   }
 
+  export type FaceAuthenticationWhereInput = {
+    AND?: FaceAuthenticationWhereInput | FaceAuthenticationWhereInput[]
+    OR?: FaceAuthenticationWhereInput[]
+    NOT?: FaceAuthenticationWhereInput | FaceAuthenticationWhereInput[]
+    faceauthentication?: IntFilter<"FaceAuthentication"> | number
+    imagestring?: StringFilter<"FaceAuthentication"> | string
+    userid?: IntFilter<"FaceAuthentication"> | number
+    user?: XOR<UserSchemaScalarRelationFilter, UserSchemaWhereInput>
+  }
+
+  export type FaceAuthenticationOrderByWithRelationInput = {
+    faceauthentication?: SortOrder
+    imagestring?: SortOrder
+    userid?: SortOrder
+    user?: UserSchemaOrderByWithRelationInput
+  }
+
+  export type FaceAuthenticationWhereUniqueInput = Prisma.AtLeast<{
+    faceauthentication?: number
+    userid?: number
+    AND?: FaceAuthenticationWhereInput | FaceAuthenticationWhereInput[]
+    OR?: FaceAuthenticationWhereInput[]
+    NOT?: FaceAuthenticationWhereInput | FaceAuthenticationWhereInput[]
+    imagestring?: StringFilter<"FaceAuthentication"> | string
+    user?: XOR<UserSchemaScalarRelationFilter, UserSchemaWhereInput>
+  }, "faceauthentication" | "userid">
+
+  export type FaceAuthenticationOrderByWithAggregationInput = {
+    faceauthentication?: SortOrder
+    imagestring?: SortOrder
+    userid?: SortOrder
+    _count?: FaceAuthenticationCountOrderByAggregateInput
+    _avg?: FaceAuthenticationAvgOrderByAggregateInput
+    _max?: FaceAuthenticationMaxOrderByAggregateInput
+    _min?: FaceAuthenticationMinOrderByAggregateInput
+    _sum?: FaceAuthenticationSumOrderByAggregateInput
+  }
+
+  export type FaceAuthenticationScalarWhereWithAggregatesInput = {
+    AND?: FaceAuthenticationScalarWhereWithAggregatesInput | FaceAuthenticationScalarWhereWithAggregatesInput[]
+    OR?: FaceAuthenticationScalarWhereWithAggregatesInput[]
+    NOT?: FaceAuthenticationScalarWhereWithAggregatesInput | FaceAuthenticationScalarWhereWithAggregatesInput[]
+    faceauthentication?: IntWithAggregatesFilter<"FaceAuthentication"> | number
+    imagestring?: StringWithAggregatesFilter<"FaceAuthentication"> | string
+    userid?: IntWithAggregatesFilter<"FaceAuthentication"> | number
+  }
+
   export type UserSchemaCreateInput = {
     Name: string
     Email: string
@@ -12508,6 +13765,7 @@ export namespace Prisma {
     Profile?: ProfileSchemaCreateNestedOneWithoutUserInput
     ApplyJob?: ApplyJobCreateNestedManyWithoutUserInput
     AcceptedProject?: AcceptedProjectCreateNestedManyWithoutUserInput
+    FaceAuthentication?: FaceAuthenticationCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaUncheckedCreateInput = {
@@ -12521,6 +13779,7 @@ export namespace Prisma {
     Profile?: ProfileSchemaUncheckedCreateNestedOneWithoutUserInput
     ApplyJob?: ApplyJobUncheckedCreateNestedManyWithoutUserInput
     AcceptedProject?: AcceptedProjectUncheckedCreateNestedManyWithoutUserInput
+    FaceAuthentication?: FaceAuthenticationUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaUpdateInput = {
@@ -12533,6 +13792,7 @@ export namespace Prisma {
     Profile?: ProfileSchemaUpdateOneWithoutUserNestedInput
     ApplyJob?: ApplyJobUpdateManyWithoutUserNestedInput
     AcceptedProject?: AcceptedProjectUpdateManyWithoutUserNestedInput
+    FaceAuthentication?: FaceAuthenticationUpdateManyWithoutUserNestedInput
   }
 
   export type UserSchemaUncheckedUpdateInput = {
@@ -12546,6 +13806,7 @@ export namespace Prisma {
     Profile?: ProfileSchemaUncheckedUpdateOneWithoutUserNestedInput
     ApplyJob?: ApplyJobUncheckedUpdateManyWithoutUserNestedInput
     AcceptedProject?: AcceptedProjectUncheckedUpdateManyWithoutUserNestedInput
+    FaceAuthentication?: FaceAuthenticationUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserSchemaCreateManyInput = {
@@ -13051,6 +14312,44 @@ export namespace Prisma {
     timeline?: StringFieldUpdateOperationsInput | string
   }
 
+  export type FaceAuthenticationCreateInput = {
+    imagestring: string
+    user: UserSchemaCreateNestedOneWithoutFaceAuthenticationInput
+  }
+
+  export type FaceAuthenticationUncheckedCreateInput = {
+    faceauthentication?: number
+    imagestring: string
+    userid: number
+  }
+
+  export type FaceAuthenticationUpdateInput = {
+    imagestring?: StringFieldUpdateOperationsInput | string
+    user?: UserSchemaUpdateOneRequiredWithoutFaceAuthenticationNestedInput
+  }
+
+  export type FaceAuthenticationUncheckedUpdateInput = {
+    faceauthentication?: IntFieldUpdateOperationsInput | number
+    imagestring?: StringFieldUpdateOperationsInput | string
+    userid?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FaceAuthenticationCreateManyInput = {
+    faceauthentication?: number
+    imagestring: string
+    userid: number
+  }
+
+  export type FaceAuthenticationUpdateManyMutationInput = {
+    imagestring?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FaceAuthenticationUncheckedUpdateManyInput = {
+    faceauthentication?: IntFieldUpdateOperationsInput | number
+    imagestring?: StringFieldUpdateOperationsInput | string
+    userid?: IntFieldUpdateOperationsInput | number
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -13102,11 +14401,21 @@ export namespace Prisma {
     none?: AcceptedProjectWhereInput
   }
 
+  export type FaceAuthenticationListRelationFilter = {
+    every?: FaceAuthenticationWhereInput
+    some?: FaceAuthenticationWhereInput
+    none?: FaceAuthenticationWhereInput
+  }
+
   export type ApplyJobOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type AcceptedProjectOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FaceAuthenticationOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -13554,6 +14863,34 @@ export namespace Prisma {
     client_id?: SortOrder
   }
 
+  export type FaceAuthenticationCountOrderByAggregateInput = {
+    faceauthentication?: SortOrder
+    imagestring?: SortOrder
+    userid?: SortOrder
+  }
+
+  export type FaceAuthenticationAvgOrderByAggregateInput = {
+    faceauthentication?: SortOrder
+    userid?: SortOrder
+  }
+
+  export type FaceAuthenticationMaxOrderByAggregateInput = {
+    faceauthentication?: SortOrder
+    imagestring?: SortOrder
+    userid?: SortOrder
+  }
+
+  export type FaceAuthenticationMinOrderByAggregateInput = {
+    faceauthentication?: SortOrder
+    imagestring?: SortOrder
+    userid?: SortOrder
+  }
+
+  export type FaceAuthenticationSumOrderByAggregateInput = {
+    faceauthentication?: SortOrder
+    userid?: SortOrder
+  }
+
   export type UserSchemaCreateSkillsInput = {
     set: string[]
   }
@@ -13578,6 +14915,13 @@ export namespace Prisma {
     connect?: AcceptedProjectWhereUniqueInput | AcceptedProjectWhereUniqueInput[]
   }
 
+  export type FaceAuthenticationCreateNestedManyWithoutUserInput = {
+    create?: XOR<FaceAuthenticationCreateWithoutUserInput, FaceAuthenticationUncheckedCreateWithoutUserInput> | FaceAuthenticationCreateWithoutUserInput[] | FaceAuthenticationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FaceAuthenticationCreateOrConnectWithoutUserInput | FaceAuthenticationCreateOrConnectWithoutUserInput[]
+    createMany?: FaceAuthenticationCreateManyUserInputEnvelope
+    connect?: FaceAuthenticationWhereUniqueInput | FaceAuthenticationWhereUniqueInput[]
+  }
+
   export type ProfileSchemaUncheckedCreateNestedOneWithoutUserInput = {
     create?: XOR<ProfileSchemaCreateWithoutUserInput, ProfileSchemaUncheckedCreateWithoutUserInput>
     connectOrCreate?: ProfileSchemaCreateOrConnectWithoutUserInput
@@ -13596,6 +14940,13 @@ export namespace Prisma {
     connectOrCreate?: AcceptedProjectCreateOrConnectWithoutUserInput | AcceptedProjectCreateOrConnectWithoutUserInput[]
     createMany?: AcceptedProjectCreateManyUserInputEnvelope
     connect?: AcceptedProjectWhereUniqueInput | AcceptedProjectWhereUniqueInput[]
+  }
+
+  export type FaceAuthenticationUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<FaceAuthenticationCreateWithoutUserInput, FaceAuthenticationUncheckedCreateWithoutUserInput> | FaceAuthenticationCreateWithoutUserInput[] | FaceAuthenticationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FaceAuthenticationCreateOrConnectWithoutUserInput | FaceAuthenticationCreateOrConnectWithoutUserInput[]
+    createMany?: FaceAuthenticationCreateManyUserInputEnvelope
+    connect?: FaceAuthenticationWhereUniqueInput | FaceAuthenticationWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -13653,6 +15004,20 @@ export namespace Prisma {
     deleteMany?: AcceptedProjectScalarWhereInput | AcceptedProjectScalarWhereInput[]
   }
 
+  export type FaceAuthenticationUpdateManyWithoutUserNestedInput = {
+    create?: XOR<FaceAuthenticationCreateWithoutUserInput, FaceAuthenticationUncheckedCreateWithoutUserInput> | FaceAuthenticationCreateWithoutUserInput[] | FaceAuthenticationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FaceAuthenticationCreateOrConnectWithoutUserInput | FaceAuthenticationCreateOrConnectWithoutUserInput[]
+    upsert?: FaceAuthenticationUpsertWithWhereUniqueWithoutUserInput | FaceAuthenticationUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: FaceAuthenticationCreateManyUserInputEnvelope
+    set?: FaceAuthenticationWhereUniqueInput | FaceAuthenticationWhereUniqueInput[]
+    disconnect?: FaceAuthenticationWhereUniqueInput | FaceAuthenticationWhereUniqueInput[]
+    delete?: FaceAuthenticationWhereUniqueInput | FaceAuthenticationWhereUniqueInput[]
+    connect?: FaceAuthenticationWhereUniqueInput | FaceAuthenticationWhereUniqueInput[]
+    update?: FaceAuthenticationUpdateWithWhereUniqueWithoutUserInput | FaceAuthenticationUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: FaceAuthenticationUpdateManyWithWhereWithoutUserInput | FaceAuthenticationUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: FaceAuthenticationScalarWhereInput | FaceAuthenticationScalarWhereInput[]
+  }
+
   export type ProfileSchemaUncheckedUpdateOneWithoutUserNestedInput = {
     create?: XOR<ProfileSchemaCreateWithoutUserInput, ProfileSchemaUncheckedCreateWithoutUserInput>
     connectOrCreate?: ProfileSchemaCreateOrConnectWithoutUserInput
@@ -13689,6 +15054,20 @@ export namespace Prisma {
     update?: AcceptedProjectUpdateWithWhereUniqueWithoutUserInput | AcceptedProjectUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AcceptedProjectUpdateManyWithWhereWithoutUserInput | AcceptedProjectUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AcceptedProjectScalarWhereInput | AcceptedProjectScalarWhereInput[]
+  }
+
+  export type FaceAuthenticationUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<FaceAuthenticationCreateWithoutUserInput, FaceAuthenticationUncheckedCreateWithoutUserInput> | FaceAuthenticationCreateWithoutUserInput[] | FaceAuthenticationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FaceAuthenticationCreateOrConnectWithoutUserInput | FaceAuthenticationCreateOrConnectWithoutUserInput[]
+    upsert?: FaceAuthenticationUpsertWithWhereUniqueWithoutUserInput | FaceAuthenticationUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: FaceAuthenticationCreateManyUserInputEnvelope
+    set?: FaceAuthenticationWhereUniqueInput | FaceAuthenticationWhereUniqueInput[]
+    disconnect?: FaceAuthenticationWhereUniqueInput | FaceAuthenticationWhereUniqueInput[]
+    delete?: FaceAuthenticationWhereUniqueInput | FaceAuthenticationWhereUniqueInput[]
+    connect?: FaceAuthenticationWhereUniqueInput | FaceAuthenticationWhereUniqueInput[]
+    update?: FaceAuthenticationUpdateWithWhereUniqueWithoutUserInput | FaceAuthenticationUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: FaceAuthenticationUpdateManyWithWhereWithoutUserInput | FaceAuthenticationUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: FaceAuthenticationScalarWhereInput | FaceAuthenticationScalarWhereInput[]
   }
 
   export type JobSchemaCreateNestedManyWithoutClientInput = {
@@ -14026,6 +15405,20 @@ export namespace Prisma {
     update?: XOR<XOR<UserSchemaUpdateToOneWithWhereWithoutAcceptedProjectInput, UserSchemaUpdateWithoutAcceptedProjectInput>, UserSchemaUncheckedUpdateWithoutAcceptedProjectInput>
   }
 
+  export type UserSchemaCreateNestedOneWithoutFaceAuthenticationInput = {
+    create?: XOR<UserSchemaCreateWithoutFaceAuthenticationInput, UserSchemaUncheckedCreateWithoutFaceAuthenticationInput>
+    connectOrCreate?: UserSchemaCreateOrConnectWithoutFaceAuthenticationInput
+    connect?: UserSchemaWhereUniqueInput
+  }
+
+  export type UserSchemaUpdateOneRequiredWithoutFaceAuthenticationNestedInput = {
+    create?: XOR<UserSchemaCreateWithoutFaceAuthenticationInput, UserSchemaUncheckedCreateWithoutFaceAuthenticationInput>
+    connectOrCreate?: UserSchemaCreateOrConnectWithoutFaceAuthenticationInput
+    upsert?: UserSchemaUpsertWithoutFaceAuthenticationInput
+    connect?: UserSchemaWhereUniqueInput
+    update?: XOR<XOR<UserSchemaUpdateToOneWithWhereWithoutFaceAuthenticationInput, UserSchemaUpdateWithoutFaceAuthenticationInput>, UserSchemaUncheckedUpdateWithoutFaceAuthenticationInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -14208,6 +15601,25 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type FaceAuthenticationCreateWithoutUserInput = {
+    imagestring: string
+  }
+
+  export type FaceAuthenticationUncheckedCreateWithoutUserInput = {
+    faceauthentication?: number
+    imagestring: string
+  }
+
+  export type FaceAuthenticationCreateOrConnectWithoutUserInput = {
+    where: FaceAuthenticationWhereUniqueInput
+    create: XOR<FaceAuthenticationCreateWithoutUserInput, FaceAuthenticationUncheckedCreateWithoutUserInput>
+  }
+
+  export type FaceAuthenticationCreateManyUserInputEnvelope = {
+    data: FaceAuthenticationCreateManyUserInput | FaceAuthenticationCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProfileSchemaUpsertWithoutUserInput = {
     update: XOR<ProfileSchemaUpdateWithoutUserInput, ProfileSchemaUncheckedUpdateWithoutUserInput>
     create: XOR<ProfileSchemaCreateWithoutUserInput, ProfileSchemaUncheckedCreateWithoutUserInput>
@@ -14287,6 +15699,31 @@ export namespace Prisma {
     project_title?: StringFilter<"AcceptedProject"> | string
     budget?: StringFilter<"AcceptedProject"> | string
     timeline?: StringFilter<"AcceptedProject"> | string
+  }
+
+  export type FaceAuthenticationUpsertWithWhereUniqueWithoutUserInput = {
+    where: FaceAuthenticationWhereUniqueInput
+    update: XOR<FaceAuthenticationUpdateWithoutUserInput, FaceAuthenticationUncheckedUpdateWithoutUserInput>
+    create: XOR<FaceAuthenticationCreateWithoutUserInput, FaceAuthenticationUncheckedCreateWithoutUserInput>
+  }
+
+  export type FaceAuthenticationUpdateWithWhereUniqueWithoutUserInput = {
+    where: FaceAuthenticationWhereUniqueInput
+    data: XOR<FaceAuthenticationUpdateWithoutUserInput, FaceAuthenticationUncheckedUpdateWithoutUserInput>
+  }
+
+  export type FaceAuthenticationUpdateManyWithWhereWithoutUserInput = {
+    where: FaceAuthenticationScalarWhereInput
+    data: XOR<FaceAuthenticationUpdateManyMutationInput, FaceAuthenticationUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type FaceAuthenticationScalarWhereInput = {
+    AND?: FaceAuthenticationScalarWhereInput | FaceAuthenticationScalarWhereInput[]
+    OR?: FaceAuthenticationScalarWhereInput[]
+    NOT?: FaceAuthenticationScalarWhereInput | FaceAuthenticationScalarWhereInput[]
+    faceauthentication?: IntFilter<"FaceAuthentication"> | number
+    imagestring?: StringFilter<"FaceAuthentication"> | string
+    userid?: IntFilter<"FaceAuthentication"> | number
   }
 
   export type JobSchemaCreateWithoutClientInput = {
@@ -14438,6 +15875,7 @@ export namespace Prisma {
     Skills?: UserSchemaCreateSkillsInput | string[]
     ApplyJob?: ApplyJobCreateNestedManyWithoutUserInput
     AcceptedProject?: AcceptedProjectCreateNestedManyWithoutUserInput
+    FaceAuthentication?: FaceAuthenticationCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaUncheckedCreateWithoutProfileInput = {
@@ -14450,6 +15888,7 @@ export namespace Prisma {
     Skills?: UserSchemaCreateSkillsInput | string[]
     ApplyJob?: ApplyJobUncheckedCreateNestedManyWithoutUserInput
     AcceptedProject?: AcceptedProjectUncheckedCreateNestedManyWithoutUserInput
+    FaceAuthentication?: FaceAuthenticationUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaCreateOrConnectWithoutProfileInput = {
@@ -14505,6 +15944,7 @@ export namespace Prisma {
     Skills?: UserSchemaUpdateSkillsInput | string[]
     ApplyJob?: ApplyJobUpdateManyWithoutUserNestedInput
     AcceptedProject?: AcceptedProjectUpdateManyWithoutUserNestedInput
+    FaceAuthentication?: FaceAuthenticationUpdateManyWithoutUserNestedInput
   }
 
   export type UserSchemaUncheckedUpdateWithoutProfileInput = {
@@ -14517,6 +15957,7 @@ export namespace Prisma {
     Skills?: UserSchemaUpdateSkillsInput | string[]
     ApplyJob?: ApplyJobUncheckedUpdateManyWithoutUserNestedInput
     AcceptedProject?: AcceptedProjectUncheckedUpdateManyWithoutUserNestedInput
+    FaceAuthentication?: FaceAuthenticationUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ApplyJobUpsertWithWhereUniqueWithoutProfileInput = {
@@ -14642,6 +16083,7 @@ export namespace Prisma {
     Skills?: UserSchemaCreateSkillsInput | string[]
     Profile?: ProfileSchemaCreateNestedOneWithoutUserInput
     AcceptedProject?: AcceptedProjectCreateNestedManyWithoutUserInput
+    FaceAuthentication?: FaceAuthenticationCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaUncheckedCreateWithoutApplyJobInput = {
@@ -14654,6 +16096,7 @@ export namespace Prisma {
     Skills?: UserSchemaCreateSkillsInput | string[]
     Profile?: ProfileSchemaUncheckedCreateNestedOneWithoutUserInput
     AcceptedProject?: AcceptedProjectUncheckedCreateNestedManyWithoutUserInput
+    FaceAuthentication?: FaceAuthenticationUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaCreateOrConnectWithoutApplyJobInput = {
@@ -14745,6 +16188,7 @@ export namespace Prisma {
     Skills?: UserSchemaUpdateSkillsInput | string[]
     Profile?: ProfileSchemaUpdateOneWithoutUserNestedInput
     AcceptedProject?: AcceptedProjectUpdateManyWithoutUserNestedInput
+    FaceAuthentication?: FaceAuthenticationUpdateManyWithoutUserNestedInput
   }
 
   export type UserSchemaUncheckedUpdateWithoutApplyJobInput = {
@@ -14757,6 +16201,7 @@ export namespace Prisma {
     Skills?: UserSchemaUpdateSkillsInput | string[]
     Profile?: ProfileSchemaUncheckedUpdateOneWithoutUserNestedInput
     AcceptedProject?: AcceptedProjectUncheckedUpdateManyWithoutUserNestedInput
+    FaceAuthentication?: FaceAuthenticationUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ClientSchemaUpsertWithoutApplyJobsInput = {
@@ -14874,6 +16319,7 @@ export namespace Prisma {
     Skills?: UserSchemaCreateSkillsInput | string[]
     Profile?: ProfileSchemaCreateNestedOneWithoutUserInput
     ApplyJob?: ApplyJobCreateNestedManyWithoutUserInput
+    FaceAuthentication?: FaceAuthenticationCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaUncheckedCreateWithoutAcceptedProjectInput = {
@@ -14886,6 +16332,7 @@ export namespace Prisma {
     Skills?: UserSchemaCreateSkillsInput | string[]
     Profile?: ProfileSchemaUncheckedCreateNestedOneWithoutUserInput
     ApplyJob?: ApplyJobUncheckedCreateNestedManyWithoutUserInput
+    FaceAuthentication?: FaceAuthenticationUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserSchemaCreateOrConnectWithoutAcceptedProjectInput = {
@@ -14943,6 +16390,7 @@ export namespace Prisma {
     Skills?: UserSchemaUpdateSkillsInput | string[]
     Profile?: ProfileSchemaUpdateOneWithoutUserNestedInput
     ApplyJob?: ApplyJobUpdateManyWithoutUserNestedInput
+    FaceAuthentication?: FaceAuthenticationUpdateManyWithoutUserNestedInput
   }
 
   export type UserSchemaUncheckedUpdateWithoutAcceptedProjectInput = {
@@ -14955,6 +16403,73 @@ export namespace Prisma {
     Skills?: UserSchemaUpdateSkillsInput | string[]
     Profile?: ProfileSchemaUncheckedUpdateOneWithoutUserNestedInput
     ApplyJob?: ApplyJobUncheckedUpdateManyWithoutUserNestedInput
+    FaceAuthentication?: FaceAuthenticationUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserSchemaCreateWithoutFaceAuthenticationInput = {
+    Name: string
+    Email: string
+    Password: string
+    Experience: number
+    Rating: number
+    Skills?: UserSchemaCreateSkillsInput | string[]
+    Profile?: ProfileSchemaCreateNestedOneWithoutUserInput
+    ApplyJob?: ApplyJobCreateNestedManyWithoutUserInput
+    AcceptedProject?: AcceptedProjectCreateNestedManyWithoutUserInput
+  }
+
+  export type UserSchemaUncheckedCreateWithoutFaceAuthenticationInput = {
+    user_id?: number
+    Name: string
+    Email: string
+    Password: string
+    Experience: number
+    Rating: number
+    Skills?: UserSchemaCreateSkillsInput | string[]
+    Profile?: ProfileSchemaUncheckedCreateNestedOneWithoutUserInput
+    ApplyJob?: ApplyJobUncheckedCreateNestedManyWithoutUserInput
+    AcceptedProject?: AcceptedProjectUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserSchemaCreateOrConnectWithoutFaceAuthenticationInput = {
+    where: UserSchemaWhereUniqueInput
+    create: XOR<UserSchemaCreateWithoutFaceAuthenticationInput, UserSchemaUncheckedCreateWithoutFaceAuthenticationInput>
+  }
+
+  export type UserSchemaUpsertWithoutFaceAuthenticationInput = {
+    update: XOR<UserSchemaUpdateWithoutFaceAuthenticationInput, UserSchemaUncheckedUpdateWithoutFaceAuthenticationInput>
+    create: XOR<UserSchemaCreateWithoutFaceAuthenticationInput, UserSchemaUncheckedCreateWithoutFaceAuthenticationInput>
+    where?: UserSchemaWhereInput
+  }
+
+  export type UserSchemaUpdateToOneWithWhereWithoutFaceAuthenticationInput = {
+    where?: UserSchemaWhereInput
+    data: XOR<UserSchemaUpdateWithoutFaceAuthenticationInput, UserSchemaUncheckedUpdateWithoutFaceAuthenticationInput>
+  }
+
+  export type UserSchemaUpdateWithoutFaceAuthenticationInput = {
+    Name?: StringFieldUpdateOperationsInput | string
+    Email?: StringFieldUpdateOperationsInput | string
+    Password?: StringFieldUpdateOperationsInput | string
+    Experience?: IntFieldUpdateOperationsInput | number
+    Rating?: IntFieldUpdateOperationsInput | number
+    Skills?: UserSchemaUpdateSkillsInput | string[]
+    Profile?: ProfileSchemaUpdateOneWithoutUserNestedInput
+    ApplyJob?: ApplyJobUpdateManyWithoutUserNestedInput
+    AcceptedProject?: AcceptedProjectUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserSchemaUncheckedUpdateWithoutFaceAuthenticationInput = {
+    user_id?: IntFieldUpdateOperationsInput | number
+    Name?: StringFieldUpdateOperationsInput | string
+    Email?: StringFieldUpdateOperationsInput | string
+    Password?: StringFieldUpdateOperationsInput | string
+    Experience?: IntFieldUpdateOperationsInput | number
+    Rating?: IntFieldUpdateOperationsInput | number
+    Skills?: UserSchemaUpdateSkillsInput | string[]
+    Profile?: ProfileSchemaUncheckedUpdateOneWithoutUserNestedInput
+    ApplyJob?: ApplyJobUncheckedUpdateManyWithoutUserNestedInput
+    AcceptedProject?: AcceptedProjectUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ApplyJobCreateManyUserInput = {
@@ -14972,6 +16487,11 @@ export namespace Prisma {
     project_title: string
     budget: string
     timeline: string
+  }
+
+  export type FaceAuthenticationCreateManyUserInput = {
+    faceauthentication?: number
+    imagestring: string
   }
 
   export type ApplyJobUpdateWithoutUserInput = {
@@ -15022,6 +16542,20 @@ export namespace Prisma {
     project_title?: StringFieldUpdateOperationsInput | string
     budget?: StringFieldUpdateOperationsInput | string
     timeline?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FaceAuthenticationUpdateWithoutUserInput = {
+    imagestring?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FaceAuthenticationUncheckedUpdateWithoutUserInput = {
+    faceauthentication?: IntFieldUpdateOperationsInput | number
+    imagestring?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FaceAuthenticationUncheckedUpdateManyWithoutUserInput = {
+    faceauthentication?: IntFieldUpdateOperationsInput | number
+    imagestring?: StringFieldUpdateOperationsInput | string
   }
 
   export type JobSchemaCreateManyClientInput = {

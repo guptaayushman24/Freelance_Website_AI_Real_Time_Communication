@@ -16,16 +16,17 @@ datasource db {
 }
 
 model UserSchema {
-  user_id         Int               @id @default(autoincrement())
-  Name            String
-  Email           String            @unique
-  Password        String
-  Experience      Int
-  Rating          Int
-  Skills          String[]
-  Profile         ProfileSchema?
-  ApplyJob        ApplyJob[]
-  AcceptedProject AcceptedProject[]
+  user_id            Int                  @id @default(autoincrement())
+  Name               String
+  Email              String               @unique
+  Password           String
+  Experience         Int
+  Rating             Int
+  Skills             String[]
+  Profile            ProfileSchema?
+  ApplyJob           ApplyJob[]
+  AcceptedProject    AcceptedProject[]
+  FaceAuthentication FaceAuthentication[]
 }
 
 model ClientSchema {
@@ -114,4 +115,11 @@ model CompletedPoject {
   project_title      String
   budget             String
   timeline           String
+}
+
+model FaceAuthentication {
+  faceauthentication Int        @id @default(autoincrement())
+  imagestring        String
+  userid             Int        @unique
+  user               UserSchema @relation(fields: [userid], references: [user_id])
 }

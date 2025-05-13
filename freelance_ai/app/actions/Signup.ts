@@ -1,7 +1,6 @@
 'use server'
 import { PrismaClient } from "@/db/generated/prisma";
 import { signupobject } from "../zod/validation";
-import Email from "next-auth/providers/email";
 const client = new PrismaClient();
 async function Signup(name: string, email: string, password: string, experience: number, Rating: number, Skills: string[]) {
     // zod validation
@@ -46,6 +45,7 @@ async function Signup(name: string, email: string, password: string, experience:
         }
     }
     else {
+        alert(`Name can have only numbers Password should be of minimum of 6 length and should contains alphabet and numbers experience and rating should be in numbers and skills are seperated by commas`)
         console.log("Please check the fields");
     }
 }

@@ -31,12 +31,15 @@ async function ClientRegister(client_name: string, email: string, password: stri
                         Organization:organization
                     }
                 })
-                return user;
+                return{
+                    user:user,
+                    id:user.client_id
+                }
            
         }
         catch (err) {
             console.log(err);
-            return "Error in inserting the data in the database"
+            return -1;
         }
     }
     else {

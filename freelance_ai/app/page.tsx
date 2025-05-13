@@ -4,6 +4,7 @@ import Client_Register from "./components/Client_Register";
 import Clinet_Signin from "./components/Client_Signin";
 import JobSeekerRegister from "./components/Job_Seeker_Register";
 import JobSeekerLogin from "./components/Job_Seeker_Login";
+import FaceSignin from "./components/Face_Signin"
 export default function Home() {
     return (
         <div className="flex-col">
@@ -14,6 +15,8 @@ export default function Home() {
                     <Clinet_Signin></Clinet_Signin>
                     <JobSeekerRegister></JobSeekerRegister>
                     <JobSeekerLogin></JobSeekerLogin>
+                    <FaceSignin></FaceSignin>
+                    
                 </div>
             </div>
         </div>

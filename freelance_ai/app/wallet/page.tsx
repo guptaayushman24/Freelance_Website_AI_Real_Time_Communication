@@ -8,8 +8,9 @@ import axios from 'axios'
 export default function () {
   const route = useRouter();
   const [accountnumber, Setaccountnumber] = useState('');
-  // const [amount, Setamount] = useState('');
   const [uniqueid, Setuniqueid] = useState('');
+  const [loading, Setloading] = useState<Boolean>(true);
+  const [loadingwallet,Setloadingwallet] = useState<Boolean>(true)
   const { name } = useStore();
   const { email } = useStore();
   const { role } = useStore();
@@ -30,32 +31,48 @@ export default function () {
       return;
     }
     const data = await CreateWallet(name, email, role, amount, accountnumber, uniqueid);
-    if (data == -1) {
+    try{
+      Setloadingwallet(true);
+      if (data == -1) {
       alert("Something went wrong try after some time");
       return -1;
     }
-    else{
-      route.push('/api/auth/signin');
+    else {
+      route.push('/registerface');
+      Setloadingwallet(false);
+    }
+    }
+    catch(err){
+      console.error(err);
     }
   }
   function generateUniqueid(email: string, accountnumber: string) {
-    let id = '';
-    for (let i = 0; i < email.length; i++) {
-      if (email.charAt(i) != '@') {
-        id = id + email.charAt(i);
+    try {
+      Setloading(false);
+      let id = '';
+      for (let i = 0; i < email.length; i++) {
+        if (email.charAt(i) != '@') {
+          id = id + email.charAt(i);
+        }
+        else if (email.charAt(i) == '@') {
+          id = id + "!";
+          break;
+        }
       }
-      else if (email.charAt(i) == '@') {
-        id = id + "!";
-        break;
+      for (let i = accountnumber.length - 1; i >= accountnumber.length - 4; i--) {
+        id = id + accountnumber.charAt(i);
       }
-    }
-    for (let i = accountnumber.length - 1; i >= accountnumber.length - 4; i--) {
-      id = id + accountnumber.charAt(i);
-    }
-    id = id + role.charAt(0);
+      id = id + role.charAt(0);
 
-    Setuniqueid(id);
-    console.log(uniqueid);
+
+      Setuniqueid(id);
+        setTimeout(() => {
+      Setloading(true);
+  }, 500); 
+    }
+    catch (err) {
+      console.error(err);
+    }
   }
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -67,17 +84,34 @@ export default function () {
 
         <input className="p-2 border" placeholder="Enter Account Number" onChange={(e) => Setaccountnumber(e.target.value)} />
 
-        {/* <input className="p-2 border" placeholder="Enter Amount" onChange={(e) => Setamount(e.target.value)} /> */}
+        {
+          loading ? (
+            <button className="bg-blue-500 text-white px-4 py-2 rounded"
+              onClick={() => generateUniqueid(email, accountnumber)}>
+              Generate Unique ID
+            </button>
+          ) : (
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded"
 
-        <button className="bg-blue-500 text-white px-4 py-2 rounded"
-          onClick={() => generateUniqueid(email, accountnumber)}>
-          Generate Unique ID
-        </button>
-
-        <button className="bg-green-500 text-white px-4 py-2 rounded"
+            >
+              Generating Unique ID
+            </button>
+          )
+        }
+        {
+          loadingwallet ?(
+             <button className="bg-green-500 text-white px-4 py-2 rounded"
           onClick={() => createWallet(accountnumber, "0")}>
           Create Wallet
         </button>
+          ):(
+              <button className="bg-green-500 text-white px-4 py-2 rounded"
+          >
+           Creating Wallet
+        </button>
+          )
+        }
       </div>
     </div>
 
