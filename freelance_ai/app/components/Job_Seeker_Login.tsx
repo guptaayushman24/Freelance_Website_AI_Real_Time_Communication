@@ -1,6 +1,5 @@
 'use client'
-import { signIn, signOut } from 'next-auth/react';
-import { useRouter } from 'next/navigation'
+import { signIn} from 'next-auth/react';
 export default function JobSeekerLogin() {
     return (
         <div>

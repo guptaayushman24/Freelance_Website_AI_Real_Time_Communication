@@ -9,8 +9,8 @@ export default function () {
   const route = useRouter();
   const [accountnumber, Setaccountnumber] = useState('');
   const [uniqueid, Setuniqueid] = useState('');
-  const [loading, Setloading] = useState<Boolean>(true);
-  const [loadingwallet,Setloadingwallet] = useState<Boolean>(true)
+  const [loading, Setloading] = useState<boolean>(true);
+  const [loadingwallet,Setloadingwallet] = useState<boolean>(true)
   const { name } = useStore();
   const { email } = useStore();
   const { role } = useStore();

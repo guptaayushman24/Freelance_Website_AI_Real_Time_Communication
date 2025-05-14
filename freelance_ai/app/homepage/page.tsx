@@ -9,8 +9,7 @@ export default async function ServerClientInfo() {
     const session = await getServerSession(NEXT_AUTH);
     const whichuser = session.user.whichuser;
 
-    const cookieStore = await cookies();
-    const datastate = cookieStore.get('buttonvisibility')?.value
+    
     async function getAllJobs() {
         try {
             const jobs = await client.jobSchema.findMany({
@@ -54,7 +53,7 @@ export default async function ServerClientInfo() {
         <div>
             <RoleBasedDashboard></RoleBasedDashboard>
             <div className="p-6 space-y-4">
-                {jobdetails?.map((job: any, index: any) => (
+                {jobdetails?.map((job:any, index: any) => (
                     <div
                         key={index}
                         className="bg-white p-4 rounded-lg shadow-md border border-gray-200"

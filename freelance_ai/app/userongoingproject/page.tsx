@@ -9,7 +9,6 @@ export  default function(){
     const {data:session} = useSession();
     const [userongoingproject,Setuserongoingproject] = useState([{}]);
     const [userindex,setuserindex] = useState(-1);
-    const [client_email,Setclient_email] = useState('');
     const [acceptbuttonstate, Setacceptbuttonstate] = useState<boolean>(false);
     const user_id = session?.user?.id;
     const user_email = session?.user?.email;

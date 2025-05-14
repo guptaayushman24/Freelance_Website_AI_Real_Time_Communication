@@ -27,6 +27,7 @@ async function projectDescription(clintid: number, job_title: string, job_descri
 
     }
     catch (err) {
+        console.log(err);
         return -1;
     }
 }

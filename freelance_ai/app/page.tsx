@@ -1,5 +1,3 @@
-import Image from "next/image";
-import SigninComponent from "./components/Job_Seeker_Register";
 import Client_Register from "./components/Client_Register";
 import Clinet_Signin from "./components/Client_Signin";
 import JobSeekerRegister from "./components/Job_Seeker_Register";

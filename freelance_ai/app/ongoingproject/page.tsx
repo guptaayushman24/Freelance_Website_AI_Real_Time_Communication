@@ -1,6 +1,6 @@
 'use client'
 import { useSession } from "next-auth/react"
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useStore } from '../zustand/Store/useStore'
 import { useRouter } from "next/navigation";
 import { io } from 'socket.io-client'
@@ -12,8 +12,7 @@ export default function () {
   const [ongoingproject, Setongoingproject] = useState([{}]);
   const [acceptbuttonstate, Setacceptbuttonstate] = useState<boolean>(false);
   const [activeindex, Setactiveindex] = useState<number>(-1);
-  // const [useremail,Setuseremail] = useState('');
-  const { setuseremail } = useStore();
+   const { setuseremail } = useStore();
   const { setwhichuser } = useStore();
   const clientid = session?.user?.id;
   const clientemail = session?.user?.email;

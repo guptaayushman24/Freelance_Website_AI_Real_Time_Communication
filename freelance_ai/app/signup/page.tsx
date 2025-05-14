@@ -10,7 +10,7 @@ export default function(){
     const [expeience,setExperience] = useState<number>(0)
     const [rating,setRating] = useState<number>(0);
     const [skills,setSkills] = useState<Array<string>>([]);
-    const [loading,setLoading] = useState<Boolean>(false);
+    const [loading,setLoading] = useState<boolean>(false);
     // Using state variable from the zustand
     const {setuserid} = useStore();
     const {setrole} = useStore();

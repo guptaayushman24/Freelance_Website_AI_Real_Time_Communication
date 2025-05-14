@@ -9,11 +9,10 @@ export default function ChatBox() {
   const [showchat, Setshowchat] = useState(true);
   const [sendmessage, Setsendmessage] = useState('');
   const [recievemessage, Setrecievemessage] = useState([{}]);
-  const [email, Setemail] = useState('');
   const { clientemail } = useStore();
   const { useremail } = useStore();
   const { whichuser } = useStore();
-  const { data: session } = useSession();
+  const { data } = useSession();
   const socket = useMemo(() => io('http://localhost:8001'), []);
   function hidechatbox() {
     Setshowchat(false);

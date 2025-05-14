@@ -1,9 +1,6 @@
 'use client'
 import { useSession } from "next-auth/react"
 import {useRouter} from 'next/navigation'
-import ClientProject from "../actions/Client_Projects";
-import { useEffect } from "react";
-import { useState } from "react";
 import CheckUserUniqueId from "../actions/CheckUserUniqueId";
 export default function RoleBasedDashboard(){
     const {data:session} = useSession();

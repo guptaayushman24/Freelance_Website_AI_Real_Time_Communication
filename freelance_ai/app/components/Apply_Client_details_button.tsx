@@ -1,10 +1,7 @@
 'use client'
-import { getCookie, setCookie } from "cookies-next";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import Apply_Project from '../actions/Apply_Project'
-import AcceptProject from "../actions/Accept_Project";
-import { Prisma } from "@/db/generated/prisma";
 interface Props {
   user: string,
   clientid:number,
@@ -24,8 +21,7 @@ export default  function ApplyClinetDetailButton({ user,clientid,jobtitle,budget
       const userid =  session?.user.id;
      console.log("The client id is",clientid);
      console.log("The user id is",userid);
-      const jobapply = await Apply_Project (clientid,userid,jobtitle,budget,timeline,index,false);
-      // const jobapply = await AcceptProject(clientid,userid,jobtitle,budget,timeline,false);
+      const jobapply = await Apply_Project (clientid,userid,jobtitle,budget,timeline,index);
       if (jobapply==1){
         Setloading(false);
       } 
@@ -36,7 +32,8 @@ export default  function ApplyClinetDetailButton({ user,clientid,jobtitle,budget
     }
     catch(err){
       console.log("Something is wrong for applying the project");
-    }
+      return err;
+    } 
   }
   return (
     <div>

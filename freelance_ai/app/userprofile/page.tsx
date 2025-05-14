@@ -25,6 +25,7 @@ export default function () {
         }
         catch (err) {
             console.log("Something is wrong with the server");
+            return err;
         }
 
     }

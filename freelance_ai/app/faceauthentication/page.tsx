@@ -4,7 +4,7 @@ import {useRouter} from 'next/navigation'
 import { signIn } from "next-auth/react"
 import deleteimagesfromfolder from '../actions/Delete_Images_Folder';
 export default function () {
-  const [loading,Setloading] = useState<Boolean>(false);
+  const [loading,Setloading] = useState<boolean>(false);
   const route = useRouter();
   async function captureImage() {
     try {

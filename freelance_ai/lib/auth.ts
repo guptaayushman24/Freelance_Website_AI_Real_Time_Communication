@@ -1,10 +1,7 @@
-import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
 import GitHubProvider from "next-auth/providers/github";
 import {signinobject} from '@/app/zod/validation'
 import { PrismaClient } from "@/db/generated/prisma";
-import { debug } from "node:util";
-import { redirect } from "next/dist/server/api-utils";
 require('dotenv').config({path:'D:/Freelance_Project/freelance_ai/app/.env'})
 const client = new PrismaClient();
 export const  NEXT_AUTH = ({

@@ -8,8 +8,6 @@ import RejectProject from '../actions/Reject_Project'
 export default function () {
   const { data: session } = useSession();
   const [freelancerdetail, Setfreelancerdetail] = useState([{}]);
-  const [acceptbuttonstate, Setacceptbuttonstate] = useState<boolean>(false);
-  const [activeindex, Setactiveindex] = useState<number>(-1);
   const { setprojectidtodelete } = useStore();
   const clientid = session?.user?.id;
 
@@ -24,16 +22,12 @@ export default function () {
   async function rejectrequest(index: number) {
     Setfreelancerdetail(prev => prev.filter((_, i) => i !== index));
     await RejectProject(freelancerdetail[index]?.userid, freelancerdetail[index]?.jobtitle);
-    Setacceptbuttonstate(false);
-    Setactiveindex(index);
   }
   async function acceptproject(index: number) {
     const result = await AcceptProject(clientid, freelancerdetail[index]?.userid, freelancerdetail[index]?.jobtitle, freelancerdetail[index]?.budget, freelancerdetail[index]?.timeline);
     Setfreelancerdetail(prev => prev.filter((_, i) => i !== index));
     setprojectidtodelete(result?.id || -1);
     await RejectProject(freelancerdetail[index]?.userid, freelancerdetail[index]?.jobtitle);
-    Setacceptbuttonstate(true);
-    Setactiveindex(index);
 
   }
   useEffect(() => {

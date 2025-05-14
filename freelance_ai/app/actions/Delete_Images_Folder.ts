@@ -28,7 +28,8 @@ export default async function deleteimagesfromfolder (folderPath:string){
 
  }
  catch(err){
-    console.log("Some exception has occured in deleting the images from folder")
+    console.log("Some exception has occured in deleting the images from folder");
+    return err;
  }
 }
 

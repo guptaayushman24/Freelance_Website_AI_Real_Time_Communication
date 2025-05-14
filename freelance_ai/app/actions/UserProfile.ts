@@ -23,6 +23,7 @@ async function createUserProfile (userid:number,profile:string,project:string []
        
     }
     catch(err){
+        console.log(err);
         return -1;
     }
 }

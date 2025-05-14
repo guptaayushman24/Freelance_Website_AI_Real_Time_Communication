@@ -17,7 +17,7 @@ export default async function PaymentToFreelancer(clientuniqueid:string,freelanc
         throw new Error("Inssufficent Balance in wallet add balance from bank to wallet")
     }
 
-    const transaction = await client.$transaction(async(tx)=>{
+    await client.$transaction(async(tx)=>{
         await tx.walletSchema.update({
             where:{
                 uniqueid:clientuniqueid
