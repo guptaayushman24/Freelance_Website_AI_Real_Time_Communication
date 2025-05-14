@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { walletvalidation } from "../zod/validation";
 import CreateWallet from "../actions/Wallet";
+import checkclientisinuser from '../actions/Client_in_User';
 import { useRouter } from "next/navigation";
 import { useStore } from '../zustand/Store/useStore';
 import axios from 'axios'
@@ -14,6 +15,8 @@ export default function () {
   const { name } = useStore();
   const { email } = useStore();
   const { role } = useStore();
+  // const { userid } = useStore();
+  const { clientid } = useStore();
   async function createWallet(accountnumber: string, amount: string) {
     const { success } = walletvalidation.safeParse({
       name: name,
@@ -38,8 +41,19 @@ export default function () {
       return -1;
     }
     else {
-      route.push('/registerface');
-      Setloadingwallet(false);
+      if (!clientid){
+        route.push('/registerface')
+        Setloadingwallet(false);
+        return;
+      }
+      const check = await checkclientisinuser(clientid);
+      if (check==-1){
+        route.push('/');
+        Setloadingwallet(false);
+        return;
+      }
+      
+      
     }
     }
     catch(err){
