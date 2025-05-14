@@ -2,7 +2,8 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import GitHubProvider from "next-auth/providers/github";
 import {signinobject} from '@/app/zod/validation'
 import { PrismaClient } from "@/db/generated/prisma";
-require('dotenv').config({path:'D:/Freelance_Project/freelance_ai/app/.env'})
+import dotenv from 'dotenv';
+dotenv.config({ path: 'D:/Freelance_Project/freelance_ai/app/.env' });
 const client = new PrismaClient();
 export const  NEXT_AUTH = ({
     // What we will pass here we will pass providers here how we are doing authentication

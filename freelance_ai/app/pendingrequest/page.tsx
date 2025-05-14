@@ -5,6 +5,7 @@ import ClientProject from "../actions/Client_Projects";
 import { useStore } from '../zustand/Store/useStore'
 import AcceptProject from '../actions/Accept_Project'
 import RejectProject from '../actions/Reject_Project'
+// eslint-disable-next-line react/display-name
 export default function () {
   const { data: session } = useSession();
   const [freelancerdetail, Setfreelancerdetail] = useState([{}]);

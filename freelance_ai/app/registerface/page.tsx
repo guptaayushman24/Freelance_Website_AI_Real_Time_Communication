@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useStore } from "../zustand/Store/useStore"
-
+// eslint-disable-next-line react/display-name
 export default function () {
   const route = useRouter();
   const { userid } = useStore();

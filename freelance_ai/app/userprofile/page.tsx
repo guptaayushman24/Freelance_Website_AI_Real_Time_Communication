@@ -3,6 +3,7 @@ import { useStore } from "../zustand/Store/useStore"
 import { useState } from "react"
 import {useRouter} from 'next/navigation'
 import createUserProfile from '../actions/UserProfile'
+// eslint-disable-next-line react/display-name
 export default function () {
     const router = useRouter();
     const { userid } = useStore();

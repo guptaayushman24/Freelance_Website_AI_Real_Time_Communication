@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {useRouter} from 'next/navigation'
 import { signIn } from "next-auth/react"
 import deleteimagesfromfolder from '../actions/Delete_Images_Folder';
+// eslint-disable-next-line react/display-name
 export default function () {
   const [loading,Setloading] = useState<boolean>(false);
   const route = useRouter();

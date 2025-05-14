@@ -13,16 +13,14 @@ async function Client_Detail(){
             }
         }
     })
-    // if (!jobs){
-    //     return ["-1"];
-    // }
+    
      return jobs.map((job)=>({
         clientName:job.client.client_name,
         clientEmail:job.client.Email
      }))
    }
    catch(err){
-    //  return ["-1"];
+    return err;
    }
 }
 export default Client_Detail;

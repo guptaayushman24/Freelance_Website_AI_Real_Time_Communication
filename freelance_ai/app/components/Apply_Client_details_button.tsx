@@ -12,13 +12,13 @@ interface Props {
   client_email:string
 }
 
-export default  function ApplyClinetDetailButton({ user,clientid,jobtitle,budget,timeline,index,client_email}: Props) {
+export default  function ApplyClinetDetailButton({ user,clientid,jobtitle,budget,timeline,index}: Props) {
   const [loading,Setloading] = useState(false);
   const {data:session} = useSession();
   async function applyforproject(){
     try{
       Setloading(true);
-      const userid =  session?.user.id;
+      const userid =  session?.user?.id;
      console.log("The client id is",clientid);
      console.log("The user id is",userid);
       const jobapply = await Apply_Project (clientid,userid,jobtitle,budget,timeline,index);

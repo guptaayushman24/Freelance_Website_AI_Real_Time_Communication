@@ -1,6 +1,7 @@
 import { getServerSession } from 'next-auth/next'
 import { NEXT_AUTH } from '@/lib/auth'
 import Client_Completed_Project from '../actions/Client_Completed_Project';
+// eslint-disable-next-line react/display-name
 export default async function () {
     const session = await getServerSession(NEXT_AUTH);
     const clientid = session?.user.id;

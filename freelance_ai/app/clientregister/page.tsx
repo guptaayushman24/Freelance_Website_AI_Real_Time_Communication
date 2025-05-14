@@ -3,13 +3,14 @@ import {useState} from 'react'
 import ClientRegister from '../actions/ClientRegister';
 import {useStore} from '../zustand/Store/useStore';
 import {useRouter} from 'next/navigation'
+// eslint-disable-next-line react/display-name
 export default function(){
     const router = useRouter();
     const [name,setName] = useState<string>('');
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState<string>('');
     const [organization,setOrganization] = useState<string>('');
-    const [loading,setLoading] = useState<Boolean>(false);
+    const [loading,setLoading] = useState<boolean>(false);
     const {setrole} = useStore();
     const {setname} = useStore();
     const {setemail} = useStore();

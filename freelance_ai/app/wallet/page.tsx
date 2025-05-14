@@ -5,6 +5,7 @@ import CreateWallet from "../actions/Wallet";
 import checkclientisinuser from '../actions/Client_in_User';
 import { useRouter } from "next/navigation";
 import { useStore } from '../zustand/Store/useStore';
+// eslint-disable-next-line react/display-name
 export default function () {
   const route = useRouter();
   const [accountnumber, Setaccountnumber] = useState('');

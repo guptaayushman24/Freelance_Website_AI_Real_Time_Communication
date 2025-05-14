@@ -2,7 +2,6 @@ import RoleBasedDashboard from "../components/Role_Based_Dashboard";
 import { PrismaClient } from "@/db/generated/prisma";
 import { NEXT_AUTH } from "@/lib/auth";
 import { getServerSession } from "next-auth";
-import { cookies } from 'next/headers'
 import Apply_Client_details_button from '../components/Apply_Client_details_button'
 const client = new PrismaClient();
 export default async function ServerClientInfo() {

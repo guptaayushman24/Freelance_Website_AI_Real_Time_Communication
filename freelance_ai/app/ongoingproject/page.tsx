@@ -7,6 +7,7 @@ import { io } from 'socket.io-client'
 import Ongoingproject from "../actions/Ongoing_Project";
 import { Completedproject } from "../actions/Completed_Projected";
 import ChatBox from '../components/Chat'
+// eslint-disable-next-line react/display-name
 export default function () {
   const { data: session } = useSession();
   const [ongoingproject, Setongoingproject] = useState([{}]);

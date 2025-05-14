@@ -12,7 +12,6 @@ export default function ChatBox() {
   const { clientemail } = useStore();
   const { useremail } = useStore();
   const { whichuser } = useStore();
-  const { data } = useSession();
   const socket = useMemo(() => io('http://localhost:8001'), []);
   function hidechatbox() {
     Setshowchat(false);

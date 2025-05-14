@@ -2,7 +2,8 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation";
 import axios from "axios";
-export default function (){ 
+// eslint-disable-next-line react/display-name
+export default function  (){ 
     const [accountnumber,Setaccountnumber] = useState('');
     const [amount,Setamount] = useState('');
     const route = useRouter();

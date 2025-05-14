@@ -7,6 +7,7 @@ import PaymentToFreelancer from "../actions/PaymenttoFreelancer";
 import { useRouter } from "next/navigation";
 import { useStore } from "../zustand/Store/useStore";
 import { Deletedproject } from "../actions/Completed_Projected";
+// eslint-disable-next-line react/display-name
 export default function () {
     const [clientuniqueid, Setclientuniqueid] = useState('');
     const [freelanceruniqueid, Setfreelanceruniqueid] = useState('');

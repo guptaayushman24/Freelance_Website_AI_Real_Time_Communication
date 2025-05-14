@@ -1,6 +1,5 @@
 'use client'
 import { useRouter } from "next/navigation"
-import { signIn } from "next-auth/react"
 export default function JobSeekerRegister() {
     const router = useRouter();
     return (
