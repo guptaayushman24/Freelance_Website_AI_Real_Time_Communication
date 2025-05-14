@@ -1,17 +1,12 @@
 'use client'
-import * as path from 'path';
 import { useEffect, useState } from "react";
-import * as faceapi from 'face-api.js'
-import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useStore } from "../zustand/Store/useStore"
 
 export default function () {
   const route = useRouter();
   const { userid } = useStore();
-  const { clientid } = useStore();
- 
- 
+
   async function captureImage() {
     try{
       const video = document.getElementById('video') as HTMLVideoElement;

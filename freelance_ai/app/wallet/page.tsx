@@ -5,7 +5,6 @@ import CreateWallet from "../actions/Wallet";
 import checkclientisinuser from '../actions/Client_in_User';
 import { useRouter } from "next/navigation";
 import { useStore } from '../zustand/Store/useStore';
-import axios from 'axios'
 export default function () {
   const route = useRouter();
   const [accountnumber, Setaccountnumber] = useState('');
@@ -15,7 +14,6 @@ export default function () {
   const { name } = useStore();
   const { email } = useStore();
   const { role } = useStore();
-  // const { userid } = useStore();
   const { clientid } = useStore();
   async function createWallet(accountnumber: string, amount: string) {
     const { success } = walletvalidation.safeParse({

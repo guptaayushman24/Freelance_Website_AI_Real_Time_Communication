@@ -36,7 +36,7 @@ export default function () {
     Setactiveindex(index);
     console.log("User email in the ongoing is", useremail);
     setuseremail(useremail);
-    setwhichuser(session?.user.whichuser);
+    setwhichuser(session?.user?.whichuser);
   }
 
   async function completedProject(clientid: number, useremail: string, projecttitle: string, timeline: string, budget: string) {

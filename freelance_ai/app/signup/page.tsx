@@ -14,7 +14,6 @@ export default function(){
     // Using state variable from the zustand
     const {setuserid} = useStore();
     const {setrole} = useStore();
-    const {setuseremail} = useStore();
     const {setname} = useStore();
     const {setemail} = useStore();
     const router = useRouter();

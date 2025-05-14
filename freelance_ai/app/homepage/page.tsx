@@ -10,7 +10,6 @@ export default async function ServerClientInfo() {
     const whichuser = session.user.whichuser;
 
     const cookieStore = await cookies();
-    const cookieindex = await cookies();
     const datastate = cookieStore.get('buttonvisibility')?.value
     async function getAllJobs() {
         try {

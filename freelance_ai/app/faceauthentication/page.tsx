@@ -1,6 +1,4 @@
 'use client'
-import * as faceapi from 'face-api.js'
-import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import {useRouter} from 'next/navigation'
 import { signIn } from "next-auth/react"

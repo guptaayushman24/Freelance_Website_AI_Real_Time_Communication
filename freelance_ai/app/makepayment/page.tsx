@@ -13,7 +13,6 @@ export default function () {
     const [amount, Setamount] = useState('');
     const { projectidtodelete } = useStore();
     const { data: session } = useSession();
-    const email = session?.user?.email
     const route = useRouter();
     async function paymentToFreelancer(clientuniqueid: string, freelaneruniqueid: string, amount: string) {
         try {

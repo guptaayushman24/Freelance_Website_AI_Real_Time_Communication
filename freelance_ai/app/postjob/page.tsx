@@ -6,7 +6,7 @@ import {useRouter} from 'next/navigation';
 export default function () {
   // If only client is login then show these page
   const { data: session } = useSession();
-  const clientid = session?.user.id;
+  const clientid = session?.user?.id;
   const router = useRouter();
   const [projecttitle, setProjettitle] = useState<string>('');
   const [projectdescription, setProjectdescription] = useState<string>('');

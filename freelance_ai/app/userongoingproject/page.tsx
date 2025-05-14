@@ -11,7 +11,7 @@ export  default function(){
     const [userindex,setuserindex] = useState(-1);
     const [client_email,Setclient_email] = useState('');
     const [acceptbuttonstate, Setacceptbuttonstate] = useState<boolean>(false);
-    const user_id = session?.user.id;
+    const user_id = session?.user?.id;
     const user_email = session?.user?.email;
     const {setclientemail} = useStore();
     const {setwhichuser} = useStore();
@@ -26,7 +26,7 @@ export  default function(){
         setuserindex(index);
         Setacceptbuttonstate(true);
         setclientemail(clientemail);
-        setwhichuser(session?.user.whichuser)
+        setwhichuser(session?.user?.whichuser)
     }
     useEffect(()=>{
         allprojectsofclient();
