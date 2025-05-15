@@ -18,7 +18,8 @@ export default  function ApplyClinetDetailButton({ user,clientid,jobtitle,budget
   async function applyforproject(){
     try{
       Setloading(true);
-      const userid =  session?.user?.id;
+      const user = session?.user  as any;
+      const userid =  user.id
      console.log("The client id is",clientid);
      console.log("The user id is",userid);
       const jobapply = await Apply_Project (clientid,userid,jobtitle,budget,timeline,index);
