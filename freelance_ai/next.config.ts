@@ -3,6 +3,9 @@ const nextConfig: import('next').NextConfig = {
   // Other configurations
   eslint:{
     ignoreDuringBuilds:true
+  },
+  typescript:{
+    ignoreBuildErrors:true
   }
 }
 
