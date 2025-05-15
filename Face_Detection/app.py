@@ -61,7 +61,7 @@ def storefaceindb():
                     gray_image_data = image_file.read()
                     encoded_gray_image = base64.b64encode(gray_image_data)
 
-                response = requests.post('http://localhost:4001/prismaschema', json={
+                response = requests.post('https://freelance-website-ai-real-time-ekgk.onrender.com/prismaschema', json={
                     'imagestring': encoded_gray_image.decode('utf-8'),
                     'userid': userid
             })
@@ -81,7 +81,7 @@ def storefaceindb():
 
 
 
-@app.route('/storeimageinfolder', methods=['POST'])
+@app.route('https://freelance-website-ai-real-time-ekgk.onrender.com/storeimageinfolder', methods=['POST'])
 def storeimageinfolder():
     try:
         data = request.get_json()
@@ -103,7 +103,7 @@ def storeimageinfolder():
         with open(save_path, 'wb') as f:
             f.write(image_bytes)
 
-        sizeofdb = requests.get('http://localhost:4001/findthesizeofdb')
+        sizeofdb = requests.get('https://freelance-website-ai-real-time-ekgk.onrender.com/findthesizeofdb')
         
         if sizeofdb.status_code == 200:
             json_data = sizeofdb.json()
@@ -111,7 +111,7 @@ def storeimageinfolder():
             print("Size is",size)
             for x in range(size):
                 print(f"How many times you run {x}")
-                response = requests.get('http://localhost:4001/getallimagestring')
+                response = requests.get('https://freelance-website-ai-real-time-ekgk.onrender.com/getallimagestring')
                 if response.status_code == 200:
                     try:
                         data = response.json()
