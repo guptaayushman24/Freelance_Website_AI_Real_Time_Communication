@@ -16,6 +16,7 @@ async function CreateWallet(name:string,email:string,role:string,amount:string,a
         return data;
     }
     catch(err){
+        console.log(err);
         return -1;
     }
 }

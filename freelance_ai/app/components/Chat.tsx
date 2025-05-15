@@ -1,5 +1,4 @@
 'use client'
-import { useSession } from "next-auth/react";
 import { useEffect, useMemo, useState } from "react";
 import { useStore } from "../zustand/Store/useStore";
 import { io } from 'socket.io-client'

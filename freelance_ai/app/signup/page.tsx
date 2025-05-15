@@ -3,6 +3,7 @@ import { useState } from "react"
 import Signup from "../actions/Signup"
 import { useStore } from "../zustand/Store/useStore";
 import { useRouter } from "next/navigation";
+// eslint-disable-next-line react/display-name
 export default function(){
     const [name,setName] = useState<string>('');
     const [email,setEmail] = useState('');
