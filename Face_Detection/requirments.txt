@@ -1,0 +1,6 @@
+Flask
+flask-cors
+requests
+Pillow
+face_recognition
+numpy

@@ -1,0 +1,5 @@
+cmake
+libboost-all-dev
+libopencv-dev
+build-essential
+libdlib-dev
