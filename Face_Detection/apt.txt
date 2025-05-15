@@ -1,5 +1,8 @@
+build-essential
 cmake
 libboost-all-dev
-libopencv-dev
-build-essential
+libopenblas-dev
+liblapack-dev
+libx11-dev
+libgtk-3-dev
 libdlib-dev
