@@ -9,7 +9,7 @@ export default function  (){
     const route = useRouter();
     async function AddMoneytowallet (accountnumber:string,amount:string){
         try{
-            const transaction = await axios.post('http://localhost:5001/addmoneytowallet',{
+            const transaction = await axios.post('https://freelance-website-ai-real-time.onrender.com/addmoneytowallet',{
                accountnumber:accountnumber,
                amount:amount
             })
