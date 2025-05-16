@@ -38,7 +38,7 @@ RUN pip3 install --upgrade pip && \
     python3 setup.py install --set BUILD_SHARED_LIBS=OFF
 
 RUN pip3 install face_recognition
-
+RUN requirments -r
 
 
 # Runtime Image
@@ -71,5 +71,9 @@ COPY --from=compile \
     # Destination
     /usr/lib/x86_64-linux-gnu/
 
+COPY requirements.txt .
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 # Add our packages
 ENV PATH="/opt/venv/bin:$PATH"
