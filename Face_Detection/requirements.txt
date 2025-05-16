@@ -1,6 +1,5 @@
 opencv-contrib-python
 opencv-python
-dlib
 face_recognition
 pillow
 flask
