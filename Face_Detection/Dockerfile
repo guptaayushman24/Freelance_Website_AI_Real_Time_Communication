@@ -74,5 +74,9 @@ COPY requirements.txt .
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
+Create folders relative to WORKDIR
+RUN mkdir -p Face_Detection/Gray_Image
+RUN mkdir -p Face_Detection/image
 # Add our packages
 ENV PATH="/opt/venv/bin:$PATH"
