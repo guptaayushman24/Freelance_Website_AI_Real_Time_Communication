@@ -15,18 +15,18 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip and install wheel and setuptools for better package building
-RUN pip3 install --upgrade pip setuptools wheel
+RUN apt install python3 --upgrade pip setuptools wheel
 
 # Install numpy first (dlib requires numpy)
-RUN pip3 install numpy
+RUN apt install python3 install numpy
 
 # Install dlib separately (can take a while, but needed)
-RUN pip3 install dlib
+RUN apt install python3 install dlib
 
 # Copy your requirements file and install the rest of your dependencies
 COPY requirements.txt /app/requirements.txt
 WORKDIR /app
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN apt install python3  install --no-cache-dir -r requirements.txt
 
 # Copy your app code
 COPY . /app
