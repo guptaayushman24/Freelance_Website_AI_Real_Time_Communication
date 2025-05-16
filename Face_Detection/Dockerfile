@@ -31,15 +31,13 @@
 # # Default command
 # CMD ["python", "app.py"]
 
-FROM ageitgey/face_recognition:latest
-
-WORKDIR /app
-
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-EXPOSE 5000
-
-CMD ["python", "app.py"]
+FROM python:3.9
+    
+    COPY requirements.txt .
+    RUN pip install --upgrade pip
+    RUN pip install face_recognition
+    RUN pip install -r requirements.txt
+    
+    COPY . /app
+    WORKDIR /app
+    CMD ["python","app.py"]
