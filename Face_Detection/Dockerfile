@@ -77,7 +77,7 @@ COPY requirements.txt .
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN pip install face-recognition
+RUN pip3 install face_recognition
 
 COPY ..
 
