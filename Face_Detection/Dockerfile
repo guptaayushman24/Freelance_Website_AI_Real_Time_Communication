@@ -1,8 +1,7 @@
 FROM ubuntu:latest
 
-# Install system dependencies needed for dlib and your app
-RUN apt-get update && \
-    apt-get install -y \
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
     libopenblas-dev \
@@ -11,25 +10,27 @@ RUN apt-get update && \
     libgtk-3-dev \
     python3 \
     python3-dev \
-    python3-pip && \
-    rm -rf /var/lib/apt/lists/*
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip and install wheel and setuptools for better package building
-RUN apt install python3 --upgrade pip setuptools wheel
+# Upgrade pip and install build tools
+RUN pip3 install --upgrade pip setuptools wheel
 
-# Install numpy first (dlib requires numpy)
-RUN apt install python3 install numpy
+# Install numpy before dlib
+RUN pip3 install numpy
 
-# Install dlib separately (can take a while, but needed)
-RUN apt install python3 install dlib
+# Install dlib (can take time)
+RUN pip3 install dlib
 
-# Copy your requirements file and install the rest of your dependencies
-COPY requirements.txt /app/requirements.txt
+# Set working directory
 WORKDIR /app
-RUN apt install python3  install --no-cache-dir -r requirements.txt
 
-# Copy your app code
-COPY . /app
+# Copy requirements and install them
+COPY requirements.txt .
+RUN pip3 install -r requirements.txt
 
-# Command to run your Flask app (change if necessary)
+# Copy rest of your app
+COPY . .
+
+# Set the entrypoint to run your Flask app
 CMD ["python3", "app.py"]
