@@ -11,26 +11,25 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-dev \
     python3-pip \
+    python3-venv \
     && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip and install build tools
-RUN pip3 install --upgrade pip setuptools wheel
-
-# Install numpy before dlib
-RUN pip3 install numpy
-
-# Install dlib (can take time)
-RUN pip3 install dlib
-
-# Set working directory
+# Create and activate a virtual environment
 WORKDIR /app
+RUN python3 -m venv /opt/venv
 
-# Copy requirements and install them
+# Ensure pip is upgraded inside the virtual environment
+RUN /opt/venv/bin/pip install --upgrade pip setuptools wheel numpy dlib
+
+# Add virtualenv to PATH
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Install dependencies from requirements.txt
 COPY requirements.txt .
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
-# Copy rest of your app
+# Copy the application code
 COPY . .
 
-# Set the entrypoint to run your Flask app
-CMD ["python3", "app.py"]
+# Run the application using the virtual environment's Python
+CMD ["python", "app.py"]
