@@ -1,6 +1,10 @@
 # Builder Image
 FROM python:3.8-slim-buster AS compile
 
+WORKDIR /app
+# Create folders relative to WORKDIR
+RUN mkdir -p Face_Detection/Gray_Image
+RUN mkdir -p Face_Detection/image
 # Install Dependencies
 RUN apt-get -y update && apt-get install -y --fix-missing \
     build-essential \
@@ -75,8 +79,9 @@ COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-Create folders relative to WORKDIR
-RUN mkdir -p Face_Detection/Gray_Image
-RUN mkdir -p Face_Detection/image
+COPY ..
+
+
+
 # Add our packages
 ENV PATH="/opt/venv/bin:$PATH"

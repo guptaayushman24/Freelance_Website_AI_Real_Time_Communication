@@ -97,7 +97,7 @@ def storeimageinfolder():
         image_bytes = base64.b64decode(base64Image)
         filename = f"auth_image_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:6]}.jpg"
         save_path = os.path.join(
-        'D:/Freelance_Project/Face_Detection',
+        'Face_Detection',
         'Imageforauthentication',
         filename
     )

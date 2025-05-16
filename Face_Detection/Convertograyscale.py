@@ -2,9 +2,10 @@ import cv2
 import os
 import uuid
 from datetime import datetime
-# folder_path_captured_image = 'Face_Detection/image/Readme.md'
-folder_path_captured_image = 'D:/Freelance_Project/Face_Detection/image'
-folder_path_gray_image = 'D:/Freelance_Project/Face_Detection/Gray_Image'
+folder_path_captured_image = os.path.join('image')
+os.makedirs(folder_path_captured_image, exist_ok=True)
+folder_path_gray_image = os.path.join('Gray_Image')
+os.makedirs(folder_path_gray_image,exist_ok=True)
 def convertimagetograyscale (imagetoconvert,output_filename) :
     try:
         original_image = cv2.imread(imagetoconvert)
