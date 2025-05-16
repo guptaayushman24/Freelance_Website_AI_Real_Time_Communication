@@ -1,4 +1,5 @@
 Flask
+face_recognition_models
 opencv-python
 numpy
 requests
