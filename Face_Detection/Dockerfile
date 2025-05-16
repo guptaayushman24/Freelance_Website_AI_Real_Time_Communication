@@ -41,7 +41,6 @@ RUN pip3 install --upgrade pip && \
     cd dlib/ && \
     python3 setup.py install --set BUILD_SHARED_LIBS=OFF
 
-RUN pip3 install face_recognition
 
 
 # Runtime Image
