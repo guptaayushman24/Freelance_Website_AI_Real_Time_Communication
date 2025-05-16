@@ -1,15 +1,18 @@
-FROM bamos/dlib:latest
+FROM python:3.10-slim
 
-# Set working directory
+# Install system packages for dlib
+RUN apt-get update && apt-get install -y \
+    build-essential cmake \
+    libgtk-3-dev libboost-all-dev \
+    libopenblas-dev liblapack-dev \
+    libx11-dev g++ && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
-# Copy requirements first and install dependencies
 COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Copy the rest of the app code
 COPY . .
 
-# Run your app
 CMD ["python", "app.py"]
