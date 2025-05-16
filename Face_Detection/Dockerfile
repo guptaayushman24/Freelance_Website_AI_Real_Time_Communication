@@ -38,12 +38,7 @@ RUN pip3 install --upgrade pip && \
     python3 setup.py install --set BUILD_SHARED_LIBS=OFF
 
 RUN pip3 install face_recognition
-RUN pip3 install opencv-python
-RUN pip3 install opencv-contrib-python
-RUN pip3 install pillow
-RUN pip3 install flask
-RUN pip3 install flask-cors
-RUN pip3 install requets
+
 
 
 # Runtime Image
