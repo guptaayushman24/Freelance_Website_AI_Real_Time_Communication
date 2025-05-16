@@ -10,7 +10,7 @@ import uuid
 from datetime import datetime
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}},supports_credentials=True)
-@app.route('/',methods=["GET","POST"])
+@app.route('/',methods=["GET"])
 def hello_word():
     return "Hello,World!"
 
@@ -33,7 +33,8 @@ def storefaceindb():
 
         # Give image a unique name
         unique_filename = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{uuid.uuid4().hex}.jpg"
-        save_path = os.path.join('D:/Freelance_Project/Face_Detection', 'image', unique_filename)
+        path = os.path.join('image')
+        save_path = os.path.join(path, unique_filename)
 
         os.makedirs(os.path.dirname(save_path),exist_ok=True)
         with open(save_path,'wb') as f:
@@ -44,7 +45,8 @@ def storefaceindb():
 
        
 
-        gray_image_folder_path = 'D:/Freelance_Project/Face_Detection/Gray_Image'
+        # gray_image_folder_path = 'D:/Freelance_Project/Face_Detection/Gray_Image'
+        gray_image_folder_path = os.path.join('Gray_Image')
         grayimagepathfiles = sorted(
             [f for f in os.listdir(gray_image_folder_path) if f.endswith(('.jpg', '.jpeg', '.png'))],
             key=lambda x: os.path.getmtime(os.path.join(gray_image_folder_path, x)),
@@ -81,7 +83,7 @@ def storefaceindb():
 
 
 
-@app.route('https://freelance-website-ai-real-time-ekgk.onrender.com/storeimageinfolder', methods=['POST'])
+@app.route('/storeimageinfolder', methods=['POST'])
 def storeimageinfolder():
     try:
         data = request.get_json()

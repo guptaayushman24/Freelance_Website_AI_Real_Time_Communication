@@ -1,0 +1,42 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+venv/
+env/
+
+# Hidden/system files
+.DS_Store
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# OS folders
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+
+# Test images or local output
+*.jpg
+*.png
+DecodedImages/
+FetchedImage/
+Gray_Image/
+image/
+Imageforauthenticenticatioentientententiceeentication/
+
+# Optional: exclude local dev-only files
+.env
+*.local

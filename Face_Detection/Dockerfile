@@ -1,18 +1,45 @@
-FROM python:3.10-slim
+# FROM python:3.9-slim
 
-# Install system packages for dlib
-RUN apt-get update && apt-get install -y \
-    build-essential cmake \
-    libgtk-3-dev libboost-all-dev \
-    libopenblas-dev liblapack-dev \
-    libx11-dev g++ && rm -rf /var/lib/apt/lists/*
+# # Install system dependencies for dlib, face_recognition, and OpenCV
+# RUN apt-get update && apt-get install -y \
+#     build-essential \
+#     cmake \
+#     pkg-config \
+#     libx11-dev \
+#     libatlas-base-dev \
+#     libgtk-3-dev \
+#     libglib2.0-0 \
+#     libgl1-mesa-glx \
+#     libboost-python-dev \
+#     libboost-thread-dev \
+#     libboost-system-dev \
+#     libboost-filesystem-dev \
+#     python3-dev \
+#     && rm -rf /var/lib/apt/lists/*
+
+# # Set working directory
+# WORKDIR /app
+
+# # Copy requirements and install Python dependencies
+# COPY requirements.txt .
+# RUN pip install --upgrade pip
+# RUN pip install -r requirements.txt
+
+# # Copy source code
+# COPY . .
+
+# # Default command
+# CMD ["python", "app.py"]
+
+FROM ageitgey/face_recognition:latest
 
 WORKDIR /app
 
 COPY requirements.txt .
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
+
+EXPOSE 5000
 
 CMD ["python", "app.py"]

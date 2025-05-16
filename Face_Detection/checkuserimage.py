@@ -19,7 +19,8 @@ def checkuserimageisvalid(imagestring, userid):
         image_bytes = base64.b64decode(base64Image)
         image = Image.open(io.BytesIO(image_bytes)).convert('RGB')
 
-        decoded_folder = 'D:/Freelance_Project/Face_Detection/DecodedImages'
+        # decoded_folder = 'D:/Freelance_Project/Face_Detection/DecodedImages'
+        decoded_folder = os.path.join('DecodedImages')
         os.makedirs(decoded_folder, exist_ok=True)
 
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -38,7 +39,8 @@ def checkuserimageisvalid(imagestring, userid):
         decoded_encoding = decoded_encodings[0]
 
         # Step 3: Compare against stored images
-        stored_faces_folder = 'D:/Freelance_Project/Face_Detection/Imageforauthentication'
+        # stored_faces_folder = 'D:/Freelance_Project/Face_Detection/Imageforauthentication'
+        stored_faces_folder = os.path.join('Imageforauthentication')
         image_files = [f for f in os.listdir(stored_faces_folder) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
 
         for image_file in image_files:

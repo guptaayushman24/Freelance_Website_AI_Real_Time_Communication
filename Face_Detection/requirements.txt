@@ -1,4 +1,7 @@
-face_recognition
+# opencv-contrib-python
+# opencv-python
+# face_recognition
+pillow
 flask
 flask-cors
 requests
