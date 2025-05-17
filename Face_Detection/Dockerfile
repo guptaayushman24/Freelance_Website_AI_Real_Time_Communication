@@ -77,8 +77,7 @@ COPY requirements.txt .
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN pip3 install face_recognition
-
+RUN pip3 install dlib face_recognition
 COPY ..
 
 
