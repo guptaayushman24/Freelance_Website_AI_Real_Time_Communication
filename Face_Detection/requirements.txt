@@ -1,3 +1,5 @@
+dlib
+face-recognition
 Flask
 opencv-python
 numpy
