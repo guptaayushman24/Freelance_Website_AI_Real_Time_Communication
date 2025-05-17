@@ -36,7 +36,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # Install Dlib
 ENV CFLAGS=-static
 RUN pip3 install --upgrade pip && \
-    git clone -b 'v19.21' --single-branch https://github.com/davisking/dlib.git && \
+    git clone -b 'v19.24.9' --single-branch https://github.com/davisking/dlib.git && \
     cd dlib/ && \
     python3 setup.py install --set BUILD_SHARED_LIBS=OFF
 
@@ -75,8 +75,8 @@ COPY --from=compile \
 COPY requirements.txt .
 
 RUN pip install --upgrade pip
-RUN pip install face-recognition
 RUN pip install -r requirements.txt
+RUN pip install face-recognition
 COPY ..
 
 # Copy your app code
