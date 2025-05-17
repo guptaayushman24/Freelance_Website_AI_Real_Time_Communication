@@ -1,9 +1,6 @@
 # Builder Image
 FROM python:3.8-slim-buster AS compile
-WORKDIR /app
-# Create folders relative to WORKDIR
-RUN mkdir -p Face_Detection/Gray_Image
-RUN mkdir -p Face_Detection/image
+
 # Install Dependencies
 RUN apt-get -y update && apt-get install -y --fix-missing \
     build-essential \
@@ -36,11 +33,13 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # Install Dlib
 ENV CFLAGS=-static
 RUN pip3 install --upgrade pip && \
-    git clone -b 'v19.24.9' --single-branch https://github.com/davisking/dlib.git && \
+    git clone -b 'v19.21' --single-branch https://github.com/davisking/dlib.git && \
     cd dlib/ && \
     python3 setup.py install --set BUILD_SHARED_LIBS=OFF
 
-RUN echo "✅ dlib installed!"
+RUN pip3 install face_recognition
+RUN echo "face_recognition is installed"
+
 
 # Runtime Image
 FROM python:3.8-slim-buster
@@ -72,23 +71,5 @@ COPY --from=compile \
     # Destination
     /usr/lib/x86_64-linux-gnu/
 
-RUN pip install face-recognition
-RUN echo "✅ face_recognition installed!"
-COPY requirements.txt .
-RUN pip install --upgrade pip
-echo "Requirments.txt file"
-RUN pip install -r requirements.txt
-
-
-COPY ..
-
-# Copy your app code
-# COPY . /opt/render/project/src/Face_Detection
-
-# # Set the working directory to your project folder
-# WORKDIR /opt/render/project/src/Face_Detection
-
 # Add our packages
 ENV PATH="/opt/venv/bin:$PATH"
-# RUN pip3 install face-recognition
-# CMD ["python", "app.py"]
