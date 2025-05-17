@@ -1,6 +1,7 @@
+import os
+os.system("pip install face-recognition")
 import base64
 import face_recognition
-import os
 import io
 import numpy as np
 from PIL import Image

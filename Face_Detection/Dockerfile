@@ -87,5 +87,5 @@ COPY ..
 
 # Add our packages
 ENV PATH="/opt/venv/bin:$PATH"
-RUN pip3 install face-recognition
+# RUN pip3 install face-recognition
 CMD ["python", "app.py"]
