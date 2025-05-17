@@ -1,6 +1,5 @@
 # Builder Image
 FROM python:3.8-slim-buster AS compile
-FROM ageitgey/face_recognition:latest
 WORKDIR /app
 # Create folders relative to WORKDIR
 RUN mkdir -p Face_Detection/Gray_Image
@@ -76,6 +75,7 @@ COPY --from=compile \
 COPY requirements.txt .
 
 RUN pip install --upgrade pip
+RUN pip install face_recognition
 RUN pip install -r requirements.txt
 COPY ..
 
