@@ -73,3 +73,6 @@ COPY --from=compile \
 
 # Add our packages
 ENV PATH="/opt/venv/bin:$PATH"
+
+RUN python3 -c "import dlib; print('✅ dlib is installed.')"
+RUN python3 -c "import face_recognition; print('✅ face_recognition is installed.')"
