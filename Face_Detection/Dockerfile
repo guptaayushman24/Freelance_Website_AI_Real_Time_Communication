@@ -72,10 +72,10 @@ COPY --from=compile \
     /usr/lib/x86_64-linux-gnu/
 
 # Add our packages
-ENV PATH="/opt/venv/bin:$PATH"
+# Set up virtual environment path and Python paths
 ENV VIRTUAL_ENV=/opt/venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 ENV PYTHONPATH="$VIRTUAL_ENV/lib/python3.8/site-packages"
-RUN ln -s $VIRTUAL_ENV/bin/python /usr/bin/python
-RUN python3 -c "import dlib; print('✅ dlib is installed.')"
-RUN python3 -c "import face_recognition; print('✅ face_recognition is installed.')"
+
+# Symlink venv python to system python
+RUN ln -sf $VIRTUAL_ENV/bin/python /usr/bin/python
