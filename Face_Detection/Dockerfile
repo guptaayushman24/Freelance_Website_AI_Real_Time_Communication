@@ -41,7 +41,7 @@ RUN pip3 install --upgrade pip && \
     python3 setup.py install --set BUILD_SHARED_LIBS=OFF
 
 
-RUN pip install face-recognition
+# RUN pip install face-recognition
 # Runtime Image
 FROM python:3.8-slim-buster
 
