@@ -40,8 +40,8 @@ RUN pip3 install --upgrade pip && \
     cd dlib/ && \
     python3 setup.py install --set BUILD_SHARED_LIBS=OFF
 
+RUN echo "✅ dlib installed!"
 
-RUN pip install face-recognition
 # Runtime Image
 FROM python:3.8-slim-buster
 
@@ -72,8 +72,9 @@ COPY --from=compile \
     # Destination
     /usr/lib/x86_64-linux-gnu/
 
+RUN pip install face-recognition
+RUN echo "✅ face_recognition installed!"
 COPY requirements.txt .
-
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
