@@ -76,7 +76,7 @@ COPY requirements.txt .
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN pip install face-recognition
+
 COPY ..
 
 # Copy your app code
@@ -87,4 +87,5 @@ COPY ..
 
 # Add our packages
 ENV PATH="/opt/venv/bin:$PATH"
+RUN pip3 install face-recognition
 CMD ["python", "app.py"]
