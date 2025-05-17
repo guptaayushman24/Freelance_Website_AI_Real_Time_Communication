@@ -74,8 +74,9 @@ COPY --from=compile \
 # Add our packages
 # Set up virtual environment path and Python paths
 ENV VIRTUAL_ENV=/opt/venv
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-ENV PYTHONPATH="$VIRTUAL_ENV/lib/python3.8/site-packages"
+# ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+# ENV PYTHONPATH="$VIRTUAL_ENV/lib/python3.8/site-packages"
 
-# Symlink venv python to system python
-RUN ln -sf $VIRTUAL_ENV/bin/python /usr/bin/python
+# # Symlink venv python to system python
+# RUN ln -sf $VIRTUAL_ENV/bin/python /usr/bin/python
+CMD ["/opt/venv/bin/python", "Face_Detection/app.py"]
