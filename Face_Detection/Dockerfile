@@ -73,6 +73,9 @@ COPY --from=compile \
 
 # Add our packages
 ENV PATH="/opt/venv/bin:$PATH"
-
+ENV VIRTUAL_ENV=/opt/venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+ENV PYTHONPATH="$VIRTUAL_ENV/lib/python3.8/site-packages"
+RUN ln -s $VIRTUAL_ENV/bin/python /usr/bin/python
 RUN python3 -c "import dlib; print('✅ dlib is installed.')"
 RUN python3 -c "import face_recognition; print('✅ face_recognition is installed.')"
