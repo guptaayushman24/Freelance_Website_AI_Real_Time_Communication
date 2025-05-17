@@ -1,5 +1,3 @@
-dlib-bin
-face_recognition
 Flask
 opencv-python
 numpy
