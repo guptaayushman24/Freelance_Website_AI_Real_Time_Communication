@@ -5,7 +5,6 @@ import io
 import numpy as np
 from PIL import Image
 from datetime import datetime
-os.system("pip install face_recognition")
 def checkuserimageisvalid(imagestring, userid):
     try:
         print("👋 Hello from checkuserimageisvalid")

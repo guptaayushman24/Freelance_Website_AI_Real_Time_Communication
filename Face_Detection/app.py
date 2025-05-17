@@ -8,7 +8,7 @@ import requests
 import json
 import uuid
 from datetime import datetime
-os.system("pip install face_recognition")
+
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}},supports_credentials=True)
 @app.route('/',methods=["GET"])
