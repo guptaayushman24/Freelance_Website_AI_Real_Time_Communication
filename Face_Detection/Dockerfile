@@ -1,5 +1,5 @@
 FROM animcogn/face_recognition:gpu
-
+RUN echo "Running"
 COPY requirements.txt requirements.txt
 
 RUN pip3 install -r ./requirements.txt
