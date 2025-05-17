@@ -1,5 +1,4 @@
 import os
-os.system("pip install face-recognition")
 import base64
 import face_recognition
 import io
