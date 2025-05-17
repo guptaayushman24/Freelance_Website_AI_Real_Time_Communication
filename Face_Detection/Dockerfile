@@ -83,3 +83,4 @@ COPY ..
 
 # Add our packages
 ENV PATH="/opt/venv/bin:$PATH"
+CMD ["python", "app.py"]
