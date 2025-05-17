@@ -4,6 +4,6 @@ COPY requirements.txt requirements.txt
 
 RUN pip3 install -r ./requirements.txt
 
-COPY my_app /my_app
+COPY Face_Detection /Face_Detection
 
 CMD [ "python3", "/Face_Detection/app.py" ]
