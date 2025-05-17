@@ -1,8 +1,0 @@
-cmake
-libboost-all-dev
-build-essential
-libglib2.0-0
-libsm6
-libxrender1
-libxext6
-libatlas-base-dev
