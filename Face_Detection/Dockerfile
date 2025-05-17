@@ -79,7 +79,11 @@ RUN pip install face-recognition
 RUN pip install -r requirements.txt
 COPY ..
 
+# Copy your app code
+COPY . /opt/render/project/src/Face_Detection
 
+# Set the working directory to your project folder
+WORKDIR /opt/render/project/src/Face_Detection
 
 # Add our packages
 ENV PATH="/opt/venv/bin:$PATH"
