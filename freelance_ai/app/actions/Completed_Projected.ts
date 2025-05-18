@@ -1,10 +1,11 @@
 'use server'
-import { PrismaClient } from "@/db/generated/prisma"
-const client = new PrismaClient();
+// import { PrismaClient } from "@/db/generated/prisma"
+import {prisma} from '../../lib/prisma'
+// const client = new PrismaClient();
 
 export async function Completedproject(client_id: number, useremail: string, projectitile: string, timeline: string, budget: string) {
     try {
-        const data = await client.completedPoject.create({
+        const data = await prisma.completedPoject.create({
             data: {
                 client_id: client_id,
                 useremail: useremail,
@@ -28,7 +29,7 @@ export async function Completedproject(client_id: number, useremail: string, pro
 
 export async function Deletedproject(idtodelete: number) {
     try {
-        const data = await client.acceptedProject.delete({
+        const data = await prisma.acceptedProject.delete({
             where: {
                 aaplyproject: idtodelete
             }

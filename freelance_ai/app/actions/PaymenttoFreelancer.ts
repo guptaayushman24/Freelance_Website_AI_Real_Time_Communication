@@ -1,14 +1,15 @@
 'use server'
-import { PrismaClient } from "@/db/generated/prisma"
-const client = new PrismaClient();
+// import { PrismaClient } from "@/db/generated/prisma"
+// const client = new PrismaClient();
+import {prisma} from '../../lib/prisma'
 export default async function PaymentToFreelancer(clientuniqueid:string,freelanceruniqueid:string,amount:string){
 
-    const clientwalletbalance = await client.walletSchema.findUnique({
+    const clientwalletbalance = await prisma.walletSchema.findUnique({
         where:{
             uniqueid:clientuniqueid
         }
     })
-    const userwalletbalance = await client.walletSchema.findUnique({
+    const userwalletbalance = await prisma.walletSchema.findUnique({
         where:{
             uniqueid:freelanceruniqueid
         }
@@ -17,7 +18,7 @@ export default async function PaymentToFreelancer(clientuniqueid:string,freelanc
         throw new Error("Inssufficent Balance in wallet add balance from bank to wallet")
     }
 
-    await client.$transaction(async(tx)=>{
+    await prisma.$transaction(async(tx)=>{
         await tx.walletSchema.update({
             where:{
                 uniqueid:clientuniqueid

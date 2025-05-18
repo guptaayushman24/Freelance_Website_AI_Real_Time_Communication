@@ -1,9 +1,10 @@
 'use server'
-import { PrismaClient } from "@/db/generated/prisma"
-const client = new PrismaClient();
+// import { PrismaClient } from "@/db/generated/prisma"
+// const client = new PrismaClient();
+import {prisma} from '../../lib/prisma'
 export default async function checkclientisinuser (clientid:number){
     try{
-        const data = await client.userSchema.findUnique({
+        const data = await prisma.userSchema.findUnique({
             where:{
               user_id:clientid   
             }

@@ -1,9 +1,10 @@
 'use server'
-import { PrismaClient } from "@/db/generated/prisma";
-const client = new PrismaClient();
+// import { PrismaClient } from "@/db/generated/prisma";
+// const client = new PrismaClient();
+import {prisma} from '../../lib/prisma'
 export default async function RejectProject (userid:number,jobtitle:string){
     try{
-        await client.applyJob.deleteMany({
+        await prisma.applyJob.deleteMany({
             where:{
                 userid:userid,
                 jobtitle:jobtitle

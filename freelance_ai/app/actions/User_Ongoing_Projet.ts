@@ -1,9 +1,10 @@
 'use server'
-import { PrismaClient } from "@/db/generated/prisma";
-const client = new PrismaClient();
+// import { PrismaClient } from "@/db/generated/prisma";
+// const client = new PrismaClient();
+import {prisma} from '../../lib/prisma'
 export default async function Userongoingproject(user_id:number){
     try{
-        const data = await client.acceptedProject.findMany({
+        const data = await prisma.acceptedProject.findMany({
             where:{
                 userid:user_id
                 // and accepted status true
