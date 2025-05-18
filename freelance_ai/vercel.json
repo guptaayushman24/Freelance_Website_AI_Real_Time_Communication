@@ -1,7 +1,3 @@
 {
-  "functions": {
-    "api/**.js": {
       "includeFiles": "prisma-engines/**"
-    }
   }
-}
