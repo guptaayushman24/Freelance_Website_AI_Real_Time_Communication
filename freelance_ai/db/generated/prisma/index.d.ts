@@ -346,8 +346,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Prisma Client JS version: 6.5.0
+   * Query Engine version: 173f8d54f8d52e692c7e27e72a88314ec7aeff60
    */
   export type PrismaVersion = {
     client: string
@@ -2554,7 +2554,7 @@ export namespace Prisma {
 
   /**
    * Fields of the UserSchema model
-   */
+   */ 
   interface UserSchemaFieldRefs {
     readonly user_id: FieldRef<"UserSchema", 'Int'>
     readonly Name: FieldRef<"UserSchema", 'String'>
@@ -3735,7 +3735,7 @@ export namespace Prisma {
 
   /**
    * Fields of the ClientSchema model
-   */
+   */ 
   interface ClientSchemaFieldRefs {
     readonly client_id: FieldRef<"ClientSchema", 'Int'>
     readonly client_name: FieldRef<"ClientSchema", 'String'>
@@ -4885,7 +4885,7 @@ export namespace Prisma {
 
   /**
    * Fields of the ProfileSchema model
-   */
+   */ 
   interface ProfileSchemaFieldRefs {
     readonly profile_id: FieldRef<"ProfileSchema", 'Int'>
     readonly About: FieldRef<"ProfileSchema", 'String'>
@@ -6022,7 +6022,7 @@ export namespace Prisma {
 
   /**
    * Fields of the JobSchema model
-   */
+   */ 
   interface JobSchemaFieldRefs {
     readonly job_id: FieldRef<"JobSchema", 'Int'>
     readonly clientid: FieldRef<"JobSchema", 'Int'>
@@ -7199,7 +7199,7 @@ export namespace Prisma {
 
   /**
    * Fields of the ApplyJob model
-   */
+   */ 
   interface ApplyJobFieldRefs {
     readonly applyjobid: FieldRef<"ApplyJob", 'Int'>
     readonly clientid: FieldRef<"ApplyJob", 'Int'>
@@ -8321,7 +8321,7 @@ export namespace Prisma {
 
   /**
    * Fields of the AcceptedProject model
-   */
+   */ 
   interface AcceptedProjectFieldRefs {
     readonly aaplyproject: FieldRef<"AcceptedProject", 'Int'>
     readonly client_id: FieldRef<"AcceptedProject", 'Int'>
@@ -9387,7 +9387,7 @@ export namespace Prisma {
 
   /**
    * Fields of the BankSchema model
-   */
+   */ 
   interface BankSchemaFieldRefs {
     readonly accountid: FieldRef<"BankSchema", 'Int'>
     readonly email: FieldRef<"BankSchema", 'String'>
@@ -10439,7 +10439,7 @@ export namespace Prisma {
 
   /**
    * Fields of the WalletSchema model
-   */
+   */ 
   interface WalletSchemaFieldRefs {
     readonly walletid: FieldRef<"WalletSchema", 'Int'>
     readonly name: FieldRef<"WalletSchema", 'String'>
@@ -11486,7 +11486,7 @@ export namespace Prisma {
 
   /**
    * Fields of the CompletedPoject model
-   */
+   */ 
   interface CompletedPojectFieldRefs {
     readonly completedprojectid: FieldRef<"CompletedPoject", 'Int'>
     readonly client_id: FieldRef<"CompletedPoject", 'Int'>
@@ -12511,7 +12511,7 @@ export namespace Prisma {
 
   /**
    * Fields of the FaceAuthentication model
-   */
+   */ 
   interface FaceAuthenticationFieldRefs {
     readonly faceauthentication: FieldRef<"FaceAuthentication", 'Int'>
     readonly imagestring: FieldRef<"FaceAuthentication", 'String'>
@@ -13084,7 +13084,7 @@ export namespace Prisma {
 
 
   /**
-   * Field references
+   * Field references 
    */
 
 
