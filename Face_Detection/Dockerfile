@@ -1,9 +1,9 @@
-FROM animcogn/face_recognition:gpu
-RUN echo "Running"
-COPY requirements.txt requirements.txt
+# Dockerfile in new project
+FROM guptaayushman24/face-recognition:latest
 
-RUN pip3 install -r ./requirements.txt
+# Add only your new app code
+COPY . /app
+WORKDIR /app
 
-COPY Face_Detection /Face_Detection
-
-CMD [ "python3", "/Face_Detection/app.py" ]
+EXPOSE 5000
+CMD ["python", "app.py"]

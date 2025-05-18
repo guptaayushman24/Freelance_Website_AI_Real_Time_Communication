@@ -77,3 +77,5 @@ def checkuserimageisvalid(imagestring, userid):
         print("🚨 An error occurred in checkuserimageisvalid:")
         print(e)
         return -1
+
+checkuserimageisvalid('sfdjdf',2)
