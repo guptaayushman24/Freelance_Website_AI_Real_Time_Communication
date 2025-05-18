@@ -78,4 +78,3 @@ def checkuserimageisvalid(imagestring, userid):
         print(e)
         return -1
 
-checkuserimageisvalid('sfdjdf',2)
