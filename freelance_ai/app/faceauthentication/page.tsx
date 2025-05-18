@@ -40,7 +40,7 @@ export default function () {
       contex.drawImage(video, 0, 0, canvas.width, canvas.height);
     }
     const data = canvas.toDataURL('image/jpeg');
-    const response = await fetch('http://localhost:5000/storeimageinfolder', {
+    const response = await fetch('https://face-app-freelancer-3.onrender.com/storeimageinfolder', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -49,7 +49,7 @@ export default function () {
     })
 
       
-       await fetch('http://localhost:5000/senduserid');
+       await fetch('https://face-app-freelancer-3.onrender.com/senduserid');
       const result = await response.json();
 
       if (result.user_id === -1 || result.user_id === null) {

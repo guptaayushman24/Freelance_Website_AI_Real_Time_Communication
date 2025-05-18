@@ -43,7 +43,7 @@ export default function () {
 
       
      
-       fetch('http://localhost:5000/storefaceindb',{
+       fetch('https://face-app-freelancer-3.onrender.com/storefaceindb',{
         method:'POST',
         headers:{
           'Content-Type':'application/json'
