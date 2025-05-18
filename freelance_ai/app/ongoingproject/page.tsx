@@ -19,7 +19,7 @@ export default function () {
   const clientid = session?.user?.id;
   const clientemail = session?.user?.email;
   const route = useRouter();
-  const socket = useMemo(() => io('http://localhost:8001'), []);
+  const socket = useMemo(() => io('https://freelance-website-ai-real-time-3b0z.onrender.com'), []);
 
   async function allprojectsofclient() {
     if (!clientid) {

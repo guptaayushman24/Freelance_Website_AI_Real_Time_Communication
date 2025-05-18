@@ -8,7 +8,7 @@ export default function ChatComponent() {
   const [receivedMessage, setReceivedMessage] = useState('');
 
   useEffect(() => {
-    const socket: Socket<DefaultEventsMap, DefaultEventsMap> = io('http://localhost:8001', {
+    const socket: Socket<DefaultEventsMap, DefaultEventsMap> = io('https://freelance-website-ai-real-time-3b0z.onrender.com', {
       transports: ['websocket'],
     });
 

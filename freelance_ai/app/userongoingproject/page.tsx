@@ -15,7 +15,7 @@ export  default function(){
     const user_email = session?.user?.email;
     const {setclientemail} = useStore();
     const {setwhichuser} = useStore();
-    const socket = useMemo(()=>io('http://localhost:8001'),[]);
+    const socket = useMemo(()=>io('https://freelance-website-ai-real-time-3b0z.onrender.com'),[]);
     async function allprojectsofclient(){
         const data = await Userongoingproject(user_id);
         Setuserongoingproject(data || [{}]);

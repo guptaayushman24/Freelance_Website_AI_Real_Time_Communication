@@ -11,7 +11,7 @@ export default function ChatBox() {
   const { clientemail } = useStore();
   const { useremail } = useStore();
   const { whichuser } = useStore();
-  const socket = useMemo(() => io('http://localhost:8001'), []);
+  const socket = useMemo(() => io('https://freelance-website-ai-real-time-3b0z.onrender.com'), []);
   function hidechatbox() {
     Setshowchat(false);
   }
