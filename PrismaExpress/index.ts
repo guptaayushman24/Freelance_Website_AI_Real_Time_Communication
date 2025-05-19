@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-// import {PrismaClient} from '../freelance_ai/db/generated/prisma'
-import {PrismaClient} from '../freelance_ai/node_modules/.prisma/client'
+import {prisma} from '../freelance_ai/lib/prisma'
 const app = express();
 app.use(cors({
     origin:'https://vercel.com/guptaayushman24s-projects/freelance-website-ai-real-time-communication',
@@ -9,11 +8,11 @@ app.use(cors({
 }));
 app.use(express.json({limit:'10mb'}))
 const PORT = 4001;
-const client = new PrismaClient();
+// const client = new PrismaClient();
 app.post('/prismaschema',async(req:any,res:any)=>{
    try{
      const {imagestring,userid} = req.body;
-    await client.faceAuthentication.create({
+    await prisma.faceAuthentication.create({
         data:{
             imagestring:imagestring,
             userid:userid
@@ -32,7 +31,7 @@ app.post('/prismaschema',async(req:any,res:any)=>{
 
 app.get('/findthesizeofdb',async(req:any,res:any)=>{
     try{
-        const data = await client.faceAuthentication.count();
+        const data = await prisma.faceAuthentication.count();
         return res.status(200).json({data});
     }
     catch(err){
@@ -41,7 +40,7 @@ app.get('/findthesizeofdb',async(req:any,res:any)=>{
 })
 app.get('/getallimagestring',async(req:any,res:any)=>{
     try{
-        const data = await client.faceAuthentication.findMany({});
+        const data = await prisma.faceAuthentication.findMany({});
         return res.status(200).json(data)
     }
     catch(err){
