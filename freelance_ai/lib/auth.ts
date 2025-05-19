@@ -2,7 +2,7 @@
 import CredentialsProvider from "next-auth/providers/credentials"
 import GitHubProvider from "next-auth/providers/github";
 import {signinobject} from '@/app/zod/validation'
-import { PrismaClient } from "@/db/generated/prisma";
+import { PrismaClient } from "@prisma/client";
 import dotenv from 'dotenv';
 dotenv.config({ path: 'D:/Freelance_Project/freelance_ai/app/.env' });
 const client = new PrismaClient();

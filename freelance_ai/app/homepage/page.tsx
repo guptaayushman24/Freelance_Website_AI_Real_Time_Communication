@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import RoleBasedDashboard from "../components/Role_Based_Dashboard";
-import { PrismaClient } from "@/db/generated/prisma";
+// import { PrismaClient } from "@/db/generated/prisma";
+import { PrismaClient } from "@prisma/client";
 import { NEXT_AUTH } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import Apply_Client_details_button from '../components/Apply_Client_details_button'
