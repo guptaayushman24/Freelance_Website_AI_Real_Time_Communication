@@ -38,12 +38,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require('express');
 var cors = require('cors');
-var prisma_1 = require("../freelance_ai/db/generated/prisma");
+// import {PrismaClient} from '../freelance_ai/db/generated/prisma'
+var client_1 = require("../freelance_ai/node_modules/.prisma/client");
 var app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'https://vercel.com/guptaayushman24s-projects/freelance-website-ai-real-time-communication',
+    credentials: true
+}));
 app.use(express.json({ limit: '10mb' }));
 var PORT = 4001;
-var client = new prisma_1.PrismaClient();
+var client = new client_1.PrismaClient();
 app.post('/prismaschema', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, imagestring, userid, err_1;
     return __generator(this, function (_b) {
