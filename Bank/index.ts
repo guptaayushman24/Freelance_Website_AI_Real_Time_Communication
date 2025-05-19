@@ -1,4 +1,5 @@
-import {PrismaClient} from '../freelance_ai/db/generated/prisma'
+// import {PrismaClient} from '../freelance_ai/db/generated/prisma'
+import {PrismaClient} from '../freelance_ai/node_modules/.prisma/client'
 const express = require('express');
 const cors = require('cors');
 const client = new PrismaClient();
@@ -6,7 +7,7 @@ const app = express();
 
 const PORT = 5001;
 app.use(cors({
-    origin:'http://localhost:3000',
+    origin:'https://vercel.com/guptaayushman24s-projects/freelance-website-ai-real-time-communication',
     credentials:true
 }));
 

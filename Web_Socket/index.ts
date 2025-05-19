@@ -10,7 +10,7 @@ const server = new createServer(app);
 // Creating the instance of io
 const io = new Server(server,{
     cors:{
-        origin:'http://localhost:3000',
+        origin:'https://vercel.com/guptaayushman24s-projects/freelance-website-ai-real-time-communication',
         method:["GET","POST"],
         credentials:true
     }

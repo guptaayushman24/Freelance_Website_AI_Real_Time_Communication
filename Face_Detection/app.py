@@ -10,7 +10,7 @@ from datetime import datetime
 from Convertograyscale import convertimagetograyscale
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}},supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": "https://vercel.com/guptaayushman24s-projects/freelance-website-ai-real-time-communication"}},supports_credentials=True)
 @app.route('/',methods=["GET"])
 def hello_word():
     return "Hello,World!"
