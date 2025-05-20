@@ -11,7 +11,7 @@ export default function  (){
         try{
             const transaction = await axios.post('https://freelance-website-ai-real-time.onrender.com/addmoneytowallet',{
                accountnumber:accountnumber,
-               amount:Number (amount)
+               amount:amount
             }) 
             if (transaction){
                 alert("Money is added successfully in wallet");
