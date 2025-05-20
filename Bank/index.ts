@@ -1,9 +1,9 @@
-import {prisma} from '../freelance_ai/lib/prisma'
+import { PrismaClient } from '../freelance_ai/lib/generated/prisma/client'; 
 const express = require('express');
 const cors = require('cors');
 const app = express();
-
 const PORT = 5001;
+const client = new PrismaClient()
 app.use(cors({
     origin:'https://vercel.com/guptaayushman24s-projects/freelance-website-ai-real-time-communication',
     credentials:true
@@ -40,12 +40,12 @@ app.post('/addmoneytowallet',async(req:any,res:any)=>{
         }
    
     // User wallet amount
-    const userwalletamount = await prisma.walletSchema.findMany({
+    const userwalletamount = await client.walletSchema.findMany({
         where:{
             accountnumber:body.accountnumber
         }
     })
-    await prisma.$transaction(async(tx)=>{
+    await client.$transaction(async(tx)=>{
         const bank = await tx.bankSchema.findUnique({
             where:{
                 accountnumber:body.accountnumber
@@ -98,7 +98,7 @@ app.post('/addmoneytobank',(req:any,res:any)=>{
             'msg':'Accountnumber or amount is missing'
         })
     }
-    const transaction  = prisma.$transaction(async(tx)=>{
+    const transaction  = client.$transaction(async(tx)=>{
         const userwalletbalance = await tx.walletSchema.findUnique({
             where:{
                 accountnumber:body.accountnumber
