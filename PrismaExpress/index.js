@@ -38,8 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require('express');
 var cors = require('cors');
-// import {PrismaClient} from '../freelance_ai/db/generated/prisma'
-var client_1 = require("../freelance_ai/node_modules/.prisma/client");
+var client_1 = require("@prisma/client");
 var app = express();
 app.use(cors({
     origin: 'https://vercel.com/guptaayushman24s-projects/freelance-website-ai-real-time-communication',
