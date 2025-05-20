@@ -36,15 +36,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// import {PrismaClient} from '../freelance_ai/db/generated/prisma'
-var client_1 = require("../freelance_ai/node_modules/.prisma/client");
+// import {PrismaClient} from '../freelance_ai/node_modules/.prisma/client'
+var client_1 = require("@prisma/client");
 var express = require('express');
 var cors = require('cors');
-var client = new client_1.PrismaClient();
 var app = express();
 var PORT = 5001;
+var client = new client_1.PrismaClient();
 app.use(cors({
-    origin: 'https://vercel.com/guptaayushman24s-projects/freelance-website-ai-real-time-communication',
+    origin: 'https://freelance-website-ai-real-time-communication.vercel.app',
     credentials: true
 }));
 app.use(express.json());
