@@ -5,9 +5,10 @@ const cors = require('cors');
 const app = express();
 const PORT = 5001;
 const client = new PrismaClient()
+
 app.use(cors({
     origin:'https://freelance-website-ai-real-time-communication.vercel.app',
-    credentials:true
+    credentials:true,
 }));
 
 app.use(express.json());
@@ -17,80 +18,176 @@ app.get('/',(req:any,res:any)=>{
     })
 })
 
-app.post('/addmoneytowallet',async(req:any,res:any)=>{
-    const body = req.body;
-    if (!body.amount || !body.accountnumber){
-        return res.json({
-            'msg':'Please enter amount and accountnumber'
-        })
-    }
+// app.post('/addmoneytowallet',async(req:any,res:any)=>{
+//     const body = req.body;
+//     if (!body.amount || !body.accountnumber){
+//         return res.json({
+//             'msg':'Please enter amount and accountnumber'
+//         })
+//     }
 
-    const userbankbalance = await client.bankSchema.findMany({
-        where:{
-            accountnumber:body.accountnumber
-        },
-    })
+//     const userbankbalance = await client.bankSchema.findMany({
+//         where:{
+//             accountnumber:body.accountnumber
+//         },
+//     })
 
    
-        if (Number (body.amount)>Number(userbankbalance[0].amount)){
-            console.log("Error caught");
-            console.log("User balance",userbankbalance[0].amount);
-            return res.json({
-                'msg':'Insufficent Balance'
-            })
-        }
+//         if (Number (body.amount)>Number(userbankbalance[0].amount)){
+//             console.log("Error caught");
+//             console.log("User balance",userbankbalance[0].amount);
+//             return res.json({
+//                 'msg':'Insufficent Balance'
+//             })
+//         }
    
-    // User wallet amount
-    const userwalletamount = await client.walletSchema.findMany({
-        where:{
-            accountnumber:body.accountnumber
-        }
-    })
-    await client.$transaction(async(tx)=>{
-        const bank = await tx.bankSchema.findUnique({
-            where:{
-                accountnumber:body.accountnumber
-            }
-        });
-        const wallet = await tx.walletSchema.findUnique({
-            where:{
-                accountnumber:body.accountnumber
-            }
-        });
+//     // User wallet amount
+//     const userwalletamount = await client.walletSchema.findMany({
+//         where:{
+//             accountnumber:body.accountnumber
+//         }
+//     })
+//     await client.$transaction(async(tx)=>{
+//         const bank = await tx.bankSchema.findUnique({
+//             where:{
+//                 accountnumber:body.accountnumber
+//             }
+//         });
+//         const wallet = await tx.walletSchema.findUnique({
+//             where:{
+//                 accountnumber:body.accountnumber
+//             }
+//         });
 
-        if (!bank || !wallet){
-            throw new Error("Wrong account number or account number does not exist");
-        }
-        if (Number(body.amount)>Number(bank?.amount)){
-            throw new Error("Insufficient balance");
-        }
+//         if (!bank || !wallet){
+//             throw new Error("Wrong account number or account number does not exist");
+//         }
+//         if (Number(body.amount)>Number(bank?.amount)){
+//             throw new Error("Insufficient balance");
+//         }
 
-        await tx.bankSchema.update({
-            where:{
-                accountnumber:bank?.accountnumber
-            },
-            data:{
-                amount:String(Number(bank?.amount)-Number(body.amount))
-            }
-        })
+//         await tx.bankSchema.update({
+//             where:{
+//                 accountnumber:bank?.accountnumber
+//             },
+//             data:{
+//                 amount:String(Number(bank?.amount)-Number(body.amount))
+//             }
+//         })
 
-        await tx.walletSchema.update({
-            where:{
-                accountnumber:body.accountnumber
-            },
-            data:{
-                amount:String(Number(wallet?.amount)+Number(body.amount))
-            }
-        })
+//         await tx.walletSchema.update({
+//             where:{
+//                 accountnumber:body.accountnumber
+//             },
+//             data:{
+//                 amount:String(Number(wallet?.amount)+Number(body.amount))
+//             }
+//         })
 
         
-    })
-    return res.json({
-        "msg":`Transaction done for the account number ${body.accountnumber}`
-    })
+//     })
+//     return res.json({
+//         "msg":`Transaction done for the account number ${body.accountnumber}`
+//     })
 
     
-})
+// })
+
+app.post('/addmoneytowallet', async (req: any, res: any) => {
+  try {
+    const body = req.body;
+
+    if (!body.amount || !body.accountnumber) {
+      return res.status(400).json({
+        msg: 'Please enter amount and accountnumber',
+      });
+    }
+
+    // Fetch bank balance
+    const userbankbalance = await client.bankSchema.findMany({
+      where: {
+        accountnumber: body.accountnumber,
+      },
+    });
+
+    if (userbankbalance.length === 0) {
+      return res.status(404).json({
+        msg: 'Bank account not found',
+      });
+    }
+
+    if (Number(body.amount) > Number(userbankbalance[0].amount)) {
+      return res.status(400).json({
+        msg: 'Insufficient Bank Balance',
+      });
+    }
+
+    // Fetch wallet
+    const userwalletamount = await client.walletSchema.findMany({
+      where: {
+        accountnumber: body.accountnumber,
+      },
+    });
+
+    if (userwalletamount.length === 0) {
+      return res.status(404).json({
+        msg: 'Wallet not found',
+      });
+    }
+
+    // Start Prisma transaction
+    await client.$transaction(async (tx) => {
+      const bank = await tx.bankSchema.findUnique({
+        where: {
+          accountnumber: body.accountnumber,
+        },
+      });
+
+      const wallet = await tx.walletSchema.findUnique({
+        where: {
+          accountnumber: body.accountnumber,
+        },
+      });
+
+      if (!bank || !wallet) {
+        throw new Error('Account number not found');
+      }
+
+      if (Number(body.amount) > Number(bank.amount)) {
+        throw new Error('Insufficient bank balance');
+      }
+
+      await tx.bankSchema.update({
+        where: {
+          accountnumber: body.accountnumber,
+        },
+        data: {
+          amount: String(Number(bank.amount) - Number(body.amount)),
+        },
+      });
+
+      await tx.walletSchema.update({
+        where: {
+          accountnumber: body.accountnumber,
+        },
+        data: {
+          amount: String(Number(wallet.amount) + Number(body.amount)),
+        },
+      });
+    });
+
+    // Success
+    return res.status(200).json({
+      msg: `Transaction done for the account number ${body.accountnumber}`,
+    });
+  } catch (err: any) {
+    console.error('💥 Error in /addmoneytowallet:', err.message);
+    return res.status(500).json({
+      error: 'Internal Server Error',
+      message: err.message,
+    });
+  }
+});
 
 app.post('/addmoneytobank',(req:any,res:any)=>{
     const body = req.body;
