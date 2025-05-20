@@ -1,10 +1,9 @@
 'use server'
-// import { PrismaClient } from "@/db/generated/prisma"
-// const client = new PrismaClient();
-import {prisma} from '../../lib/prisma'
+import { PrismaClient } from "@prisma/client";
+const client = new PrismaClient();
 async function CreateWallet(name:string,email:string,role:string,amount:string,accountnumber:string,uniqueid:string){
     try{
-        const data = await prisma.walletSchema.create({
+        const data = await client.walletSchema.create({
             data:{
                 name:name,
                 email:email,

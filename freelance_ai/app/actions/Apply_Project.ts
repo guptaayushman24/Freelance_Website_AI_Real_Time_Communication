@@ -1,10 +1,9 @@
 'use server'
-// import { PrismaClient } from "@/db/generated/prisma";
-import {prisma} from '../../lib/prisma'
-// const client = new PrismaClient();
+import { PrismaClient } from '@prisma/client'
+const client = new PrismaClient();
 export default async function Apply_Project(client_id:number,user_id:number,jobtitle:string,budget:string,timeline:string,index:number){
     try{    
-        await prisma.applyJob.createMany({
+        await client.applyJob.createMany({
             data:{
                 clientid:client_id,
                 userid:user_id,

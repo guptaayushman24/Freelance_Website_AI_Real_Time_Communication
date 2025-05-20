@@ -1,7 +1,6 @@
 'use server'
-// import { PrismaClient } from "@/db/generated/prisma";
-// const client = new PrismaClient();
-import {prisma} from '../../lib/prisma'
+import { PrismaClient } from "@prisma/client";
+const client = new PrismaClient();
 import { jobschema } from "../zod/validation";
 async function projectDescription(clintid: number, job_title: string, job_description: string, budget: string, timeline: string) {
     try {
@@ -15,7 +14,7 @@ async function projectDescription(clintid: number, job_title: string, job_descri
         if (!success) {
             return -2;
         }
-        const data = await prisma.jobSchema.createMany({
+        const data = await client.jobSchema.createMany({
             data: {
                 clientid: clintid,
                 Job_titile: job_title,

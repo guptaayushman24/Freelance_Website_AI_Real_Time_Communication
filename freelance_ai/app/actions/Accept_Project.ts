@@ -1,10 +1,9 @@
 'use server'
-// import { PrismaClient } from "@/db/generated/prisma"
-import {prisma} from '../../lib/prisma'
-// const client = new PrismaClient();
+import { PrismaClient } from '@prisma/client'
+const client = new PrismaClient();
 export default async function AcceptProject(client_id: number, user_id: number, project_title: string, budget: string, timeline: string) {
     try {
-        const result = await prisma.acceptedProject.create({
+        const result = await client.acceptedProject.create({
             data: {
                 client_id: client_id,
                 userid: user_id,

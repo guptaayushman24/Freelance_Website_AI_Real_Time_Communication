@@ -1,6 +1,7 @@
 'use server'
 import { userprofile } from "../zod/validation";
-import {prisma} from '../../lib/prisma'
+import { PrismaClient } from "@prisma/client";
+const client = new PrismaClient();
 async function createUserProfile (userid:number,profile:string,project:string []){
     try{
         // Do the zod validation here
@@ -9,7 +10,7 @@ async function createUserProfile (userid:number,profile:string,project:string []
             projectlink:project
         })
         if (success){
-            await prisma.profileSchema.create({
+            await client.profileSchema.create({
                 data:{
                     userid:userid,
                     About:profile,
