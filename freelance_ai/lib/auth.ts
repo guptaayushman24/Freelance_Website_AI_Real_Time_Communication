@@ -2,9 +2,10 @@
 import CredentialsProvider from "next-auth/providers/credentials"
 import GitHubProvider from "next-auth/providers/github";
 import {signinobject} from '@/app/zod/validation'
-import {prisma} from '../lib/prisma'
+import { PrismaClient } from "@prisma/client";
 import dotenv from 'dotenv';
 dotenv.config({ path: 'D:/Freelance_Project/freelance_ai/app/.env' });
+const client = new PrismaClient();
 export const  NEXT_AUTH = ({
     // What we will pass here we will pass providers here how we are doing authentication
     providers: [
@@ -20,7 +21,7 @@ export const  NEXT_AUTH = ({
                 // Face Authentication
 
                 if (credentials.userIdFromFaceAuth){
-                    const user = await prisma.userSchema.findUnique({
+                    const user = await client.userSchema.findUnique({
                         where:{
                             user_id:parseInt(credentials.userIdFromFaceAuth)
                         }
@@ -54,7 +55,7 @@ export const  NEXT_AUTH = ({
                     return "Check credentials"
                 }
                 if (whichuser=='Job Seeker'){
-                    const user = await prisma.userSchema.findUnique({
+                    const user = await client.userSchema.findUnique({
                     where:{
                         Email:email
                     }
@@ -62,7 +63,7 @@ export const  NEXT_AUTH = ({
                 if (!user){
                     return null;
                 }
-                const userpassword = await prisma.userSchema.findUnique({
+                const userpassword = await client.userSchema.findUnique({
                     where:{
                         Email:email
                     }
@@ -86,7 +87,7 @@ export const  NEXT_AUTH = ({
 
                 }
                 else if (whichuser=='Client'){
-                    const user = await prisma.clientSchema.findUnique({
+                    const user = await client.clientSchema.findUnique({
                         where:{
                             Email:email
                         }
@@ -94,7 +95,7 @@ export const  NEXT_AUTH = ({
                     if (!user){
                         return null;
                     }
-                    const userpassword = await prisma.clientSchema.findUnique({
+                    const userpassword = await client.clientSchema.findUnique({
                         where:{
                             Email:email
                         }
