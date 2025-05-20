@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-import {PrismaClient} from '../freelance_ai/node_modules/.prisma/client'
+import { PrismaClient } from '@prisma/client';
 const app = express();
 app.use(cors({
     origin:'https://vercel.com/guptaayushman24s-projects/freelance-website-ai-real-time-communication',
