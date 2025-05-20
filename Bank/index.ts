@@ -1,4 +1,4 @@
-import { PrismaClient } from '../freelance_ai/lib/generated/prisma/client'; 
+import {PrismaClient} from '../freelance_ai/node_modules/.prisma/client'
 const express = require('express');
 const cors = require('cors');
 const app = express();
