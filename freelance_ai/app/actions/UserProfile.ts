@@ -1,7 +1,5 @@
 'use server'
-// import { PrismaClient } from  "@/db/generated/prisma"
 import { userprofile } from "../zod/validation";
-// const client = new PrismaClient();
 import {prisma} from '../../lib/prisma'
 async function createUserProfile (userid:number,profile:string,project:string []){
     try{

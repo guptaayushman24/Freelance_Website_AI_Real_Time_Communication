@@ -49,7 +49,7 @@ export default function () {
           'Content-Type':'application/json'
         },
         
-         body:JSON.stringify({data:data,userid:userid})
+         body:JSON.stringify({data:data,userid:5})
       })
       .then(response=>response.json())
       .then(data=>{

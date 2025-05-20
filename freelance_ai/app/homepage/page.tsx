@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import RoleBasedDashboard from "../components/Role_Based_Dashboard";
-// import { PrismaClient } from "@/db/generated/prisma";
-import { PrismaClient } from "@prisma/client";
+import {prisma} from '../../lib/prisma'
 import { NEXT_AUTH } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import Apply_Client_details_button from '../components/Apply_Client_details_button'
-const client = new PrismaClient();
 // eslint-disable-next-line react/display-name
 export default async function ServerClientInfo() {
     const session = await getServerSession(NEXT_AUTH);
@@ -14,7 +12,7 @@ export default async function ServerClientInfo() {
     
     async function getAllJobs() {
         try {
-            const jobs = await client.jobSchema.findMany({
+            const jobs = await prisma.jobSchema.findMany({
                 include: {
                     client: {
                         select: {

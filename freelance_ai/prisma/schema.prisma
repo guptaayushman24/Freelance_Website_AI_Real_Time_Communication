@@ -100,7 +100,7 @@ model BankSchema{
 model WalletSchema{
   walletid Int @id @default(autoincrement())
   name String
-  email String @unique
+  email String
   role String
   accountnumber String @unique
   amount String @default("0")
