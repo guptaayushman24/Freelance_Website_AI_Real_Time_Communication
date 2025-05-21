@@ -1,6 +1,7 @@
 from checkuserimage import checkuserimageisvalid
 from flask import Flask,request
 from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import base64
 import os
 import requests
@@ -13,10 +14,13 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "https://freelance-website-ai-real-time-communication.vercel.app"}},supports_credentials=True)
 
 @app.route('/',methods=["GET","OPTIONS"])
+@cross_origin(origin='https://freelance-website-ai-real-time-communication.vercel.app', supports_credentials=True)
 def hello_word():
     return "Hello,World!"
 
 @app.route('/storefaceindb',methods=["POST","OPTIONS"])
+@cross_origin(origin='https://freelance-website-ai-real-time-communication.vercel.app', supports_credentials=True)
+
 def storefaceindb():
     try:
 
@@ -87,6 +91,8 @@ def storefaceindb():
 
 
 @app.route('/storeimageinfolder', methods=['POST',"OPTIONS"])
+@cross_origin(origin='https://freelance-website-ai-real-time-communication.vercel.app', supports_credentials=True)
+
 def storeimageinfolder():
     try:
         data = request.get_json()
@@ -149,6 +155,8 @@ def storeimageinfolder():
 
     
 @app.route('/senduserid',methods=["GET","OPTIONS"])
+@cross_origin(origin='https://freelance-website-ai-real-time-communication.vercel.app', supports_credentials=True)
+
 def senduserid() :
     try:
         return {'status':'message','user_id':user_id}
