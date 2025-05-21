@@ -46,7 +46,6 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
-app.options('*', cors()); // Allow preflight
 app.use(express.json({ limit: '10mb' }));
 var PORT = 4001;
 var client = new client_1.PrismaClient();
