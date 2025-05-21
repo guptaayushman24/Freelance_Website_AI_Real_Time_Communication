@@ -13,7 +13,7 @@ export default function Home() {
                     <Clinet_Signin></Clinet_Signin>
                     <JobSeekerRegister></JobSeekerRegister>
                     <JobSeekerLogin></JobSeekerLogin>
-                    {/* <FaceSignin></FaceSignin> */}
+                    <FaceSignin></FaceSignin>
                     
                 </div>
             </div>
