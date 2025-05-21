@@ -1,7 +1,6 @@
 from checkuserimage import checkuserimageisvalid
 from flask import Flask,request
-from flask_cors import CORS
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS,cross_origin
 import base64
 import os
 import requests
@@ -9,9 +8,10 @@ import json
 import uuid
 from datetime import datetime
 from Convertograyscale import convertimagetograyscale
-
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://freelance-website-ai-real-time-communication.vercel.app"}},supports_credentials=True)
+# CORS(app, resources={r"/*": {"origins": "https://freelance-website-ai-real-time-communication.vercel.app"}},supports_credentials=True)
+CORS(app)
+
 
 @app.route('/',methods=["GET","OPTIONS"])
 @cross_origin(origin='https://freelance-website-ai-real-time-communication.vercel.app', supports_credentials=True)
