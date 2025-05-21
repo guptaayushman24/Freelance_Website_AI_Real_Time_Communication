@@ -9,8 +9,7 @@ import uuid
 from datetime import datetime
 from Convertograyscale import convertimagetograyscale
 app = Flask(__name__)
-# CORS(app, resources={r"/*": {"origins": "https://freelance-website-ai-real-time-communication.vercel.app"}},supports_credentials=True)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route('/',methods=["GET","OPTIONS"])
@@ -72,7 +71,7 @@ def storefaceindb():
 
                 response = requests.post('https://freelance-website-ai-real-time-ekgk.onrender.com/prismaschema', json={
                     'imagestring': encoded_gray_image.decode('utf-8'),
-                    'userid': userid
+                    'userid': user_id
             })
            
             

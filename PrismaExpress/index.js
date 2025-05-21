@@ -62,6 +62,8 @@ app.post('/prismaschema', function (req, res) { return __awaiter(void 0, void 0,
             case 0:
                 _b.trys.push([0, 2, , 3]);
                 _a = req.body, imagestring = _a.imagestring, userid = _a.userid;
+                console.log("Image string is", imagestring);
+                console.log("Image id id is", userid);
                 return [4 /*yield*/, client.faceAuthentication.create({
                         data: {
                             imagestring: imagestring,

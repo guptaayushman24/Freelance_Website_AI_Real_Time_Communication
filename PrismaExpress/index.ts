@@ -21,6 +21,8 @@ const client = new PrismaClient();
 app.post('/prismaschema',async(req:any,res:any)=>{
    try{
      const {imagestring,userid} = req.body;
+    console.log("Image string is",imagestring);
+    console.log("Image id id is",userid);
     await client.faceAuthentication.create({
         data:{
             imagestring:imagestring,
