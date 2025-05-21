@@ -29,12 +29,12 @@ export async function Deletedproject(idtodelete: number) {
     try {
         const data = await client.acceptedProject.delete({
             where: {
-                aaplyproject: idtodelete
+                aaplyproject: 1
             }
         })
         if (data) {
             return {
-                status: 1,
+                status: idtodelete,
                 message: 'Data is deleted from database successfully'
             }
         }
