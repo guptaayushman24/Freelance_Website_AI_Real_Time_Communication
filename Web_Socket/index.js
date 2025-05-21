@@ -8,7 +8,7 @@ var server = new createServer(app);
 // Creating the instance of io
 var io = new Server(server, {
     cors: {
-        origin: 'https://vercel.com/guptaayushman24s-projects/freelance-website-ai-real-time-communication',
+        origin: 'https://freelance-website-ai-real-time-communication.vercel.app/',
         method: ["GET", "POST"],
         credentials: true
     }

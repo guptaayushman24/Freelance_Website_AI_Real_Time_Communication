@@ -41,7 +41,7 @@ var cors = require('cors');
 var client_1 = require("@prisma/client");
 var app = express();
 app.use(cors({
-    origin: 'https://vercel.com/guptaayushman24s-projects/freelance-website-ai-real-time-communication',
+    origin: 'https://freelance-website-ai-real-time-communication.vercel.app',
     credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
