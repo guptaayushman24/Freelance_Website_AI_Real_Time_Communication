@@ -40,11 +40,17 @@ var express = require('express');
 var cors = require('cors');
 var client_1 = require("@prisma/client");
 var app = express();
+// app.use(cors({
+//   origin: 'https://freelance-website-ai-real-time-communication.vercel.app',
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true
+// }));
 app.use(cors({
-    origin: 'https://freelance-website-ai-real-time-communication.vercel.app',
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+    credentials: false // MUST be false when using '*'
 }));
 app.use(express.json({ limit: '10mb' }));
 var PORT = 4001;

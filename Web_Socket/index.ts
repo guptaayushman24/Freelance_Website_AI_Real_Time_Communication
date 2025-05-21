@@ -7,14 +7,7 @@ const PORT = 8001;
 const app = express();
 const server = new createServer(app);
 
-// Creating the instance of io
-// const io = new Server(server,{
-//     cors:{
-//         origin:'https://freelance-website-ai-real-time-communication.vercel.app/',
-//         method:["GET","POST"],
-//         credentials:true
-//     }
-// })
+
 const io = new Server(server, {
   cors: {
     origin: '*',           // Allow all origins
