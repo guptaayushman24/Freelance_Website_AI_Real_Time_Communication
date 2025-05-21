@@ -11,13 +11,12 @@ from Convertograyscale import convertimagetograyscale
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "https://freelance-website-ai-real-time-communication.vercel.app"}},supports_credentials=True)
-# CORS(app, resources={r"/*": {"origins": "*"}},supports_credentials=True)
 
-@app.route('/',methods=["GET"])
+@app.route('/',methods=["GET","OPTIONS"])
 def hello_word():
     return "Hello,World!"
 
-@app.route('/storefaceindb',methods=["POST"])
+@app.route('/storefaceindb',methods=["POST","OPTIONS"])
 def storefaceindb():
     try:
 
@@ -87,7 +86,7 @@ def storefaceindb():
 
 
 
-@app.route('/storeimageinfolder', methods=['POST'])
+@app.route('/storeimageinfolder', methods=['POST',"OPTIONS"])
 def storeimageinfolder():
     try:
         data = request.get_json()
@@ -149,7 +148,7 @@ def storeimageinfolder():
 
 
     
-@app.route('/senduserid',methods=["GET"])
+@app.route('/senduserid',methods=["GET","OPTIONS"])
 def senduserid() :
     try:
         return {'status':'message','user_id':user_id}
