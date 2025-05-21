@@ -49,11 +49,13 @@ export default function () {
           'Content-Type':'application/json'
         },
         
-         body:JSON.stringify({data:data,userid:5})
+         body:JSON.stringify({data:data,userid:userid})
       })
       .then(response=>response.json())
       .then(data=>{
         console.log("Success:",data);
+        // console.log("The user id is",userid)
+        alert(`The user id is ${userid}`)
         route.push('/');
       })
       .catch(error=>{
