@@ -42,6 +42,7 @@ export default function () {
     const data = canvas.toDataURL('image/jpeg');
     const response = await fetch('https://face-app-freelancer-3.onrender.com/storeimageinfolder', {
       method: 'POST',
+      mode:'no-cors',
       headers: {
         'Content-type': 'application/json'
       },
@@ -49,7 +50,9 @@ export default function () {
     })
 
       
-       await fetch('https://face-app-freelancer-3.onrender.com/senduserid');
+       await fetch('https://face-app-freelancer-3.onrender.com/senduserid',{
+        mode:'no-cors'
+       });
       const result = await response.json();
 
       if (result.user_id === -1 || result.user_id === null) {
