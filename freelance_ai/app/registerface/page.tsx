@@ -45,7 +45,6 @@ export default function () {
      
        fetch('https://face-app-freelancer-3.onrender.com/storefaceindb',{
         method:'POST',
-        mode:'no-cors',
         headers:{
           'Content-Type':'application/json'
         },
