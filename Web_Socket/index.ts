@@ -8,13 +8,20 @@ const app = express();
 const server = new createServer(app);
 
 // Creating the instance of io
-const io = new Server(server,{
-    cors:{
-        origin:'https://freelance-website-ai-real-time-communication.vercel.app/',
-        method:["GET","POST"],
-        credentials:true
-    }
-})
+// const io = new Server(server,{
+//     cors:{
+//         origin:'https://freelance-website-ai-real-time-communication.vercel.app/',
+//         method:["GET","POST"],
+//         credentials:true
+//     }
+// })
+const io = new Server(server, {
+  cors: {
+    origin: '*',           // Allow all origins
+    methods: ['GET', 'POST'],
+    credentials: false     // Required for wildcard to work
+  }
+});
 // const userSocketMap: { [key: string]: string } = {};
 let userSocketMap = new Map<string,string>();
 // userSocketMap.set("alice@gmail.com",1)

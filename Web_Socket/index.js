@@ -6,11 +6,18 @@ var PORT = 8001;
 var app = express();
 var server = new createServer(app);
 // Creating the instance of io
+// const io = new Server(server,{
+//     cors:{
+//         origin:'https://freelance-website-ai-real-time-communication.vercel.app/',
+//         method:["GET","POST"],
+//         credentials:true
+//     }
+// })
 var io = new Server(server, {
     cors: {
-        origin: 'https://freelance-website-ai-real-time-communication.vercel.app/',
-        method: ["GET", "POST"],
-        credentials: true
+        origin: '*', // Allow all origins
+        methods: ['GET', 'POST'],
+        credentials: false // Required for wildcard to work
     }
 });
 // const userSocketMap: { [key: string]: string } = {};
