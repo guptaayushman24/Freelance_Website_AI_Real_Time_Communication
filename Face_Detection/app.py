@@ -13,12 +13,10 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route('/',methods=["GET","OPTIONS"])
-@cross_origin(origin='https://freelance-website-ai-real-time-communication.vercel.app', supports_credentials=True)
 def hello_word():
     return "Hello,World!"
 
 @app.route('/storefaceindb',methods=["POST","OPTIONS"])
-@cross_origin(origin='https://freelance-website-ai-real-time-communication.vercel.app', supports_credentials=True)
 
 def storefaceindb():
     try:
@@ -90,7 +88,6 @@ def storefaceindb():
 
 
 @app.route('/storeimageinfolder', methods=['POST',"OPTIONS"])
-@cross_origin(origin='https://freelance-website-ai-real-time-communication.vercel.app', supports_credentials=True)
 
 def storeimageinfolder():
     try:
