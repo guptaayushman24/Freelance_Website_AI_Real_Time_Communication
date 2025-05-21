@@ -77,7 +77,7 @@ app.post('/prismaschema', function (req, res) { return __awaiter(void 0, void 0,
                     })];
             case 2:
                 err_1 = _b.sent();
-                return [2 /*return*/, res.json({ 'msg': 'Not able to create record' })];
+                return [2 /*return*/, res.json({ 'msg': "Not able to create record ".concat(err_1) })];
             case 3: return [2 /*return*/];
         }
     });

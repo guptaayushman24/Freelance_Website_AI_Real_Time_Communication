@@ -69,7 +69,7 @@ def storefaceindb():
 
                 response = requests.post('https://freelance-website-ai-real-time-ekgk.onrender.com/prismaschema', json={
                     'imagestring': encoded_gray_image.decode('utf-8'),
-                    'userid': user_id
+                    'userid': userid
             })
            
             

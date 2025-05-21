@@ -34,7 +34,7 @@ app.post('/prismaschema',async(req:any,res:any)=>{
     })
    }
    catch(err){
-     return res.json({'msg':'Not able to create record'})
+     return res.json({'msg':`Not able to create record ${err}`})
    }
    
 
