@@ -39,21 +39,7 @@ export default function () {
       alert("Something went wrong try after some time");
       return -1;
     }
-    else {
-      if (!clientid){
-        route.push('/registerface')
-        Setloadingwallet(false);
-        return;
-      }
-      const check = await checkclientisinuser(clientid);
-      if (check==-1){
-        route.push('/');
-        Setloadingwallet(false);
-        return;
-      }
-      
-      
-    }
+     route.push('/');
     }
     catch(err){
       console.error(err);

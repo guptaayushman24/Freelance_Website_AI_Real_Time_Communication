@@ -1,9 +1,9 @@
 # Builder Image
 FROM python:3.8-slim-buster AS compile
 WORKDIR /app
-RUN mkdir -p Face_Detection/Gray_Image
-RUN mkdir -p Face_Detection/image
-RUN mkdir -p Face_Detection/Imageforauthentication
+# RUN mkdir -p Face_Detection/Gray_Image
+# RUN mkdir -p Face_Detection/image
+# RUN mkdir -p Face_Detection/Imageforauthentication
 
 
 # Install system dependencies
@@ -54,5 +54,10 @@ RUN pip install flask opencv-python face_recognition flask-cors requests
 ENV PATH="/opt/venv/bin:$PATH"
 
 COPY . /app
+RUN mkdir -p /app/Face_Detection/Gray_Image \
+    /app/Face_Detection/image \
+    /app/Face_Detection/Imageforauthentication \
+    /app/Face_Detection/DecodedImages \
+    /app/Face_Detection/Gray_Image
 EXPOSE 5000
 CMD ["python", "app.py"]

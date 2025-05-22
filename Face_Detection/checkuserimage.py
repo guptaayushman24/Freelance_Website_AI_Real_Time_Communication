@@ -7,6 +7,7 @@ from PIL import Image
 from datetime import datetime
 def checkuserimageisvalid(imagestring, userid):
     try:
+        base_dir = os.getcwd()
         print("👋 Hello from checkuserimageisvalid")
 
         # Step 1: Decode base64 image and save for debug
@@ -19,7 +20,8 @@ def checkuserimageisvalid(imagestring, userid):
         image = Image.open(io.BytesIO(image_bytes)).convert('RGB')
 
         # decoded_folder = 'D:/Freelance_Project/Face_Detection/DecodedImages'
-        decoded_folder = os.path.join('DecodedImages')
+        # decoded_folder = os.path.join('DecodedImages')
+        decoded_folder = os.path.join(base_dir,'DecodedImages')
         os.makedirs(decoded_folder, exist_ok=True)
 
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -39,7 +41,8 @@ def checkuserimageisvalid(imagestring, userid):
 
         # Step 3: Compare against stored images
         # stored_faces_folder = 'D:/Freelance_Project/Face_Detection/Imageforauthentication'
-        stored_faces_folder = os.path.join('Imageforauthentication')
+        # stored_faces_folder = os.path.join('Imageforauthentication')
+        stored_faces_folder = os.path.join(base_dir,'Imageforauthentication')
         image_files = [f for f in os.listdir(stored_faces_folder) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
 
         for image_file in image_files:

@@ -8,6 +8,7 @@ import json
 import uuid
 from datetime import datetime
 from Convertograyscale import convertimagetograyscale
+import traceback
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
@@ -20,7 +21,7 @@ def hello_word():
 
 def storefaceindb():
     try:
-
+        base_dir = os.getcwd()
         data = request.get_json()
         print("Data is",data)
         if not data or 'data' not in data or 'userid' not in data:
@@ -37,7 +38,7 @@ def storefaceindb():
         # Give image a unique name
         unique_filename = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{uuid.uuid4().hex}.jpg"
         # path = 'D:/Freelance_Project/Face_Detection/image'
-        path = os.path.join('image')
+        path = os.path.join(base_dir,'image')
         save_path = os.path.join(path, unique_filename)
 
         os.makedirs(os.path.dirname(save_path),exist_ok=True)
@@ -50,7 +51,7 @@ def storefaceindb():
        
 
         # gray_image_folder_path = 'D:/Freelance_Project/Face_Detection/Gray_Image'
-        gray_image_folder_path = os.path.join('Gray_Image')
+        gray_image_folder_path = os.path.join(base_dir,'Gray_Image')
         grayimagepathfiles = sorted(
             [f for f in os.listdir(gray_image_folder_path) if f.endswith(('.jpg', '.jpeg', '.png'))],
             key=lambda x: os.path.getmtime(os.path.join(gray_image_folder_path, x)),
@@ -71,6 +72,9 @@ def storefaceindb():
                     'imagestring': encoded_gray_image.decode('utf-8'),
                     'userid': userid
             })
+                
+                
+                
            
             
            
@@ -89,65 +93,137 @@ def storefaceindb():
 
 @app.route('/storeimageinfolder', methods=['POST',"OPTIONS"])
 
+# def storeimageinfolder():
+#     if request.method == 'OPTIONS':
+#         return '', 200  # Must return HTTP 200 OK for preflight
+#     try:
+#         data = request.get_json()
+#         if not data:
+#             return {'status': 'error', 'message': 'Missing data'}, 400
+
+#         imagestring = data['data']
+#         base64Image = imagestring.split(',')[1]
+
+#         image_bytes = base64.b64decode(base64Image)
+#         filename = f"auth_image_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:6]}.jpg"
+#         save_path = os.path.join(
+#         'Face_Detection',
+#         'Imageforauthentication',
+#         filename
+#     )
+
+#         os.makedirs(os.path.dirname(save_path), exist_ok=True)
+#         with open(save_path, 'wb') as f:
+#             f.write(image_bytes)
+
+#         sizeofdb = requests.get('https://freelance-website-ai-real-time-ekgk.onrender.com/findthesizeofdb')
+        
+#         if sizeofdb.status_code == 200:
+#             json_data = sizeofdb.json()
+#             size = json_data.get('data')
+#             print("Size is",size)
+#             for x in range(size):
+#                 print(f"How many times you run {x}")
+#                 response = requests.get('https://freelance-website-ai-real-time-ekgk.onrender.com/getallimagestring')
+#                 if response.status_code == 200:
+#                     try:
+#                         data = response.json()
+#                         for record in data:
+#                             imagestring = record.get('imagestring')
+#                             userid = record.get('userid')
+
+#                             global user_id
+#                             user_id = checkuserimageisvalid(imagestring, userid)
+#                             if user_id != -1:
+#                                 print(f"User id is {user_id}")
+#                                 return {'status': 'success', 'user_id': user_id}
+                            
+#                             x = x+1
+
+#                         return {'status': 'success', 'user_id': -1}
+
+#                     except ValueError:
+#                         print("Response content is not valid JSON.")
+
+#             return {'status': 'success'}, 200
+
+#         else:
+#             return {'status': 'error', 'message': 'Failed to get DB size'}, 500
+
+#     except Exception as e:
+#         print(e)
+#         return {'status': 'error', 'message': str(e)}, 500
+
 def storeimageinfolder():
+    if request.method == 'OPTIONS':
+        return '', 200  # For CORS preflight
+
     try:
+        # Get JSON payload
         data = request.get_json()
         if not data:
-            return {'status': 'error', 'message': 'Missing data'}, 400
+            return {'status': 'error', 'message': 'Missing JSON data'}, 400
 
-        imagestring = data['data']
-        base64Image = imagestring.split(',')[1]
+        imagestring = data.get('data')
+        if not imagestring:
+            return {'status': 'error', 'message': 'Missing image string'}, 400
 
-        image_bytes = base64.b64decode(base64Image)
+        try:
+            # Extract base64 part
+            base64Image = imagestring.split(',')[1]
+            image_bytes = base64.b64decode(base64Image)
+        except (IndexError, base64.binascii.Error):
+            return {'status': 'error', 'message': 'Invalid base64 image data'}, 400
+
+        # Create unique filename
         filename = f"auth_image_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:6]}.jpg"
-        save_path = os.path.join(
-        'Face_Detection',
-        'Imageforauthentication',
-        filename
-    )
-
+        save_path = os.path.join('Face_Detection', 'Imageforauthentication', filename)
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
+        # Save the image
         with open(save_path, 'wb') as f:
             f.write(image_bytes)
 
-        sizeofdb = requests.get('https://freelance-website-ai-real-time-ekgk.onrender.com/findthesizeofdb')
-        
-        if sizeofdb.status_code == 200:
-            json_data = sizeofdb.json()
-            size = json_data.get('data')
-            print("Size is",size)
-            for x in range(size):
-                print(f"How many times you run {x}")
-                response = requests.get('https://freelance-website-ai-real-time-ekgk.onrender.com/getallimagestring')
-                if response.status_code == 200:
-                    try:
-                        data = response.json()
-                        for record in data:
-                            imagestring = record.get('imagestring')
-                            userid = record.get('userid')
+        print(f"Image saved to: {save_path}")
 
-                            global user_id
-                            user_id = checkuserimageisvalid(imagestring, userid)
-                            if user_id != -1:
-                                print(f"User id is {user_id}")
-                                return {'status': 'success', 'user_id': user_id}
-                            
-                            x = x+1
-
-                        return {'status': 'success', 'user_id': -1}
-
-                    except ValueError:
-                        print("Response content is not valid JSON.")
-
-            return {'status': 'success'}, 200
-
-        else:
+        # Get size of DB
+        db_size_response = requests.get('https://freelance-website-ai-real-time-ekgk.onrender.com/findthesizeofdb')
+        if db_size_response.status_code != 200:
             return {'status': 'error', 'message': 'Failed to get DB size'}, 500
 
-    except Exception as e:
-        print(e)
-        return {'status': 'error', 'message': str(e)}, 500
+        json_data = db_size_response.json()
+        size = json_data.get('data')
+        print(f"Database size: {size}")
 
+        # Get all stored image strings
+        response = requests.get('https://freelance-website-ai-real-time-ekgk.onrender.com/getallimagestring')
+        if response.status_code != 200:
+            return {'status': 'error', 'message': 'Failed to get stored image strings'}, 500
+
+        try:
+            records = response.json()
+        except ValueError:
+            return {'status': 'error', 'message': 'Invalid JSON response from image DB'}, 500
+
+        # Match input image against all stored images
+        for record in records:
+            stored_imagestring = record.get('imagestring')
+            userid = record.get('userid')
+
+            # Compare the input image with stored one
+            global user_id
+            user_id = checkuserimageisvalid(stored_imagestring, userid)
+
+            if user_id != -1:
+                print(f"User authenticated. User ID: {user_id}")
+                return {'status': 'success', 'user_id': user_id}
+
+        # If no match found
+        return {'status': 'success', 'user_id': -1}
+
+    except Exception as e:
+        traceback.print_exc()  # Print full error stack trace
+        return {'status': 'error', 'message': str(e)}, 500
 
     
 @app.route('/senduserid',methods=["GET","OPTIONS"])

@@ -14,7 +14,7 @@ export const  NEXT_AUTH = ({
             credentials:{
                 email:{label: "Email", type: "text", placeholder: "Enter your Email" },
                 password: { label: "Password", type: "password" ,placeholder:"Enter your Password"},
-                clientjobseeker:{label:"Client Or Job Seeker",type:"text",placeholder:"Client or Job Seeker"}
+                clientjobseeker:{label:"Client Or Job Freelancer",type:"text",placeholder:"Client or Freelancer"}
                 
             },
             async authorize(credentials:any) {
@@ -34,7 +34,7 @@ export const  NEXT_AUTH = ({
                         id:user.user_id,
                         name:user.Name,
                         email:user.Email,
-                        whichuser:'Job Seeker'
+                        whichuser:'Freelancer'
                     }
                 }
                
@@ -54,7 +54,7 @@ export const  NEXT_AUTH = ({
                 if (!success){
                     return "Check credentials"
                 }
-                if (whichuser=='Job Seeker'){
+                if (whichuser=='Freelancer'){
                     const user = await client.userSchema.findUnique({
                     where:{
                         Email:email
@@ -114,7 +114,7 @@ export const  NEXT_AUTH = ({
                     }
                 }
                 else{
-                    return "Please enter Job Seeker or Client in text box"
+                    return "Please enter Freelancer or Client in text box"
                 }
                
             },
