@@ -14,7 +14,7 @@ export const  NEXT_AUTH = ({
             credentials:{
                 email:{label: "Email", type: "text", placeholder: "Enter your Email" },
                 password: { label: "Password", type: "password" ,placeholder:"Enter your Password"},
-                clientjobseeker:{label:"Client Or Job Freelancer",type:"text",placeholder:"Client or Freelancer"}
+                clientjobseeker:{label:"Client Or  Freelancer",type:"text",placeholder:"Client or Freelancer"}
                 
             },
             async authorize(credentials:any) {
