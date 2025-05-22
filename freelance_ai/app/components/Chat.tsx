@@ -17,7 +17,7 @@ export default function ChatBox() {
   }
 
   function sendmessagetoprople() {
-    if (whichuser === 'Client') {
+    if (whichuser === 'Freelancer') {
       console.log("User Email", useremail);
       socket.emit("startconversation", {
         message: sendmessage,
