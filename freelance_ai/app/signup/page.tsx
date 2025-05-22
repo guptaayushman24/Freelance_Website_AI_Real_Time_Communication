@@ -33,7 +33,7 @@ export default function(){
         }
         // Here we can store the user_id globally can use that user_id in the profile creation of the user
         if (createnewuser){
-            setrole('Job Seeker')
+            setrole('Freelancer')
             setname(name);
             setemail(email);
             setuserid(createnewuser);

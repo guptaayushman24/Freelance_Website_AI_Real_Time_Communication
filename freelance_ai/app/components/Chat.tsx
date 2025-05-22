@@ -25,7 +25,7 @@ export default function ChatBox() {
         sender: "client"
       });
     }
-    if (whichuser === 'Job Seeker') {
+    if (whichuser === 'Freelancer') {
       console.log("Client Email", clientemail);
       socket.emit("startconversation", {
         message: sendmessage,

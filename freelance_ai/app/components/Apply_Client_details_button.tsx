@@ -39,7 +39,7 @@ export default  function ApplyClinetDetailButton({ user,clientid,jobtitle,budget
   return (
     <div>
       {
-        user === 'Job Seeker' ? (
+        user === 'Freelancer' ? (
           <div className="flex flex-row gap-[0.5rem]">
             {
               loading?(
