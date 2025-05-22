@@ -5,7 +5,7 @@ export default function JobSeekerRegister() {
     return (
         <button className="bg-white text-red-500 px-4 py-2 rounded" onClick={()=>{
           router.push('/signup');
-        }}>Job Seeker Register</button>
+        }}>Freelancer Register</button>
     )
 
 }

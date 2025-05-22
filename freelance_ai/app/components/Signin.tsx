@@ -6,6 +6,6 @@ export default function Clinet_Signin(){
             signIn('Credentials',{
                 callbackUrl:'/homepage'
             })
-        }}>Freelancer Signin</button>
+        }}>Signin</button>
     )
 }
