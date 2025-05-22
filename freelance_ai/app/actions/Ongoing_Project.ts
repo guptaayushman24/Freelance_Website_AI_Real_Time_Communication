@@ -1,9 +1,10 @@
 'use server'
-import { PrismaClient } from "@prisma/client";
-const client = new PrismaClient();
+// import { PrismaClient } from "@prisma/client";
+// const client = new PrismaClient();
+import {prisma} from '../../lib/prisma'
 export default async function Ongoingproject(client_id:number){
     try{
-        const data = await client.acceptedProject.findMany({
+        const data = await prisma.acceptedProject.findMany({
             where:{
                 client_id:client_id
             },

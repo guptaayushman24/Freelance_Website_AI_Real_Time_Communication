@@ -1,9 +1,10 @@
 'use server'
-import { PrismaClient } from "@prisma/client";
-const client = new PrismaClient();
+// import { PrismaClient } from "@prisma/client";
+// const client = new PrismaClient();
+import {prisma} from '../../lib/prisma'
 async function Client_Detail(){
    try{
-    const jobs = await client.jobSchema.findMany({
+    const jobs = await prisma.jobSchema.findMany({
         include:{
             client:{
                 select:{

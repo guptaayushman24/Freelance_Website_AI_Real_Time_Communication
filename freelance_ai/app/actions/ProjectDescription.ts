@@ -1,7 +1,8 @@
 'use server'
-import { PrismaClient } from "@prisma/client";
-const client = new PrismaClient();
+// import { PrismaClient } from "@prisma/client";
+// const client = new PrismaClient();
 import { jobschema } from "../zod/validation";
+import {prisma} from '../../lib/prisma'
 async function projectDescription(clintid: number, job_title: string, job_description: string, budget: string, timeline: string) {
     try {
         // Add the zod validation here
@@ -14,7 +15,7 @@ async function projectDescription(clintid: number, job_title: string, job_descri
         if (!success) {
             return -2;
         }
-        const data = await client.jobSchema.createMany({
+        const data = await prisma.jobSchema.createMany({
             data: {
                 clientid: clintid,
                 Job_titile: job_title,

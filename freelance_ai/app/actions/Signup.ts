@@ -1,7 +1,8 @@
 'use server'
 import { signupobject } from "../zod/validation";
-import { PrismaClient } from "@prisma/client";
-const client = new PrismaClient();
+// import { PrismaClient } from "@prisma/client";
+// const client = new PrismaClient();
+import {prisma} from '../../lib/prisma'
 async function Signup(name: string, email: string, password: string, experience: number, Rating: number, Skills: string[]) {
     // zod validation
     const success = signupobject.parse({
@@ -16,7 +17,7 @@ async function Signup(name: string, email: string, password: string, experience:
         console.log(success);
         console.log("All fields are correct");
         try {
-            const existinguser = await client.userSchema.findUnique({
+            const existinguser = await prisma.userSchema.findUnique({
                 where:{
                     Email:email
                 }
@@ -25,7 +26,7 @@ async function Signup(name: string, email: string, password: string, experience:
                 console.log("User Exist")
                 return 1;
             }
-                const user = await  client.userSchema.create({
+                const user = await  prisma.userSchema.create({
                     data: {
                         Name: name,
                         Email: email,
