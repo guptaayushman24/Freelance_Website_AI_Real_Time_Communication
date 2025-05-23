@@ -34,7 +34,7 @@ export default function RoleBasedDashboard(){
                         </div>
                     ) : session?.user.whichuser === 'Freelancer' ? (
                         <div className="flex flex-row justify-end gap-[2rem] mt-[2.5rem]">
-                         <button className="bg-white text-red-500 px-4 py-2 rounded"onClick={()=>route.push('/checkreume')}>User Completed Project</button>
+                         <button className="bg-white text-red-500 px-4 py-2 rounded"onClick={()=>route.push('/checkreume')}>Polish My Resume & Letter</button>
                             <button className="bg-white text-red-500 px-4 py-2 rounded"onClick={()=>route.push('/usercompletedproject')}>User Completed Project</button>
                             <button className="bg-white text-red-500 px-4 py-2 rounded" onClick={()=>route.push('/userongoingproject')}>User Ongoing Project</button>
                             <button className="bg-white text-red-500 px-4 py-2 rounded" onClick={()=>route.push('/addmoneytowallet')}>Add Money To Wallet</button>
