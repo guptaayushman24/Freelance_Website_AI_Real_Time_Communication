@@ -59,8 +59,8 @@ Job Description:
 
     except Exception as e:
         print(e)
-        return jsonify({ "error": "Something went wrong" }), 500
-
+        return jsonify({ "error": f"{"Something went wrong"}{e}"}), 500
+ 
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0",debug=True,port=5000)
