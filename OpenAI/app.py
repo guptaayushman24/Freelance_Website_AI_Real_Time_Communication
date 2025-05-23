@@ -59,7 +59,7 @@ Job Description:
 
     except Exception as e:
         print(e)
-        return jsonify({ "error": f"{"Something went wrong"}{e}"}), 500
+        return jsonify({ "error": f"Something went wrong: {e}" }), 500
  
 
 if __name__ == '__main__':
