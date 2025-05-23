@@ -1,6 +1,0 @@
-Flask
-opencv-python
-opencv-python
-numpy
-requests
-uuid
