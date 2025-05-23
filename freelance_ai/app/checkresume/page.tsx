@@ -10,7 +10,7 @@ export default function(){
     formData.append("resume", file as File);
     formData.append("job", jobDescription);
 
-    const res = await fetch("http://localhost:5000/analyze", {
+    const res = await fetch("https://freelance-website-ai-real-time-2nsm.onrender.com/analyze", {
       method: "POST",
       body: formData,
     });
