@@ -4,8 +4,9 @@ export default function(){
     const [file, setFile] =  useState<File | null>(null)
   const [jobDescription, setJobDescription] = useState("");
   const [result, setResult] = useState("");
-
+  const [loading,setLoading] = useState(false);
   const handleSubmit = async () => {
+    setLoading(true);
     const formData = new FormData();
     formData.append("resume", file as File);
     formData.append("job", jobDescription);
@@ -16,7 +17,11 @@ export default function(){
     });
 
     const data = await res.json();
-    setResult(data.result);
+    if (data){
+      setResult(data.result);
+      setLoading(false);
+    }
+    
   };
     return(
          <div className="p-6 max-w-2xl mx-auto">
@@ -32,9 +37,17 @@ export default function(){
         value={jobDescription}
         onChange={(e) => setJobDescription(e.target.value)}
       />
-      <button onClick={handleSubmit} className="mt-4 p-2 bg-blue-500 text-white">
-        Analyze Resume
+      {
+        loading?(
+           <button className="mt-4 p-2 bg-blue-500 text-white">
+         Analyzing Resume
+      </button> 
+        ):(
+            <button onClick={handleSubmit} className="mt-4 p-2 bg-blue-500 text-white">
+         Analyze Resume
       </button>
+        )
+      }
 
       {result && (
         <div className="mt-6 p-4 border bg-gray-50 whitespace-pre-wrap">
