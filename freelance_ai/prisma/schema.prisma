@@ -60,6 +60,7 @@ model JobSchema{
   Timeline String
   client ClientSchema @relation(fields: [clientid],references: [client_id])
   applyJob ApplyJob[]
+   @@unique([clientid, Job_titile])
 }
 
 model ApplyJob{

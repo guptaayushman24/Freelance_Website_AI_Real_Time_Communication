@@ -25,21 +25,24 @@ export async function Completedproject(client_id: number, useremail: string, pro
     }
 }
 
-export async function Deletedproject(idtodelete: number) {
-    try {
-        const data = await client.acceptedProject.delete({
-            where: {
-                aaplyproject: 1
-            }
-        })
-        if (data) {
-            return {
-                status: idtodelete,
-                message: 'Data is deleted from database successfully'
-            }
-        }
+export async function Deletedproject(clientid: number, projecttitle: string) {
+  try {
+    const data = await client.acceptedProject.deleteMany({
+        where: {
+            client_id:clientid,
+            project_title:projecttitle
     }
-    catch (err) {
-        console.error(err);
-    }
+    });
+
+    return {
+      status: 1,
+      message: 'Data is deleted from database successfully'
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      status: 0,
+      message: 'Error occurred while deleting the project'
+    };
+  }
 }

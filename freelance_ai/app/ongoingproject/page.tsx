@@ -16,6 +16,7 @@ export default function () {
   const [activeindex, Setactiveindex] = useState<number>(-1);
    const { setuseremail } = useStore();
   const { setwhichuser } = useStore();
+  const {setprojecttitle} = useStore();
   const clientid = session?.user?.id;
   const clientemail = session?.user?.email;
   const route = useRouter();
@@ -45,6 +46,7 @@ export default function () {
       const data = await Completedproject(clientid, useremail, projecttitle, timeline, budget);
       if (data?.status == 1) {
         alert(data.message);
+        setprojecttitle(projecttitle)
         console.log("The project id to delete is", data.id);
         route.push('/makepayment');
         return;

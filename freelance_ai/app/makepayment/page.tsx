@@ -15,6 +15,8 @@ export default function () {
     const [amount, Setamount] = useState('');
     const { projectidtodelete } = useStore();
     const { data: session } = useSession();
+    const clientid = session?.user?.id;
+     const{projecttitle} = useStore();
     const route = useRouter();
     async function paymentToFreelancer(clientuniqueid: string, freelaneruniqueid: string, amount: string) {
         try {
@@ -36,7 +38,7 @@ export default function () {
             if (data == 1) {
                 alert("Transaction is done from the client to freelancer");
                 console.log("id is", projectidtodelete);
-                const projectcompleted = await Deletedproject(projectidtodelete);
+                 const projectcompleted = await Deletedproject(clientid,projecttitle)
                 if (projectcompleted?.status == 1) {
                     alert(projectcompleted.message)
                     route.push('/homepage');
