@@ -34,11 +34,12 @@ export default function ChatBox() {
       });
     }
 
+    Setsendmessage('');
     console.log("Client Email:", clientemail);
     console.log("User Email:", useremail);
     console.log("Which user is:", whichuser);
     
-    Setsendmessage('');
+   
 
   }
 
