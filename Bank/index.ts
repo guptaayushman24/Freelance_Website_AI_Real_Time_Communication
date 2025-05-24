@@ -7,7 +7,7 @@ const PORT = 5001;
 const client = new PrismaClient()
 
 app.use(cors({
-    origin:'https://freelance-website-ai-real-time-communication.vercel.app/',
+    origin:'https://freelance-website-ai-real-time-communication-rllz.vercel.app',
     credentials:true,
 }));
 
