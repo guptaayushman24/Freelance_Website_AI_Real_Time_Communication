@@ -8,6 +8,12 @@ https://drive.google.com/file/d/1NXtt11YOz8RKvf8o4VN5BpazvB4heh7G/view?usp=shari
 # WebSite Link:-
 https://freelance-website-ai-real-time-communication-rllz.vercel.app/
 
+# How to run the project
+1:- Go to the freelace_ai and run the npm install
+2:- Go to the Bank run the npm install and install express
+3:- Go to the OpenAI and run the pip install -r requirments.tst
+4:- Go to the neon db take the connection string and paste in the .env file
+5:- Go to the OpenAI platform create the secret key and paste the key in the .env file in the OpenAI folder (If want to use the Resume and Cover Letter Enhancment Feature)
 # 1:- Client Signup
 Name: The client must enter their name.
 
